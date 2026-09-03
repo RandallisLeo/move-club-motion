@@ -75,7 +75,7 @@ button { font: inherit; }
 .selection-photo img { display: block; width: 100%; height: 100%; object-fit: cover; pointer-events: none; transition: filter 220ms ease; }
 .selection-photo[aria-pressed='true'] img { filter: brightness(0.86) saturate(0.78); }
 .selection-photo:focus-visible { outline: 2px solid var(--foreground); outline-offset: 3px; }
-.selection-check { position: absolute; top: 7px; right: 7px; display: grid; width: 24px; height: 24px; place-items: center; border: 1px solid rgb(255 255 255 / 12%); border-radius: 50%; background: #090a0c; color: #ffffff; box-shadow: 0 4px 12px rgb(0 0 0 / 36%); }
+.selection-check { position: absolute; top: 7px; right: 7px; display: grid; width: 24px; height: 24px; place-items: center; border: 1px solid rgb(9 10 12 / 14%); border-radius: 50%; background: #ffffff; color: #090a0c; box-shadow: 0 4px 12px rgb(0 0 0 / 24%); }
 .mini-demo-hint { display: block; margin-top: 10px; color: var(--ink-soft); font-size: 9px; text-align: center; }
 
 /* 02 — contextual action reveal */
