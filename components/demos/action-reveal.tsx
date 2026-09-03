@@ -19,12 +19,7 @@ export function ActionReveal({ replayKey }: { replayKey: number }) {
         aria-pressed={selected}
         aria-label={selected ? 'Deselect photo' : 'Select photo to reveal actions'}
       >
-        <motion.img
-          src={image}
-          alt="A warm creative workspace"
-          animate={{ scale: selected ? 0.92 : 1, filter: selected ? 'saturate(.72)' : 'saturate(1)' }}
-          transition={{ type: 'spring', stiffness: 360, damping: 24 }}
-        />
+        <img src={image} alt="A warm creative workspace" />
         <AnimatePresence>
           {selected ? (
             <motion.span
