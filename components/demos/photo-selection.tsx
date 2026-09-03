@@ -35,9 +35,18 @@ export function PhotoSelection({ replayKey }: { replayKey: number }) {
     >
       <div className="mini-demo-heading">
         <span>Select moments</span>
-        <motion.span key={selected.length} initial={{ opacity: 0, y: 5 }} animate={{ opacity: 1, y: 0 }}>
-          {selected.length || 'None'} selected
-        </motion.span>
+        <AnimatePresence mode="popLayout" initial={false}>
+          {selected.length > 0 ? (
+            <motion.span
+              key={selected.length}
+              initial={{ opacity: 0, y: 5 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -4 }}
+            >
+              {selected.length} selected
+            </motion.span>
+          ) : null}
+        </AnimatePresence>
       </div>
 
       <div className="selection-grid">
@@ -55,7 +64,7 @@ export function PhotoSelection({ replayKey }: { replayKey: number }) {
                   items.includes(index) ? items.filter((item) => item !== index) : [...items, index],
                 )
               }
-              animate={{ scale: isSelected ? 0.88 : 1, opacity: isSelected ? 0.76 : 1 }}
+              animate={{ scale: isSelected ? 0.88 : 1 }}
               whileTap={{ scale: isSelected ? 0.85 : 0.94 }}
               transition={{ type: 'spring', stiffness: 430, damping: 25, mass: 0.72 }}
             >
