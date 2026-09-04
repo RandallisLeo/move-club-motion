@@ -1,7 +1,7 @@
 import { ArrowUpRight, Code2 } from 'lucide-react';
 import { MotionGallery } from '@/components/motion-gallery';
 
-const githubUrl = process.env.NEXT_PUBLIC_GITHUB_URL ?? '#source';
+const githubUrl = process.env.NEXT_PUBLIC_GITHUB_URL ?? 'https://github.com/RandallisLeo/move-club-motion';
 
 export default function Home() {
   return (
@@ -20,7 +20,7 @@ export default function Home() {
         <nav className="header-nav" aria-label="Primary navigation">
           <a href="#work">Playground</a>
           <a href="#about">About</a>
-          <a className="github-link" href={githubUrl}>
+          <a className="github-link" href={githubUrl} target="_blank" rel="noreferrer">
             <Code2 size={15} /> GitHub <ArrowUpRight size={14} />
           </a>
         </nav>
@@ -43,7 +43,7 @@ export default function Home() {
         </div>
         <div className="source-actions">
           <p>Everything I make here is open. Clone the full playground, borrow one small interaction, or bring your own experiment to the mix.</p>
-          <a className="source-button" href={githubUrl}>View on GitHub <ArrowUpRight size={18} /></a>
+          <a className="source-button" href={githubUrl} target="_blank" rel="noreferrer">View on GitHub <ArrowUpRight size={18} /></a>
         </div>
       </section>
 

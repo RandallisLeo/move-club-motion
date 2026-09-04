@@ -55,12 +55,13 @@ export function MotionGallery({ githubUrl }: { githubUrl: string }) {
             {visible.map((item) => {
               const replayKey = replayKeys[item.slug] ?? 0;
               const sourceHref = githubUrl.startsWith('http')
-                ? `${githubUrl}/tree/main/components/demos/${item.slug}.tsx`
+                ? `${githubUrl}/blob/main/components/demos/${item.slug}.tsx`
                 : '#source';
               return (
                 <motion.article
                   layout
                   key={item.slug}
+                  id={item.slug}
                   className="project-card"
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
@@ -88,7 +89,7 @@ export function MotionGallery({ githubUrl }: { githubUrl: string }) {
 
                   <div className="project-description">
                     <p>{item.description}</p>
-                    <a href={sourceHref} aria-label={`View source for ${item.title}`}>
+                    <a href={sourceHref} target="_blank" rel="noreferrer" aria-label={`View source for ${item.title}`}>
                       Code <ArrowUpRight size={14} />
                     </a>
                   </div>
