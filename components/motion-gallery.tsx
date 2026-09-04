@@ -54,9 +54,7 @@ export function MotionGallery({ githubUrl }: { githubUrl: string }) {
           <AnimatePresence mode="popLayout">
             {visible.map((item) => {
               const replayKey = replayKeys[item.slug] ?? 0;
-              const sourceHref = githubUrl.startsWith('http')
-                ? `${githubUrl}/blob/main/components/demos/${item.slug}.tsx`
-                : '#source';
+              const sourceHref = `${githubUrl}/blob/main/components/demos/${item.slug}.tsx`;
               return (
                 <motion.article
                   layout

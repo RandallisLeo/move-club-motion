@@ -1,7 +1,11 @@
 import { ArrowUpRight, Code2 } from 'lucide-react';
 import { MotionGallery } from '@/components/motion-gallery';
 
-const githubUrl = process.env.NEXT_PUBLIC_GITHUB_URL ?? 'https://github.com/RandallisLeo/move-club-motion';
+const fallbackGithubUrl = 'https://github.com/RandallisLeo/move-club-motion';
+const configuredGithubUrl = process.env.NEXT_PUBLIC_GITHUB_URL?.trim();
+const githubUrl = configuredGithubUrl?.startsWith('https://github.com/')
+  ? configuredGithubUrl.replace(/\/$/, '')
+  : fallbackGithubUrl;
 
 export default function Home() {
   return (
