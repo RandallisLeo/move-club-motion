@@ -82,7 +82,7 @@ export function MotionGallery({ githubUrl }: { githubUrl: string }) {
                   </div>
 
                   <div className={`demo-stage demo-stage-${item.tone}`}>
-                    <Demo item={item} replayKey={replayKey} />
+                    <Demo key={replayKey} item={item} replayKey={replayKey} />
                     <span className="stage-caption">{item.category} motion study</span>
                   </div>
 

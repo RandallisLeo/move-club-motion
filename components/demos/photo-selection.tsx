@@ -35,18 +35,28 @@ export function PhotoSelection({ replayKey }: { replayKey: number }) {
     >
       <div className="mini-demo-heading">
         <span>Select moments</span>
-        <AnimatePresence mode="popLayout" initial={false}>
-          {selected.length > 0 ? (
-            <motion.span
-              key={selected.length}
-              initial={{ opacity: 0, y: 5 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -4 }}
-            >
-              {selected.length} selected
-            </motion.span>
-          ) : null}
-        </AnimatePresence>
+        {selected.length > 0 ? (
+          <motion.span
+            className="selection-count"
+            initial={{ opacity: 0, y: 4 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.18, ease: [0.22, 1, 0.36, 1] }}
+          >
+            <span className="selection-count-window" aria-hidden="true">
+              <motion.span
+                className="selection-count-track"
+                initial={{ y: '0em' }}
+                animate={{ y: `${selected.length * -1}em` }}
+                transition={{ duration: 0.36, ease: [0.22, 1, 0.36, 1] }}
+              >
+                {Array.from({ length: 10 }, (_, digit) => (
+                  <span key={digit}>{digit}</span>
+                ))}
+              </motion.span>
+            </span>
+            <span>selected</span>
+          </motion.span>
+        ) : null}
       </div>
 
       <div className="selection-grid">

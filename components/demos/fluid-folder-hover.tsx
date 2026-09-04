@@ -3,7 +3,7 @@
 import { motion } from 'motion/react';
 import { useLayoutEffect, useRef, useState } from 'react';
 
-const folders = ['Tennis', 'Office', 'Art'];
+const tabs = ['Art', 'Travel', 'Editorial', 'Photography'];
 
 export function FluidFolderHover({ replayKey }: { replayKey: number }) {
   const buttons = useRef<Array<HTMLButtonElement | null>>([]);
@@ -23,17 +23,17 @@ export function FluidFolderHover({ replayKey }: { replayKey: number }) {
 
   return (
     <motion.div key={replayKey} className="folder-hover-demo" initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
-      <span className="folder-hover-label">Move 4 photos to</span>
+      <span className="folder-hover-label">Select the tab</span>
       <div className="folder-choice-bar" onPointerLeave={() => moveTo(active)}>
         <motion.span
           className="folder-choice-bubble"
           animate={{ x: bubble.x, width: bubble.width }}
           transition={{ type: 'spring', stiffness: 420, damping: 31, mass: 0.72 }}
         />
-        {folders.map((folder, index) => (
+        {tabs.map((tab, index) => (
           <button
             type="button"
-            key={folder}
+            key={tab}
             ref={(node) => {
               buttons.current[index] = node;
             }}
@@ -42,7 +42,7 @@ export function FluidFolderHover({ replayKey }: { replayKey: number }) {
             onPointerMove={(event) => moveTo(index, event.clientX)}
             onFocus={() => moveTo(index)}
           >
-            {folder}
+            {tab}
           </button>
         ))}
       </div>

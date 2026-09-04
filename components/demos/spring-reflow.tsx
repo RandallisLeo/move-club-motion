@@ -1,6 +1,6 @@
 'use client';
 
-import { RotateCcw } from 'lucide-react';
+import { RotateCcw, X } from 'lucide-react';
 import { AnimatePresence, LayoutGroup, motion } from 'motion/react';
 import { useState } from 'react';
 
@@ -51,6 +51,9 @@ export function SpringReflow({ replayKey }: { replayKey: number }) {
                 }}
               >
                 <img src={reflowPhotos[index]} alt="" />
+                <span className="reflow-remove-indicator" aria-hidden="true">
+                  <X size={15} strokeWidth={2.2} />
+                </span>
               </motion.button>
             ))}
           </AnimatePresence>

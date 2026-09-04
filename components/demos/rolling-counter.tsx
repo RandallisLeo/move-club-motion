@@ -1,19 +1,20 @@
 'use client';
 
-import { Plus } from 'lucide-react';
+import { Minus, Plus } from 'lucide-react';
 import { motion } from 'motion/react';
 import { useState } from 'react';
 
-function ReelDigit({ value }: { value: number }) {
+function ReelDigit({ position, length }: { position: number; length: number }) {
   return (
     <span className="reel-window" aria-hidden="true">
       <motion.span
         className="reel-track"
-        animate={{ y: `${value * -1}em` }}
+        initial={false}
+        animate={{ y: `${position * -1}em` }}
         transition={{ duration: 0.42, ease: [0.22, 1, 0.36, 1] }}
       >
-        {Array.from({ length: 10 }, (_, digit) => (
-          <span key={digit}>{digit}</span>
+        {Array.from({ length }, (_, index) => (
+          <span key={index}>{index % 10}</span>
         ))}
       </motion.span>
     </span>
@@ -22,20 +23,42 @@ function ReelDigit({ value }: { value: number }) {
 
 export function RollingCounter({ replayKey }: { replayKey: number }) {
   const [count, setCount] = useState(8);
-  const digits = String(count).padStart(2, '0').split('').map(Number);
 
   return (
     <motion.div key={replayKey} className="rolling-counter-demo" initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
-      <span className="counter-eyebrow">Selected photos</span>
-      <motion.div className="rolling-number" layout aria-live="polite" aria-label={`${count} selected photos`}>
-        {digits.map((digit, index) => (
-          <ReelDigit key={`${index}-${digits.length}`} value={digit} />
-        ))}
-      </motion.div>
-      <button type="button" className="counter-add" onClick={() => setCount((value) => (value + 1) % 100)}>
-        <Plus size={15} /> Add one
-      </button>
-      <span className="mini-demo-hint">Each digit travels inside its own mask</span>
+      <div className="counter-composition">
+        <span className="counter-eyebrow">Selected items</span>
+        <div className="counter-main-row">
+          <motion.div className="rolling-number" layout aria-live="polite" aria-label={`${count} selected items`}>
+            <ReelDigit position={Math.floor(count / 10)} length={10} />
+            <ReelDigit position={count} length={100} />
+          </motion.div>
+          <div className="counter-stepper" aria-label="Adjust selected item count">
+            <motion.button
+              type="button"
+              onClick={() => setCount((value) => Math.max(0, value - 1))}
+              disabled={count === 0}
+              aria-label="Decrease selected item count"
+              whileTap={{ scale: 0.9, y: 1, backgroundColor: 'rgba(220, 223, 230, 0.62)' }}
+              transition={{ type: 'spring', stiffness: 520, damping: 28 }}
+            >
+              <Minus size={16} />
+            </motion.button>
+            <span className="counter-stepper-divider" />
+            <motion.button
+              type="button"
+              onClick={() => setCount((value) => Math.min(99, value + 1))}
+              disabled={count === 99}
+              aria-label="Increase selected item count"
+              whileTap={{ scale: 0.9, y: 1, backgroundColor: 'rgba(220, 223, 230, 0.62)' }}
+              transition={{ type: 'spring', stiffness: 520, damping: 28 }}
+            >
+              <Plus size={16} />
+            </motion.button>
+          </div>
+        </div>
+      </div>
+      <span className="mini-demo-hint">Use − and + to roll in either direction</span>
     </motion.div>
   );
 }
