@@ -36,15 +36,6 @@ It is part sketchbook, part reference shelf, and part open invitation: a place t
 
 These are only a small preview. [Explore the full collection on Move Club](https://move-club-photo-motion.ranlous.chatgpt.site).
 
-## Run it locally
-
-```bash
-npm install
-npm run dev
-```
-
-Then open `http://localhost:3000`.
-
 ## Add a study
 
 1. Add a component to `components/demos/`.
