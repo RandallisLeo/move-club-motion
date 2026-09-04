@@ -4,13 +4,15 @@ import { Minus, Plus } from 'lucide-react';
 import { motion } from 'motion/react';
 import { useState } from 'react';
 
+const REEL_STEP_EM = 1.12;
+
 function ReelDigit({ position, length }: { position: number; length: number }) {
   return (
     <span className="reel-window" aria-hidden="true">
       <motion.span
         className="reel-track"
         initial={false}
-        animate={{ y: `${position * -1}em` }}
+        animate={{ y: `${position * -REEL_STEP_EM}em` }}
         transition={{ duration: 0.42, ease: [0.22, 1, 0.36, 1] }}
       >
         {Array.from({ length }, (_, index) => (
