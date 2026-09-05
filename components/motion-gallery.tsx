@@ -15,7 +15,7 @@ import { RollingCounter } from '@/components/demos/rolling-counter';
 import { SpringReflow } from '@/components/demos/spring-reflow';
 import { StatusWave } from '@/components/demos/status-wave';
 
-const filters = ['All', 'Select', 'Reveal', 'Count', 'Hover', 'Transfer', 'Depth', 'Layout', 'Status'] as const;
+const filters = ['All', 'Interaction', 'Feedback', 'Transition', 'Space'] as const;
 type Filter = (typeof filters)[number];
 
 function Demo({ item, replayKey }: { item: Experiment; replayKey: number }) {

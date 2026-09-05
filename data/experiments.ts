@@ -2,7 +2,7 @@ export type Experiment = {
   slug: string;
   index: string;
   title: string;
-  category: 'Select' | 'Reveal' | 'Count' | 'Hover' | 'Transfer' | 'Depth' | 'Layout' | 'Status';
+  category: 'Interaction' | 'Feedback' | 'Transition' | 'Space';
   tags: string;
   description: string;
   tone: 'dark' | 'blue' | 'paper';
@@ -13,7 +13,7 @@ export const experiments: Experiment[] = [
     slug: 'photo-selection',
     index: '001',
     title: 'Photo / Select',
-    category: 'Select',
+    category: 'Interaction',
     tags: 'Tap · Spring · State',
     description: 'A tactile selected state built from scale, opacity and a spring-loaded checkmark.',
     tone: 'paper',
@@ -22,7 +22,7 @@ export const experiments: Experiment[] = [
     slug: 'action-reveal',
     index: '002',
     title: 'Actions / Reveal',
-    category: 'Reveal',
+    category: 'Interaction',
     tags: 'Entrance · Stagger · Dock',
     description: 'A compact action dock that enters only when the selected state creates a reason for it.',
     tone: 'blue',
@@ -31,7 +31,7 @@ export const experiments: Experiment[] = [
     slug: 'rolling-counter',
     index: '003',
     title: 'Count / Reel',
-    category: 'Count',
+    category: 'Feedback',
     tags: 'Mask · Number · Feedback',
     description: 'A rolling counter where each digit travels through a clipped vertical reel.',
     tone: 'dark',
@@ -40,7 +40,7 @@ export const experiments: Experiment[] = [
     slug: 'fluid-folder-hover',
     index: '004',
     title: 'Folder / Hover',
-    category: 'Hover',
+    category: 'Interaction',
     tags: 'Pointer · Shared element · Spring',
     description: 'One fluid highlight follows the pointer and reshapes itself around each folder name.',
     tone: 'paper',
@@ -49,7 +49,7 @@ export const experiments: Experiment[] = [
     slug: 'card-flight',
     index: '005',
     title: 'Cards / Transfer',
-    category: 'Transfer',
+    category: 'Transition',
     tags: 'Path · Stagger · Choreography',
     description: 'Selected cards peel away in sequence while the destination folder opens to receive them.',
     tone: 'blue',
@@ -58,7 +58,7 @@ export const experiments: Experiment[] = [
     slug: 'folder-preview',
     index: '006',
     title: 'Folder / Depth',
-    category: 'Depth',
+    category: 'Space',
     tags: 'Glass · Stack · Composition',
     description: 'Translucent folder fronts reveal a stable, individual composition for every collection.',
     tone: 'dark',
@@ -67,7 +67,7 @@ export const experiments: Experiment[] = [
     slug: 'spring-reflow',
     index: '007',
     title: 'Grid / Reflow',
-    category: 'Layout',
+    category: 'Transition',
     tags: 'FLIP · Spring · Overshoot',
     description: 'Removing a tile lets the grid close the gap with a restrained same-row rebound.',
     tone: 'paper',
@@ -76,7 +76,7 @@ export const experiments: Experiment[] = [
     slug: 'buttons-lift',
     index: '008',
     title: 'Buttons / Lift',
-    category: 'Hover',
+    category: 'Interaction',
     tags: 'Proximity · Spring · Continuity',
     description: 'A row of controls rises as one continuous surface, with neighboring buttons following the pointer at lower intensity.',
     tone: 'dark',
@@ -85,7 +85,7 @@ export const experiments: Experiment[] = [
     slug: 'status-wave',
     index: '009',
     title: 'Status / Wave',
-    category: 'Status',
+    category: 'Feedback',
     tags: 'Text · Rhythm · Progress',
     description: 'Stage copy refreshes as a letter wave while a separate three-dot pulse keeps the sense of ongoing work steady.',
     tone: 'blue',
@@ -94,7 +94,7 @@ export const experiments: Experiment[] = [
     slug: 'menu-reveal',
     index: '010',
     title: 'Menu / Reveal',
-    category: 'Reveal',
+    category: 'Interaction',
     tags: 'Hover · Press · Selection',
     description: 'Hover gives each menu item a temporary lift; selection moves it outward and reveals its persistent icon.',
     tone: 'paper',

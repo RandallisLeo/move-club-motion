@@ -3,10 +3,13 @@ import { GeistSans } from 'geist/font/sans';
 import { GeistMono } from 'geist/font/mono';
 import './globals.css';
 
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL
+  ?? (process.env.VERCEL_PROJECT_PRODUCTION_URL
+    ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
+    : 'https://move-club-photo-motion.ranlous.chatgpt.site');
+
 export const metadata: Metadata = {
-  metadataBase: new URL(
-    process.env.NEXT_PUBLIC_SITE_URL ?? 'https://move-club-photo-motion.ranlous.chatgpt.site',
-  ),
+  metadataBase: new URL(siteUrl),
   title: 'Move Club — Ten Motion Studies',
   description: 'Ten interactive studies exploring selection, reveal, counting, hover, transfer, depth, layout, and status motion.',
   openGraph: {
