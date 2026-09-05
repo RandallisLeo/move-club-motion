@@ -168,6 +168,46 @@ button { font: inherit; }
 .reflow-photo:hover .reflow-remove-indicator, .reflow-photo:focus-visible .reflow-remove-indicator { opacity: 1; transform: translate(-50%, -50%) scale(1); }
 .reflow-photo:focus-visible { outline: 2px solid var(--foreground); outline-offset: 2px; }
 
+/* 08 — proximity-driven dock lift */
+.buttons-lift-demo { display: flex; width: min(86%, 360px); flex-direction: column; align-items: center; }
+.buttons-lift-demo .buttons-lift-label { min-height: 18px; margin-bottom: 22px; color: var(--ink-soft); font-family: var(--font-geist-mono), ui-monospace, monospace; font-size: 10px; letter-spacing: 0.04em; }
+.buttons-lift-demo .buttons-lift-dock { display: flex; width: 100%; align-items: flex-end; justify-content: center; gap: clamp(6px, 1.2vw, 10px); min-height: 92px; padding: 20px 8px 12px; border: 1px solid rgb(255 255 255 / 68%); border-radius: 18px; background: rgb(255 255 255 / 52%); box-shadow: 0 18px 40px rgb(32 36 43 / 10%); backdrop-filter: blur(15px); }
+.buttons-lift-demo .buttons-lift-dock button { display: grid; width: clamp(42px, 5vw, 50px); height: clamp(44px, 5vw, 52px); flex: none; place-items: center; padding: 0; border: 0; border-radius: 12px; background: var(--paper); color: var(--foreground); cursor: pointer; box-shadow: 0 6px 15px rgb(32 36 43 / 12%); transform-origin: bottom; }
+.buttons-lift-demo .buttons-lift-icon-stack { display: grid; place-items: center; }
+.buttons-lift-demo .buttons-lift-icon-stack svg { grid-area: 1 / 1; transition: opacity 170ms ease, transform 220ms cubic-bezier(0.22, 1, 0.36, 1); }
+.buttons-lift-demo .buttons-lift-outline-icon { opacity: 1; }
+.buttons-lift-demo .buttons-lift-solid-icon { fill: currentColor; opacity: 0; transform: scale(0.72); }
+.buttons-lift-demo .buttons-lift-solid-cutout { fill: var(--paper); }
+.buttons-lift-demo .buttons-lift-dock button:hover { color: var(--accent); }
+.buttons-lift-demo .buttons-lift-dock button:hover .buttons-lift-outline-icon, .buttons-lift-demo .buttons-lift-dock button:focus-visible .buttons-lift-outline-icon { opacity: 0; transform: scale(0.78); }
+.buttons-lift-demo .buttons-lift-dock button:hover .buttons-lift-solid-icon, .buttons-lift-demo .buttons-lift-dock button:focus-visible .buttons-lift-solid-icon { opacity: 1; transform: scale(1); }
+.buttons-lift-demo .buttons-lift-dock button:focus-visible { outline: 2px solid var(--foreground); outline-offset: 4px; }
+
+/* 09 — independently timed status text and activity pulse */
+.status-wave-demo { position: relative; display: flex; width: min(84%, 360px); min-height: 180px; flex-direction: column; align-items: center; justify-content: center; isolation: isolate; }
+.status-wave-demo::before { position: absolute; z-index: -1; width: 210px; height: 150px; border-radius: 50%; background: radial-gradient(circle, rgb(107 111 249 / 22%), rgb(107 111 249 / 0%) 70%); content: ''; filter: blur(14px); }
+.status-wave-demo .status-wave-control { display: flex; width: 100%; min-height: 52px; align-items: center; justify-content: center; padding: 0 16px; border: 0; background: transparent; color: var(--foreground); cursor: pointer; }
+.status-wave-demo .status-wave-control:focus-visible { outline: 2px solid var(--foreground); outline-offset: 5px; border-radius: 10px; }
+.status-wave-demo .status-wave-copy { display: inline-flex; width: max-content; align-items: center; justify-content: center; gap: 10px; }
+.status-wave-demo .status-wave-word { display: inline-grid; width: max-content; place-items: center; font-family: var(--font-geist-mono), ui-monospace, monospace; font-size: 15px; font-weight: 500; }
+.status-wave-demo .status-wave-letters { display: inline-flex; grid-area: 1 / 1; white-space: nowrap; }
+.status-wave-demo .status-wave-indicator { display: grid; width: 23px; height: 18px; flex: none; place-items: center start; }
+.status-wave-demo .status-wave-dots { display: flex; align-items: center; gap: 4px; }
+.status-wave-demo .status-wave-dots > span { display: block; width: 5px; height: 5px; border-radius: 50%; background: var(--accent); }
+.status-wave-demo .status-wave-complete { display: grid; width: 17px; height: 17px; place-items: center; border-radius: 50%; background: var(--accent); color: #ffffff; box-shadow: 0 4px 12px rgb(107 111 249 / 24%); }
+.status-wave-demo .status-wave-hint { margin-top: 10px; color: var(--ink-soft); font-size: 9px; }
+
+/* 10 — text menu with a stepping arc reveal */
+.menu-reveal-demo { display: flex; width: min(72%, 250px); flex-direction: column; align-items: center; }
+.menu-reveal-demo .menu-reveal-list { position: relative; width: 174px; padding-left: 56px; }
+.menu-reveal-demo .menu-reveal-labels { display: grid; gap: 0; }
+.menu-reveal-demo .menu-reveal-labels button { display: flex; width: 100%; height: 38px; align-items: center; padding: 0; border: 0; background: transparent; color: #a1a6af; font-size: 15px; font-weight: 430; letter-spacing: -0.015em; text-align: left; cursor: pointer; transform-origin: left center; transition: color 170ms ease, font-weight 170ms ease; }
+.menu-reveal-demo .menu-reveal-labels button:hover { color: #555b66; }
+.menu-reveal-demo .menu-reveal-labels button.is-selected { color: var(--foreground); font-weight: 620; }
+.menu-reveal-demo .menu-reveal-labels button:focus-visible { border-radius: 4px; outline: 2px solid var(--accent); outline-offset: 3px; }
+.menu-reveal-demo .menu-reveal-icon { position: absolute; z-index: 2; top: 0; left: 0; display: grid; width: 38px; height: 38px; place-items: center; border: 1px solid rgb(255 255 255 / 82%); border-radius: 10px; background: var(--paper); color: var(--accent); box-shadow: 0 8px 20px rgb(32 36 43 / 14%); will-change: transform; }
+.menu-reveal-demo .menu-reveal-hint { margin-top: 17px; color: var(--ink-soft); font-size: 9px; }
+
 .magnetic-area { position: absolute; inset: 0; display: grid; place-items: center; cursor: crosshair; }
 .magnetic-button { z-index: 2; display: flex; width: 130px; height: 130px; align-items: center; justify-content: center; gap: 7px; border: 0; border-radius: 50%; background: var(--accent); color: #ffffff; font-size: 13px; font-weight: 700; cursor: pointer; box-shadow: 0 18px 50px rgb(107 111 249 / 24%); }
 .orbit { position: absolute; border: 1px solid rgb(107 111 249 / 18%); border-radius: 50%; pointer-events: none; }

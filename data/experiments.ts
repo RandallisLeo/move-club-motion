@@ -2,7 +2,7 @@ export type Experiment = {
   slug: string;
   index: string;
   title: string;
-  category: 'Select' | 'Reveal' | 'Count' | 'Hover' | 'Transfer' | 'Depth' | 'Layout';
+  category: 'Select' | 'Reveal' | 'Count' | 'Hover' | 'Transfer' | 'Depth' | 'Layout' | 'Status';
   tags: string;
   description: string;
   tone: 'dark' | 'blue' | 'paper';
@@ -70,6 +70,33 @@ export const experiments: Experiment[] = [
     category: 'Layout',
     tags: 'FLIP · Spring · Overshoot',
     description: 'Removing a tile lets the grid close the gap with a restrained same-row rebound.',
+    tone: 'paper',
+  },
+  {
+    slug: 'buttons-lift',
+    index: '008',
+    title: 'Buttons / Lift',
+    category: 'Hover',
+    tags: 'Proximity · Spring · Continuity',
+    description: 'A row of controls rises as one continuous surface, with neighboring buttons following the pointer at lower intensity.',
+    tone: 'dark',
+  },
+  {
+    slug: 'status-wave',
+    index: '009',
+    title: 'Status / Wave',
+    category: 'Status',
+    tags: 'Text · Rhythm · Progress',
+    description: 'Stage copy refreshes as a letter wave while a separate three-dot pulse keeps the sense of ongoing work steady.',
+    tone: 'blue',
+  },
+  {
+    slug: 'menu-reveal',
+    index: '010',
+    title: 'Menu / Reveal',
+    category: 'Reveal',
+    tags: 'Hover · Press · Selection',
+    description: 'Hover gives each menu item a temporary lift; selection moves it outward and reveals its persistent icon.',
     tone: 'paper',
   },
 ];

@@ -7,8 +7,8 @@ export const metadata: Metadata = {
   metadataBase: new URL(
     process.env.NEXT_PUBLIC_SITE_URL ?? 'https://move-club-photo-motion.ranlous.chatgpt.site',
   ),
-  title: 'Move Club — Seven Photo Motion Studies',
-  description: 'Seven interactive studies in selection, reveal, counting, hover, transfer, depth, and spring reflow.',
+  title: 'Move Club — Ten Motion Studies',
+  description: 'Ten interactive studies exploring selection, reveal, counting, hover, transfer, depth, layout, and status motion.',
   openGraph: {
     title: 'Move Club',
     description: 'A playground for motion, ideas & people.',

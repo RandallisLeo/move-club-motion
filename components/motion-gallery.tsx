@@ -5,14 +5,17 @@ import { AnimatePresence, MotionConfig, motion } from 'motion/react';
 import { useState } from 'react';
 import { experiments, type Experiment } from '@/data/experiments';
 import { ActionReveal } from '@/components/demos/action-reveal';
+import { ButtonsLift } from '@/components/demos/buttons-lift';
 import { CardFlight } from '@/components/demos/card-flight';
 import { FluidFolderHover } from '@/components/demos/fluid-folder-hover';
 import { FolderPreview } from '@/components/demos/folder-preview';
+import { MenuReveal } from '@/components/demos/menu-reveal';
 import { PhotoSelection } from '@/components/demos/photo-selection';
 import { RollingCounter } from '@/components/demos/rolling-counter';
 import { SpringReflow } from '@/components/demos/spring-reflow';
+import { StatusWave } from '@/components/demos/status-wave';
 
-const filters = ['All', 'Select', 'Reveal', 'Count', 'Hover', 'Transfer', 'Depth', 'Layout'] as const;
+const filters = ['All', 'Select', 'Reveal', 'Count', 'Hover', 'Transfer', 'Depth', 'Layout', 'Status'] as const;
 type Filter = (typeof filters)[number];
 
 function Demo({ item, replayKey }: { item: Experiment; replayKey: number }) {
@@ -22,7 +25,11 @@ function Demo({ item, replayKey }: { item: Experiment; replayKey: number }) {
   if (item.slug === 'fluid-folder-hover') return <FluidFolderHover replayKey={replayKey} />;
   if (item.slug === 'card-flight') return <CardFlight replayKey={replayKey} />;
   if (item.slug === 'folder-preview') return <FolderPreview replayKey={replayKey} />;
-  return <SpringReflow replayKey={replayKey} />;
+  if (item.slug === 'spring-reflow') return <SpringReflow replayKey={replayKey} />;
+  if (item.slug === 'buttons-lift') return <ButtonsLift replayKey={replayKey} />;
+  if (item.slug === 'status-wave') return <StatusWave replayKey={replayKey} />;
+  if (item.slug === 'menu-reveal') return <MenuReveal replayKey={replayKey} />;
+  return null;
 }
 
 export function MotionGallery({ githubUrl }: { githubUrl: string }) {
