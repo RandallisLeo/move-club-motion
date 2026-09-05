@@ -4,7 +4,7 @@
 
 **An open, ongoing collection of small interaction and motion studies.**
 
-[Explore the live playground](https://move-club-photo-motion.ranlous.chatgpt.site) · Built by [Randall D](https://github.com/RandallisLeo)
+[Explore the live playground](https://move-club-motion.vercel.app) · Built by [Randall D](https://github.com/RandallisLeo)
 
 > **Ongoing:** this collection will keep growing as I study, rebuild, and remix motion patterns found in everyday interfaces.
 
@@ -34,7 +34,7 @@ It is part sketchbook, part reference shelf, and part open invitation: a place t
   <img src="./public/readme/spring-reflow.gif" width="620" alt="A photo grid closing its gaps with a spring-based reflow" />
 </p>
 
-These are only a small preview. [Explore the full collection on Move Club](https://move-club-photo-motion.ranlous.chatgpt.site).
+These are only a small preview. [Explore the full collection on Move Club](https://move-club-motion.vercel.app).
 
 ## Add a study
 
@@ -44,7 +44,7 @@ These are only a small preview. [Explore the full collection on Move Club](https
 
 ## Built with
 
-React · TypeScript · Motion · Vinext · Cloudflare Workers
+React · TypeScript · Motion · Vinext · Vercel
 
 ## License
 
