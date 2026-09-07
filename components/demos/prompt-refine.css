@@ -1,0 +1,58 @@
+/* Unique gallery adapters; the shared grid, stage tones and metadata stay intact. */
+.prompt-refine-card { scroll-margin-top: 90px; }
+.prompt-refine-stage { display: block; }
+.prompt-refine-demo {
+  --pr-paper: #fff; --pr-text: #151515; --pr-line: #eaeaea;
+  --pr-user: #e5f3ff; --pr-user-text: #006dce; --pr-input: #f2f2f2;
+  --pr-chip: #f3f4f6; --pr-chip-text: #686f79; --pr-blue: #008cff;
+  position: absolute; inset: 0; display: flex; flex-direction: column;
+  width: 100%; min-height: 0; padding: 6px 12px 40px; color: var(--pr-text);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-weight: 400;
+}
+.prompt-refine-demo button, .prompt-refine-demo textarea { font: inherit; }
+.prompt-refine-demo button { cursor: pointer; -webkit-tap-highlight-color: transparent; }
+.prompt-refine-demo button:disabled { cursor: default; }
+.prompt-refine-demo button:focus-visible, .prompt-refine-demo [contenteditable='true']:focus-visible { outline: 2px solid #687282; outline-offset: 2px; }
+.prompt-refine-demo .pr-controls { display: flex; flex: 0 0 36px; align-items: center; justify-content: space-between; width: 100%; max-width: 390px; height: 36px; margin: 0 auto; color: var(--ink-soft); font: 9px var(--font-geist-mono), monospace; }
+.prompt-refine-demo .pr-speed { height: 44px; min-width: 44px; padding: 0; border: 0; background: transparent; color: inherit; font: inherit; text-align: right; }
+.prompt-refine-demo .pr-screen { position: relative; isolation: isolate; display: flex; flex: 1; flex-direction: column; justify-content: center; width: 100%; max-width: 390px; min-height: 0; margin: 0 auto; overflow: clip; border: 1px solid #eceef1; border-radius: 24px; background: var(--pr-paper); color: var(--pr-text); color-scheme: light; }
+.prompt-refine-demo .pr-scroll { flex: 1; min-height: 0; padding: 20px 14px 16px; overflow-y: auto; overflow-x: hidden; overscroll-behavior-y: contain; overflow-anchor: none; scrollbar-width: none; }
+.prompt-refine-demo .pr-scroll::-webkit-scrollbar, .prompt-refine-demo .pr-rail::-webkit-scrollbar { display: none; }
+.prompt-refine-demo .pr-turn + .pr-turn { margin-top: 24px; }
+.prompt-refine-demo .pr-user { width: fit-content; max-width: 88%; margin-left: auto; padding: 10px 16px; border-radius: 23px; background: var(--pr-user); color: var(--pr-user-text); font-size: 17px; line-height: 1.52; white-space: pre-wrap; }
+.prompt-refine-demo .pr-reply { margin-top: 20px; }
+.prompt-refine-demo .pr-wait { display: flex; align-items: center; height: 24px; padding-left: 16px; }
+.prompt-refine-demo .pr-wait > span { width: 8px; height: 8px; border-radius: 50%; background: #777; animation: pr-wait 1.05s ease-in-out 3; }
+.prompt-refine-demo .pr-card { overflow: hidden; border: 1px solid var(--pr-line); border-radius: 24px; background: var(--pr-paper); }
+.prompt-refine-demo .pr-card-inner { padding: 14px 14px 16px; }
+.prompt-refine-demo .pr-card-head { display: flex; height: 26px; align-items: center; justify-content: space-between; gap: 10px; color: #646464; font-size: 15px; line-height: 1.4; font-weight: 500; }
+.prompt-refine-demo .pr-card-actions { display: flex; align-items: center; gap: 14px; margin-right: -4px; color: #151515; }
+.prompt-refine-demo .pr-card-actions button { display: flex; width: 28px; height: 28px; align-items: center; justify-content: center; padding: 0; border: 0; background: transparent; color: inherit; }
+.prompt-refine-demo .pr-answer { margin: 14px 0 0; color: var(--pr-text); font-size: 17px; line-height: 1.52; letter-spacing: -.15px; overflow-wrap: break-word; }
+.prompt-refine-demo .pr-answer[contenteditable='true'] { border-radius: 4px; box-shadow: 0 0 0 1px #dadce2; }
+.prompt-refine-demo .pr-word { display: inline-block; }
+.prompt-refine-demo .pr-prompt-slot { height: 0; overflow: hidden; }
+.prompt-refine-demo .pr-prompt-slot.is-open { height: 48px; }
+.prompt-refine-demo .pr-rail-wrap { position: relative; min-width: 0; padding-top: 4px; }
+.prompt-refine-demo .pr-rail-wrap::after { content: ''; position: absolute; inset: 0 0 0 auto; width: 17px; background: linear-gradient(90deg, transparent, #fff); pointer-events: none; }
+.prompt-refine-demo .pr-rail-wrap.at-end::after { display: none; }
+.prompt-refine-demo .pr-rail { display: flex; align-items: center; flex-wrap: nowrap; gap: 6px; width: 100%; height: 44px; padding: 0 1px; overflow-x: auto; overflow-y: hidden; overscroll-behavior-x: contain; scrollbar-width: none; cursor: grab; }
+.prompt-refine-demo .pr-rail.is-dragging { cursor: grabbing; user-select: none; }
+.prompt-refine-demo .pr-chip { display: flex; align-items: center; flex: 0 0 auto; min-height: 44px; margin: 0; padding: 0; border: 0; background: transparent; color: var(--pr-chip-text); font-size: 12px; line-height: 1; white-space: nowrap; }
+.prompt-refine-demo .pr-chip-face { display: inline-flex; align-items: center; height: 26px; padding: 0 10px; border-radius: 999px; background: var(--pr-chip); white-space: nowrap; transition: background-color 130ms ease, color 130ms ease; }
+.prompt-refine-demo .pr-chip:focus-visible { outline: none; }
+.prompt-refine-demo .pr-chip:focus-visible .pr-chip-face { outline: 2px solid #687282; outline-offset: 2px; background: #e6e9ee; color: #515965; }
+.prompt-refine-demo .pr-composer-zone { flex: 0 0 auto; padding: 16px; }
+.prompt-refine-demo .pr-composer { display: flex; align-items: flex-end; gap: 8px; min-height: 48px; padding: 6px 8px 6px 14px; border-radius: 23px; background: var(--pr-input); }
+.prompt-refine-demo .pr-composer textarea { display: block; width: 100%; min-width: 0; margin: 0; padding: 5px 0; resize: none; overflow: hidden; border: 0; background: transparent; color: #161616; font-size: 17px; line-height: 1.5; }
+.prompt-refine-demo .pr-send { display: flex; flex: 0 0 44px; align-items: center; justify-content: center; width: 44px; height: 44px; margin: -4px -4px -4px 0; padding: 0; border: 0; background: transparent; }
+.prompt-refine-demo .pr-send > span { display: flex; align-items: center; justify-content: center; width: 32px; height: 32px; border-radius: 50%; background: #151515; color: #fff; }
+.prompt-refine-demo .pr-flight-layer { position: absolute; inset: 0; z-index: 8; overflow: hidden; pointer-events: none; }
+.prompt-refine-demo .pr-flight { position: absolute; display: flex; align-items: center; justify-content: center; margin: 0; font-weight: 400; line-height: 1.52; white-space: nowrap; transform-origin: center; }
+.prompt-refine-demo .pr-sr { position: absolute; width: 1px; height: 1px; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; }
+.prompt-refine-demo [hidden] { display: none; }
+@keyframes pr-wait { 0%, 100% { opacity: .45; transform: scale(.85); } 50% { opacity: 1; transform: scale(1); } }
+@media (hover: hover) { .prompt-refine-demo .pr-chip:hover .pr-chip-face { background: #e9ebef; color: #555d69; } }
+@media (max-width: 380px) { .prompt-refine-demo { padding-left: 8px; padding-right: 8px; } .prompt-refine-demo .pr-user { max-width: 94%; } .prompt-refine-demo .pr-composer-zone { padding: 12px; } }
+@media (pointer: coarse) { .prompt-refine-demo .pr-card-actions { gap: 1px; margin-right: -10px; } .prompt-refine-demo .pr-card-actions button { width: 44px; height: 44px; } }
+@media (prefers-reduced-motion: reduce) { .prompt-refine-demo .pr-wait > span { animation: none; } .prompt-refine-demo .pr-chip-face { transition: none; } }

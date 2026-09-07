@@ -10,6 +10,33 @@ export type Experiment = {
 
 export const experiments: Experiment[] = [
   {
+    slug: 'feed-adapt',
+    index: '011',
+    title: 'Feed / Adapt',
+    category: 'Interaction',
+    tags: 'Resize · Masonry · Responsive',
+    description: 'A responsive feed reshapes its columns and navigation as you drag the screen to different widths.',
+    tone: 'blue',
+  },
+  {
+    slug: 'liquid-swipe',
+    index: '013',
+    title: 'Liquid / Swipe',
+    category: 'Interaction',
+    tags: 'Drag · Surface tension · Rebound',
+    description: 'Two actions emerge as the control slides, separating like droplets with a subtle rebound.',
+    tone: 'blue',
+  },
+  {
+    slug: 'prompt-refine',
+    index: '012',
+    title: 'Prompt / Refine',
+    category: 'Interaction',
+    tags: 'Context · Stagger · Continuity',
+    description: 'A quiet row of prompts fades in below the reply, with new suggestions shaped by each revision.',
+    tone: 'paper',
+  },
+  {
     slug: 'photo-selection',
     index: '001',
     title: 'Photo / Select',

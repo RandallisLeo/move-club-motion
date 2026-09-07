@@ -14,11 +14,17 @@ import { PhotoSelection } from '@/components/demos/photo-selection';
 import { RollingCounter } from '@/components/demos/rolling-counter';
 import { SpringReflow } from '@/components/demos/spring-reflow';
 import { StatusWave } from '@/components/demos/status-wave';
+import { FeedAdapt } from '@/components/demos/feed-adapt';
+import { PromptRefine } from '@/components/demos/prompt-refine';
+import { LiquidSwipe } from '@/components/demos/liquid-swipe';
 
 const filters = ['All', 'Interaction', 'Feedback', 'Transition', 'Space'] as const;
 type Filter = (typeof filters)[number];
 
 function Demo({ item, replayKey }: { item: Experiment; replayKey: number }) {
+  if (item.slug === 'liquid-swipe') return <LiquidSwipe replayKey={replayKey} />;
+  if (item.slug === 'prompt-refine') return <PromptRefine replayKey={replayKey} />;
+  if (item.slug === 'feed-adapt') return <FeedAdapt replayKey={replayKey} />;
   if (item.slug === 'photo-selection') return <PhotoSelection replayKey={replayKey} />;
   if (item.slug === 'action-reveal') return <ActionReveal replayKey={replayKey} />;
   if (item.slug === 'rolling-counter') return <RollingCounter replayKey={replayKey} />;
@@ -67,7 +73,7 @@ export function MotionGallery({ githubUrl }: { githubUrl: string }) {
                   layout
                   key={item.slug}
                   id={item.slug}
-                  className="project-card"
+                  className={`project-card${item.slug === 'feed-adapt' ? ' feed-adapt-card' : ''}${item.slug === 'prompt-refine' ? ' prompt-refine-card' : ''}`}
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -12 }}
@@ -87,9 +93,9 @@ export function MotionGallery({ githubUrl }: { githubUrl: string }) {
                     </button>
                   </div>
 
-                  <div className={`demo-stage demo-stage-${item.tone}`}>
+                  <div className={`demo-stage demo-stage-${item.tone}${item.slug === 'feed-adapt' ? ' feed-adapt-stage' : ''}${item.slug === 'prompt-refine' ? ' prompt-refine-stage' : ''}`}>
                     <Demo key={replayKey} item={item} replayKey={replayKey} />
-                    <span className="stage-caption">{item.category} motion study</span>
+                    {item.slug !== 'feed-adapt' && <span className="stage-caption">{item.category} motion study</span>}
                   </div>
 
                   <div className="project-description">
