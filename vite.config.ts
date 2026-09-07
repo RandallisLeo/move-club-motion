@@ -1,4 +1,5 @@
 import { sites } from '@openai/sites-vite-plugin';
+import { readFile } from 'node:fs/promises';
 import tailwindcss from '@tailwindcss/postcss';
 import tailwindcssVite from '@tailwindcss/vite';
 import vinext from 'vinext';
@@ -20,7 +21,11 @@ export default defineConfig(async () => {
     };
   }
 
-  const { default: hostingConfig } = await import('./.openai/hosting.json');
+  // Vite resolves imports even in inactive branches. Keep local config out of
+  // the Vercel build graph and read it only when starting the local runtime.
+  const hostingConfig = JSON.parse(
+    await readFile(new URL('./.openai/hosting.json', import.meta.url), 'utf8'),
+  ) as { d1?: string; r2?: string };
   const { d1, r2 } = hostingConfig;
   const localBindingConfig = {
     main: 'vinext/server/fetch-handler',
