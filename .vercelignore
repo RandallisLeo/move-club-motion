@@ -1,0 +1,18 @@
+# Keep local configuration and generated output out of source deployments.
+.git/
+.openai/
+.vercel/
+.wrangler/
+.vinext/
+.next/
+node_modules/
+dist/
+out/
+coverage/
+outputs/
+work/
+.env*
+!.env.example
+next-env.d.ts
+*.tsbuildinfo
+.DS_Store
