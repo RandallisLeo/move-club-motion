@@ -1,5 +1,6 @@
-import { ArrowUpRight, Code2 } from 'lucide-react';
+import { GitHubMark } from '@/components/icons/github-mark';
 import { MotionGallery } from '@/components/motion-gallery';
+import { MoveClubWordmark } from '@/components/move-club-wordmark';
 
 const fallbackGithubUrl = 'https://github.com/RandallisLeo/move-club-motion';
 const configuredGithubUrl = process.env.NEXT_PUBLIC_GITHUB_URL?.trim();
@@ -11,21 +12,12 @@ export default function Home() {
   return (
     <main className="min-h-screen" id="top">
       <header className="site-header">
-        <a className="wordmark" href="#top" aria-label="Move Club home">
-          <span className="wordmark-mark" aria-hidden="true">
-            <svg viewBox="0 0 32 32" role="presentation">
-              <circle className="move-club-ring" cx="16" cy="16" r="10" />
-              <circle className="move-club-dot" cx="23.7" cy="9.6" r="2.8" />
-            </svg>
-          </span>
-          <span>Move Club</span>
-          <span className="byline">By Randall D</span>
-        </a>
+        <MoveClubWordmark />
         <nav className="header-nav" aria-label="Primary navigation">
           <a href="#work">Playground</a>
           <a href="#about">About</a>
           <a className="github-link" href={githubUrl} target="_blank" rel="noreferrer">
-            <Code2 size={15} /> GitHub <ArrowUpRight size={14} />
+            <GitHubMark size={15} /> GitHub
           </a>
         </nav>
       </header>
@@ -35,8 +27,14 @@ export default function Home() {
       <section className="about-section" id="about">
         <div className="about-label"><span>02</span> About the playground</div>
         <div className="about-copy">
-          <p>Part sketchbook, part reference shelf, part open invitation.</p>
-          <p className="about-small">Alongside my own experiments, I’ll share playful interactions found in the wild and the designers worth knowing. If something sparks an idea, take it further and share it forward.</p>
+          <p>Some ideas start with a detail I notice. Others start with <span className="about-keep-together">“what if?”</span></p>
+          <div className="about-details">
+            <p className="about-small">Move Club is where I turn both into things you can try: original interface ideas, motion studies, and small experiments in how things move and respond.</p>
+            <p className="about-small">I share the thinking, references, and work in progress on X.</p>
+            <a className="about-contact" href="https://x.com/ChadRunz" target="_blank" rel="noopener noreferrer" aria-label="Say hello to Randall on X, @ChadRunz">
+              Say hello on X
+            </a>
+          </div>
         </div>
       </section>
 
@@ -47,13 +45,13 @@ export default function Home() {
         </div>
         <div className="source-actions">
           <p>Everything I make here is open. Clone the full playground, borrow one small interaction, or bring your own experiment to the mix.</p>
-          <a className="source-button" href={githubUrl} target="_blank" rel="noreferrer">View on GitHub <ArrowUpRight size={18} /></a>
+          <a className="source-button" href={githubUrl} target="_blank" rel="noreferrer"><GitHubMark size={18} /> View on GitHub</a>
         </div>
       </section>
 
       <footer>
         <span>Move Club © 2026</span>
-        <a href="#top">Back to top ↑</a>
+        <a href="#top">Back to top</a>
       </footer>
     </main>
   );

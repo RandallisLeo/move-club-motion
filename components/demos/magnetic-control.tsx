@@ -1,6 +1,5 @@
 'use client';
 
-import { ArrowUpRight } from 'lucide-react';
 import { motion } from 'motion/react';
 import { useState } from 'react';
 
@@ -25,7 +24,7 @@ export function MagneticControl() {
         animate={position}
         transition={{ type: 'spring', stiffness: 180, damping: 14, mass: 0.55 }}
       >
-        Explore <ArrowUpRight size={17} />
+        Explore
       </motion.button>
       <span className="orbit orbit-one" />
       <span className="orbit orbit-two" />

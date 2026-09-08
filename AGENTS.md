@@ -51,6 +51,8 @@ Unless the user explicitly requests a global redesign, preserve the existing:
 
 Use Lucide for interface icons. Match the current thin stroke language and existing icon sizes before introducing a new size. Do not mix emoji, filled icon packs, or one-off hand-drawn interface icons into the shared shell.
 
+Keep shared links free of decorative diagonal arrows and external-link symbols. Prefer text for Code and X links; an official GitHub brand mark beside its label is welcome. Reserve directional icons for controls where the direction communicates an actual interaction.
+
 Controls should feel related through shape, color, type, focus treatment, and subtle feedback. They do not need identical hover or press animation when the interaction calls for something different.
 
 ## Freedom inside each motion stage

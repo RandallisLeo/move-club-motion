@@ -1,6 +1,6 @@
 'use client';
 
-import { ArrowUpRight, RotateCcw } from 'lucide-react';
+import { RotateCcw } from 'lucide-react';
 import { AnimatePresence, MotionConfig, motion } from 'motion/react';
 import { useState } from 'react';
 import { experiments, type Experiment } from '@/data/experiments';
@@ -101,7 +101,7 @@ export function MotionGallery({ githubUrl }: { githubUrl: string }) {
                   <div className="project-description">
                     <p>{item.description}</p>
                     <a href={sourceHref} target="_blank" rel="noreferrer" aria-label={`View source for ${item.title}`}>
-                      Code <ArrowUpRight size={14} />
+                      Code
                     </a>
                   </div>
                   <div className="project-footer">
