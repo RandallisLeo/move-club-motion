@@ -222,9 +222,23 @@ button { font: inherit; }
 
 .project-description { align-items: flex-start; gap: 30px; padding: 16px 0 20px; border-bottom: 1px solid var(--line); }
 .project-description p { max-width: 430px; margin: 0; color: var(--ink-soft); font-size: 12px; line-height: 1.55; }
-.project-description a { display: flex; flex: none; align-items: center; gap: 5px; font-size: 11px; font-weight: 600; }
-.project-description a:hover { text-decoration: underline; text-underline-offset: 4px; }
+.project-code-button { display: flex; flex: none; align-items: center; padding: 0; border: 0; background: transparent; color: var(--foreground); font-size: 11px; font-weight: 600; cursor: pointer; }
+.project-code-button:hover { text-decoration: underline; text-underline-offset: 4px; }
+.project-code-button:focus-visible { outline: 2px solid var(--accent); outline-offset: 5px; border-radius: 2px; }
 .project-footer { padding: 12px 0 16px; color: var(--ink-soft); font-size: 9px; text-transform: uppercase; letter-spacing: 0.06em; }
+
+.code-contact-dialog { width: min(420px, calc(100% - 32px)); max-width: 420px; max-height: calc(100dvh - 48px); gap: 0; overflow-y: auto; padding: 30px; border-radius: var(--radius); background: var(--paper); color: var(--foreground); box-shadow: 0 20px 70px rgb(32 36 43 / 16%); }
+.code-contact-dialog .code-contact-close { position: absolute; top: 16px; right: 16px; display: grid; width: 32px; height: 32px; place-items: center; padding: 0; border: 0; border-radius: 50%; background: transparent; color: var(--ink-soft); cursor: pointer; }
+.code-contact-dialog .code-contact-close:hover { background: var(--accent-soft); color: var(--foreground); }
+.code-contact-dialog .code-contact-study { margin: 0 26px 22px 0; color: var(--ink-soft); font-family: var(--font-geist-mono), ui-monospace, monospace; font-size: 10px; line-height: 1.5; }
+.code-contact-dialog .code-contact-title { margin: 0; font-family: inherit; font-size: 26px; font-weight: 500; line-height: 1.15; letter-spacing: -0.035em; }
+.code-contact-dialog .code-contact-description { margin: 14px 0 24px; color: var(--ink-soft); font-size: 14px; line-height: 1.6; }
+.code-contact-dialog .code-contact-links { display: grid; gap: 8px; }
+.code-contact-dialog .code-contact-links a { display: flex; min-height: 48px; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 4px 16px; padding: 12px 14px; border-radius: 8px; background: #f7f7fa; font-size: 14px; font-weight: 500; transition: background 160ms; }
+.code-contact-dialog .code-contact-links a:hover { background: var(--accent-soft); }
+.code-contact-dialog .code-contact-address { color: var(--ink-soft); font-size: 12px; font-weight: 400; overflow-wrap: anywhere; }
+.code-contact-dialog .code-contact-close:focus-visible,
+.code-contact-dialog .code-contact-links a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
 
 .about-section { display: grid; grid-template-columns: 0.65fr 1.35fr; gap: 40px; padding: 86px clamp(20px, 4vw, 64px) 120px; border-top: 1px solid var(--line); }
 .about-label { display: flex; gap: 18px; color: var(--ink-soft); font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; }

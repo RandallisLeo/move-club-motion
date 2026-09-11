@@ -20,6 +20,7 @@ import { LiquidSwipe } from '@/components/demos/liquid-swipe';
 import { FoldFocus } from '@/components/demos/fold-focus';
 import { ObjectOrbit } from '@/components/demos/object-orbit';
 import { CardMaterial } from '@/components/demos/card-material';
+import { StudyCodeContact } from '@/components/study-code-contact';
 
 const filters = ['All', 'Interaction', 'Feedback', 'Transition', 'Space'] as const;
 type Filter = (typeof filters)[number];
@@ -44,7 +45,7 @@ function Demo({ item, replayKey }: { item: Experiment; replayKey: number }) {
   return null;
 }
 
-export function MotionGallery({ githubUrl }: { githubUrl: string }) {
+export function MotionGallery() {
   const [filter, setFilter] = useState<Filter>('All');
   const [replayKeys, setReplayKeys] = useState<Record<string, number>>({});
   const visible = experiments.filter((item) => filter === 'All' || item.category === filter);
@@ -73,7 +74,6 @@ export function MotionGallery({ githubUrl }: { githubUrl: string }) {
           <AnimatePresence mode="popLayout">
             {visible.map((item) => {
               const replayKey = replayKeys[item.slug] ?? 0;
-              const sourceHref = `${githubUrl}/blob/main/components/demos/${item.slug}.tsx`;
               return (
                 <motion.article
                   layout
@@ -106,9 +106,7 @@ export function MotionGallery({ githubUrl }: { githubUrl: string }) {
 
                   <div className="project-description">
                     <p>{item.description}</p>
-                    <a href={sourceHref} target="_blank" rel="noreferrer" aria-label={`View source for ${item.title}`}>
-                      Code
-                    </a>
+                    <StudyCodeContact study={item} />
                   </div>
                   <div className="project-footer">
                     <span>Motion / React</span>

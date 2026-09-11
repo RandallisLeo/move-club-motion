@@ -22,7 +22,7 @@ export default function Home() {
         </nav>
       </header>
 
-      <MotionGallery githubUrl={githubUrl} />
+      <MotionGallery />
 
       <section className="about-section" id="about">
         <div className="about-label"><span>02</span> About the playground</div>
