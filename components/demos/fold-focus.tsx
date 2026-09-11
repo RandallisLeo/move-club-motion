@@ -8,7 +8,7 @@ import { FOLD_WALLPAPERS } from './fold-wallpapers';
 import './spatial-studies.css';
 
 function FoldStudy() {
-  const [open, setOpen] = useState(100);
+  const [open, setOpen] = useState(68);
   const [wallpaper, setWallpaper] = useState(0);
   const fold = 1 - open / 100;
 

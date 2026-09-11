@@ -107,7 +107,8 @@ function photoWindowMaterial(texture: THREE.Texture, worldToImage: THREE.Matrix4
             + textureLod(uMap, p + vec2(-r.x, r.y), lod)) * 0.0625;
         }
         float shadowDistance = uSide > 0.5 ? vUv.x : 1.0 - vUv.x;
-        float crease = exp(-shadowDistance / uShadowWidth);
+        float crease = exp(-shadowDistance / uShadowWidth)
+          * (1.0 - smoothstep(0.45, 1.0, shadowDistance));
         c.rgb *= uExposure * (1.0 - uCreaseShadow * crease);
         // The photograph has real bounds. The triangular parts of a raised
         // window show a dark surface, not stretched/clamped border pixels.
@@ -237,7 +238,8 @@ async function createFoldModel(): Promise<Model> {
       materials[0].uniforms.uExposure.value = light.innerExposure;
       materials[1].uniforms.uExposure.value = light.innerExposure;
       materials[0].uniforms.uCreaseShadow.value = light.innerShadow;
-      materials[1].uniforms.uCreaseShadow.value = light.innerShadow * 0.12;
+      materials[0].uniforms.uShadowWidth.value = light.leafShadowWidth;
+      materials[1].uniforms.uCreaseShadow.value = 0;
       materials[2].uniforms.uCreaseShadow.value = light.coverShadow;
     },
   };

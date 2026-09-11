@@ -1,6 +1,8 @@
 import { GitHubMark } from '@/components/icons/github-mark';
 import { MotionGallery } from '@/components/motion-gallery';
 import { MoveClubWordmark } from '@/components/move-club-wordmark';
+import { AboutHeadline } from '@/components/about-headline';
+import { ArrowDown } from 'lucide-react';
 
 const fallbackGithubUrl = 'https://github.com/RandallisLeo/move-club-motion';
 const configuredGithubUrl = process.env.NEXT_PUBLIC_GITHUB_URL?.trim();
@@ -22,19 +24,25 @@ export default function Home() {
         </nav>
       </header>
 
+      <section className="intro-banner" aria-labelledby="intro-title">
+        <p className="intro-kicker">Move Club · An interactive playground</p>
+        <AboutHeadline />
+        <p className="intro-description">I explore how motion brings texture, weight, and a sense of touch to the screen.</p>
+        <a className="intro-explore" href="#work" aria-label="Scroll to motion studies">
+          <ArrowDown size={22} strokeWidth={1.5} aria-hidden="true" />
+        </a>
+      </section>
+
       <MotionGallery />
 
       <section className="about-section" id="about">
-        <div className="about-label"><span>02</span> About the playground</div>
-        <div className="about-copy">
-          <p>A soft fold. Light moving across glass. I love when a screen feels tangible.</p>
-          <div className="about-details">
-            <p className="about-small">I’m especially interested in how motion brings out a material’s character: its texture, weight, and response to touch. Move Club is where I turn that curiosity into small experiments you can try for yourself.</p>
-            <p className="about-small">I share the thinking, references, and work in progress on X.</p>
-            <a className="about-contact" href="https://x.com/ChadRunz" target="_blank" rel="noopener noreferrer" aria-label="Say hello to Randall on X, @ChadRunz">
-              Say hello on X
-            </a>
-          </div>
+        <h2 className="about-label"><span>02</span> About the playground</h2>
+        <div className="about-details">
+          <p className="about-small">I’m especially interested in how motion brings out a material’s character: its texture, weight, and response to touch. Move Club is where I turn that curiosity into small experiments you can try for yourself.</p>
+          <p className="about-small">I share the thinking, references, and work in progress on X.</p>
+          <a className="about-contact" href="https://x.com/ChadRunz" target="_blank" rel="noopener noreferrer" aria-label="Say hello to Randall on X, @ChadRunz">
+            Say hello on X
+          </a>
         </div>
       </section>
 

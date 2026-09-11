@@ -29,9 +29,14 @@ export function foldLighting(progress: number) {
   // opening widens. Its timing is independent of the focus handoff.
   const reveal = smoothRange(0.12, 0.66, open);
   const bend = Math.sin(p * Math.PI);
+  const leafShade = smoothRange(0, 0.44, p);
+  const innerExposure = 0.2 + 0.8 * reveal;
   return {
-    innerExposure: 0.2 + 0.8 * reveal,
-    innerShadow: 0.6 * smoothRange(0, 0.32, p),
+    innerExposure,
+    // Shade the raised outer edge, fading back to the image's full brightness
+    // at the hinge so the two halves still read as one continuous photograph.
+    innerShadow: 0.88 * leafShade,
+    leafShadowWidth: 0.08 + 0.65 * leafShade,
     coverShadow: 0.26 * bend,
     shadowWidth: 0.055 + 0.27 * bend,
   };
