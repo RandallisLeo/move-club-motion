@@ -1,7 +1,7 @@
 /* 011 — the two gallery adapters are unique to this full-row component.
    Every other selector lives under the study root; shared gallery CSS is unchanged. */
 .feed-adapt-card { grid-column: 1 / -1; scroll-margin-top: 90px; }
-.feed-adapt-stage { width: 100%; min-height: 0; display: block; border: 1px solid #d6e3f4; }
+.feed-adapt-stage { width: 100%; min-height: 0; display: block; }
 .feed-adapt-demo { --fa-muted: #7a808c; --fa-stroke: #e4e6ed; width: 100%; color: var(--foreground); background: #eaf2ff; }
 .feed-adapt-demo button { font: inherit; cursor: pointer; }
 .feed-adapt-demo button:focus-visible, .feed-adapt-demo input:focus-visible, .feed-adapt-demo [tabindex='0']:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }

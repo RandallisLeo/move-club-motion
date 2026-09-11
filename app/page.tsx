@@ -27,9 +27,9 @@ export default function Home() {
       <section className="about-section" id="about">
         <div className="about-label"><span>02</span> About the playground</div>
         <div className="about-copy">
-          <p>Some ideas start with a detail I notice. Others start with <span className="about-keep-together">“what if?”</span></p>
+          <p>A soft fold. Light moving across glass. I love when a screen feels tangible.</p>
           <div className="about-details">
-            <p className="about-small">Move Club is where I turn both into things you can try: original interface ideas, motion studies, and small experiments in how things move and respond.</p>
+            <p className="about-small">I’m especially interested in how motion brings out a material’s character: its texture, weight, and response to touch. Move Club is where I turn that curiosity into small experiments you can try for yourself.</p>
             <p className="about-small">I share the thinking, references, and work in progress on X.</p>
             <a className="about-contact" href="https://x.com/ChadRunz" target="_blank" rel="noopener noreferrer" aria-label="Say hello to Randall on X, @ChadRunz">
               Say hello on X

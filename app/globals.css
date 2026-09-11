@@ -15,6 +15,7 @@
   --line: #e3e6eb;
   --accent: #6b6ff9;
   --accent-soft: #eeeeff;
+  --stage-blue: #eaf2ff;
   --radius: 0.75rem;
 }
 
@@ -49,7 +50,7 @@ button { font: inherit; }
 .filter-button.is-active { border-color: var(--accent); background: var(--accent-soft); color: #4549c7; }
 .filter-button:focus-visible, .source-button:focus-visible { outline: 2px solid var(--foreground); outline-offset: 3px; }
 
-.project-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); column-gap: clamp(16px, 2vw, 30px); row-gap: 30px; }
+.project-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); grid-auto-flow: row dense; column-gap: clamp(16px, 2vw, 30px); row-gap: 30px; }
 .project-card { min-width: 0; }
 .project-meta { padding: 16px 0; }
 .project-meta > div { display: flex; align-items: baseline; gap: 20px; }
@@ -58,10 +59,10 @@ button { font: inherit; }
 .icon-button { display: grid; width: 36px; height: 36px; place-items: center; border: 1px solid var(--line); border-radius: 50%; background: transparent; cursor: pointer; transition: background 180ms ease, transform 180ms ease; }
 .icon-button:hover { border-color: #c8cafb; background: var(--accent-soft); color: var(--accent); transform: rotate(-18deg); }
 .icon-button:focus-visible { outline: 2px solid var(--foreground); outline-offset: 3px; }
-.demo-stage { position: relative; display: grid; min-height: clamp(300px, 27vw, 420px); place-items: center; overflow: hidden; border-radius: var(--radius); }
+.demo-stage { position: relative; display: grid; min-height: clamp(300px, 27vw, 420px); place-items: center; overflow: hidden; border: 0; border-radius: var(--radius); }
 .demo-stage-dark { background: #edf0f6; color: var(--foreground); }
-.demo-stage-blue { background: #eaf2ff; color: var(--foreground); }
-.demo-stage-paper { border: 1px solid var(--line); background: #f7f7fa; color: var(--foreground); }
+.demo-stage-blue { background: var(--stage-blue); color: var(--foreground); }
+.demo-stage-paper { background: #f7f7fa; color: var(--foreground); }
 .signal-loader { display: flex; align-items: center; gap: 8px; height: 96px; }
 .signal-loader span { width: 9px; height: 82px; border-radius: 99px; background: var(--accent); transform-origin: center; }
 .stage-caption { position: absolute; bottom: 18px; left: 20px; color: currentColor; opacity: 0.48; font-size: 9px; text-transform: uppercase; letter-spacing: 0.09em; }
@@ -230,7 +231,6 @@ button { font: inherit; }
 .about-label span { font-family: var(--font-geist-mono), ui-monospace, monospace; font-size: 10px; }
 .about-copy { max-width: 920px; }
 .about-copy > p:first-child { max-width: 720px; margin: 0; font-size: clamp(30px, 3.5vw, 50px); line-height: 1.08; letter-spacing: -0.042em; text-wrap: balance; }
-.about-copy .about-keep-together { white-space: nowrap; }
 .about-details { max-width: 410px; margin: 46px 0 0 auto; }
 .about-small { margin: 0; color: var(--ink-soft); font-size: 14px; line-height: 1.6; }
 .about-details > p + p { margin-top: 18px; }

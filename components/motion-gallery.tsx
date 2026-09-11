@@ -17,11 +17,17 @@ import { StatusWave } from '@/components/demos/status-wave';
 import { FeedAdapt } from '@/components/demos/feed-adapt';
 import { PromptRefine } from '@/components/demos/prompt-refine';
 import { LiquidSwipe } from '@/components/demos/liquid-swipe';
+import { FoldFocus } from '@/components/demos/fold-focus';
+import { ObjectOrbit } from '@/components/demos/object-orbit';
+import { CardMaterial } from '@/components/demos/card-material';
 
 const filters = ['All', 'Interaction', 'Feedback', 'Transition', 'Space'] as const;
 type Filter = (typeof filters)[number];
 
 function Demo({ item, replayKey }: { item: Experiment; replayKey: number }) {
+  if (item.slug === 'card-material') return <CardMaterial replayKey={replayKey} />;
+  if (item.slug === 'fold-focus') return <FoldFocus replayKey={replayKey} />;
+  if (item.slug === 'object-orbit') return <ObjectOrbit replayKey={replayKey} />;
   if (item.slug === 'liquid-swipe') return <LiquidSwipe replayKey={replayKey} />;
   if (item.slug === 'prompt-refine') return <PromptRefine replayKey={replayKey} />;
   if (item.slug === 'feed-adapt') return <FeedAdapt replayKey={replayKey} />;
@@ -73,7 +79,7 @@ export function MotionGallery({ githubUrl }: { githubUrl: string }) {
                   layout
                   key={item.slug}
                   id={item.slug}
-                  className={`project-card${item.slug === 'feed-adapt' ? ' feed-adapt-card' : ''}${item.slug === 'prompt-refine' ? ' prompt-refine-card' : ''}`}
+                  className={`project-card${item.slug === 'feed-adapt' ? ' feed-adapt-card' : ''}${item.slug === 'prompt-refine' ? ' prompt-refine-card' : ''}${item.slug === 'fold-focus' ? ' fold-focus-card' : ''}${item.slug === 'object-orbit' ? ' object-orbit-card' : ''}${item.slug === 'card-material' ? ' card-material-card' : ''}`}
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -12 }}

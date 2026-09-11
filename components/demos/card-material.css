@@ -1,0 +1,58 @@
+.card-material-card { grid-column: span 2; scroll-margin-top: 92px; }
+.card-material-demo { --card-quiet: #566481; position: absolute; inset: 0; display: flex; flex-direction: column; padding: 20px 26px 41px; background: var(--stage-blue); color: var(--foreground); }
+.card-material-demo button { cursor: pointer; }
+.card-material-demo button:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+.card-material-demo .card-material-layout { display: flex; flex: 1; gap: 24px; min-height: 0; }
+.card-material-demo .card-material-viewport { position: relative; flex: 1; min-width: 0; min-height: 0; }
+.card-material-demo .card-material-canvas { position: absolute; inset: -14px -8px 8px; mask-image: linear-gradient(transparent, #000 7%, #000 88%, transparent); }
+.card-material-demo .card-material-canvas canvas { display: block; width: 100%; height: 100%; }
+.card-material-demo .card-material-hit { position: absolute; top: calc(50% - 11px); left: 50%; width: auto; height: 65%; max-width: 80%; aspect-ratio: 1.588; padding: 0; border: 0; border-radius: 18px; background: transparent; transform: translate(-50%, -50%); -webkit-tap-highlight-color: transparent; }
+.card-material-demo .card-material-hit:focus-visible { outline-offset: 0; }
+.card-material-demo .card-material-tools { z-index: 1; display: flex; flex: 0 0 136px; flex-direction: column; align-self: center; align-items: flex-start; }
+.card-material-demo .card-material-picker { min-width: 0; padding: 0; margin: 0; border: 0; }
+.card-material-demo .card-material-picker-title { padding: 0; margin-bottom: 12px; color: var(--card-quiet); font-size: 11px; line-height: 1.4; }
+.card-material-demo .card-material-swatches { display: grid; grid-template-columns: repeat(3, 36px); gap: 8px 10px; }
+.card-material-demo .card-material-swatches > button { display: grid; place-items: center; width: 36px; height: 36px; padding: 0; border: 0; border-radius: 50%; background: transparent; transition: background 180ms; }
+.card-material-demo .card-material-swatches > button:hover { background: #ffffff70; }
+.card-material-demo .card-material-swatches > button[aria-pressed='true'] { background: white; }
+.card-material-demo .card-material-swatch { display: block; width: 24px; height: 24px; border: 1px solid #0000000a; border-radius: 50%; box-shadow: inset 0 1px 2px #ffffff88; }
+.card-material-demo .card-material-swatch-classic { background: linear-gradient(125deg, #9a9ff9, #555ac5); }
+.card-material-demo .card-material-swatch-plush { background: linear-gradient(#ffffff65,#ffffff65), url('/materials/blush-fur.jpg') center / 90px; }
+.card-material-demo .card-material-swatch-felt { background: #8fa180 url('/materials/sage-felt.jpg') center / 46px; }
+.card-material-demo .card-material-swatch-glass { background: linear-gradient(135deg, #d0d7f480, #ffffff90 40%, #b4c1dc80 68%, #fff); box-shadow: inset 1px 1px 2px white, inset -1px -1px 2px #a5b2d4; }
+.card-material-demo .card-material-swatch-mirror { background: linear-gradient(135deg, #505663, #f7f8ff 36%, #fcfcff 43%, #595e69 51%, #c5c8d1 79%, #fff); }
+.card-material-demo .card-material-swatch-gold { background: url('/materials/gold-bird-blossom.png') 72% 45% / 58px, linear-gradient(125deg, #f0d384, #b27d25 55%, #eacb76); background-blend-mode: screen; }
+.card-material-demo .card-material-swatch-holo { background: linear-gradient(130deg, #283b64 8%, #6f7db5 25%, #99d6c9 41%, #e9d789 50%, #ca9caf 57%, #576fa2 71%, #26345b 90%); }
+.card-material-demo .card-material-chip-toggle { display: flex; flex: none; width: 100px; height: 31px; align-items: center; justify-content: flex-start; gap: 8px; padding: 0; margin-top: 20px; border: 0; border-radius: 6px; background: transparent; font-size: 11px; }
+.card-material-demo .card-material-chip-track { display: block; position: relative; flex: 0 0 30px; height: 18px; border-radius: 999px; background: #9aaac8; transition: background 180ms; }
+.card-material-demo .card-material-chip-track > span { position: absolute; top: 2px; left: 2px; width: 14px; height: 14px; border-radius: 50%; background: white; box-shadow: 0 1px 2px #29385b24; transition: transform 180ms; }
+.card-material-demo .card-material-chip-state { width: 18px; color: var(--card-quiet); font-size: 10px; font-weight: 500; }
+.card-material-demo .card-material-chip-toggle[aria-checked='true'] .card-material-chip-track { background: var(--accent); }
+.card-material-demo .card-material-chip-toggle[aria-checked='true'] .card-material-chip-track > span { transform: translateX(12px); }
+.card-material-demo .card-material-chip-toggle[aria-checked='true'] .card-material-chip-state { color: #494fc0; }
+.card-material-demo .card-material-hint { flex: none; margin: 12px 0 0; color: var(--card-quiet); font-size: 9px; line-height: 1.5; }
+.card-material-demo .card-material-fallback { position: absolute; inset: 20%; display: grid; place-content: center; margin: 0; color: var(--card-quiet); font-size: 11px; text-align: center; }
+@media (max-width: 720px) {
+  .card-material-card { grid-column: 1 / -1; }
+  .card-material-demo { padding: 16px 18px 38px; }
+  .card-material-demo .card-material-hint { margin-top: 9px; font-size: 8px; }
+}
+@media (min-width: 721px) and (max-width: 1100px) {
+  .card-material-demo .card-material-picker-title { margin-bottom: 8px; }
+  .card-material-demo .card-material-swatches { grid-template-columns: repeat(3, 32px); gap: 6px 12px; }
+  .card-material-demo .card-material-swatches > button { width: 32px; height: 32px; }
+  .card-material-demo .card-material-chip-toggle { height: 28px; margin-top: 16px; }
+}
+@media (max-width: 560px) {
+  .card-material-demo .card-material-layout { gap: 10px; }
+  .card-material-demo .card-material-tools { flex-basis: 100px; }
+  .card-material-demo .card-material-picker-title { max-width: 92px; margin-bottom: 12px; }
+  .card-material-demo .card-material-swatches { grid-template-columns: repeat(3, 30px); gap: 8px 4px; }
+  .card-material-demo .card-material-swatches > button { width: 30px; height: 30px; }
+  .card-material-demo .card-material-swatch { width: 22px; height: 22px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .card-material-demo .card-material-swatches > button,
+  .card-material-demo .card-material-chip-track,
+  .card-material-demo .card-material-chip-track > span { transition: none; }
+}

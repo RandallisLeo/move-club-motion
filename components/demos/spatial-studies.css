@@ -1,0 +1,76 @@
+.fold-focus-card, .object-orbit-card { grid-column: span 2; scroll-margin-top: 90px; }
+/* Fill the gallery's standard stage without imposing a taller intrinsic size. */
+.fold-focus-demo, .object-orbit-demo { position: absolute; inset: 0; width: 100%; height: 100%; padding: 28px 32px 44px; color: var(--foreground); }
+.object-orbit-demo .spatial-study-heading { position: relative; z-index: 1; display: flex; justify-content: space-between; gap: 12px; color: #7d818b; font-family: var(--font-geist-mono), monospace; font-size: 9px; letter-spacing: .065em; }
+.fold-focus-demo .spatial-scene, .object-orbit-demo .spatial-scene { position: relative; min-width: 0; min-height: 0; }
+.fold-focus-demo { display: flex; flex-direction: column; }
+.fold-focus-demo .fold-focus-layout { display: flex; flex-direction: column; gap: 10px; flex: 1; min-height: 0; margin-top: 8px; }
+.fold-focus-demo .fold-focus-viewport { position: relative; flex: 1; min-height: 0; }
+.fold-focus-demo .spatial-scene { position: absolute; inset: 0 40px; }
+.fold-focus-demo .spatial-scene-canvas, .object-orbit-demo .spatial-scene-canvas { position: absolute; inset: 0; }
+.fold-focus-demo .spatial-scene-canvas canvas, .object-orbit-demo .spatial-scene-canvas canvas { display: block; width: 100%; height: 100%; }
+.fold-focus-demo .spatial-scene-fallback, .object-orbit-demo .spatial-scene-fallback { position: absolute; inset: 0; display: grid; place-content: center; padding: 22px; text-align: center; color: var(--ink-soft); font-size: 11px; }
+.fold-focus-demo .fold-focus-controls { position: relative; z-index: 1; display: flex; flex-direction: column; align-items: stretch; width: min(100%, 256px); margin: 0 auto; flex: none; transform: translateY(-24px); }
+.fold-focus-demo .fold-focus-hint { margin-top: 3px; color: var(--ink-soft); font-size: 9px; text-align: center; }
+.fold-focus-demo .fold-focus-slider { min-width: 0; flex: 1; }
+.fold-focus-demo .fold-focus-slider > div { height: 32px; cursor: ew-resize; }
+.fold-focus-demo .fold-focus-slider [data-slot='slider-track'] { height: 5px; border-radius: 8px; background: #dadce4; }
+.fold-focus-demo .fold-focus-slider [data-slot='slider-range'] { background: #8a8df3; }
+.fold-focus-demo .fold-focus-slider [data-slot='slider-thumb'] { width: 28px; height: 20px; border: 1px solid #fff; border-radius: 99px; background: white; box-shadow: 0 2px 5px #2226391c, 0 0 0 1px #d7d9e1; }
+.fold-focus-demo .fold-focus-slider [data-slot='slider-thumb']::before { position: absolute; inset: 6px 10px; border-right: 1px solid #8b8e9a; border-left: 1px solid #8b8e9a; content: ''; }
+.fold-focus-demo .fold-focus-slider [data-slot='slider-thumb']:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
+.fold-focus-demo .fold-focus-wallpapers { position: absolute; right: 0; top: 50%; transform: translateY(-50%); display: flex; flex-direction: column; gap: 8px; }
+.fold-focus-demo .fold-focus-wallpapers > button { display: block; width: 34px; height: 42px; padding: 2px; border: 1px solid #dce0e7; border-radius: 7px; background: #fff; cursor: pointer; transition: border-color 140ms, box-shadow 140ms; }
+.fold-focus-demo .fold-focus-wallpapers > button img { display: block; width: 100%; height: 100%; object-fit: cover; border-radius: 4px; }
+.fold-focus-demo .fold-focus-wallpapers > button:hover { border-color: #a8acb8; }
+.fold-focus-demo .fold-focus-wallpapers > button[aria-pressed='true'] { border-color: var(--accent); box-shadow: 0 0 0 1px var(--accent); }
+.fold-focus-demo .fold-focus-wallpapers > button:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+.object-orbit-demo { display: flex; flex-direction: column; }
+.object-orbit-demo .object-orbit-layout { display: grid; grid-template-columns: max-content minmax(0, 1fr); flex: 1; min-height: 0; margin: 0 -16px 0 -4px; }
+.object-orbit-demo .spatial-scene {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  mask-image:
+    linear-gradient(to right, transparent 8px, #000 80px, #000 calc(100% - 80px), transparent calc(100% - 8px)),
+    linear-gradient(to bottom, transparent 2%, #000 14%, #000 76%, transparent 93%);
+  mask-composite: intersect;
+}
+.object-orbit-demo .object-orbit-views { --orbit-view-height: 39px; --orbit-view-gap: 5px; position: relative; z-index: 1; display: flex; flex-direction: column; align-self: center; gap: var(--orbit-view-gap); width: max-content; }
+.object-orbit-demo .object-orbit-highlight {
+  position: absolute;
+  inset: 0 0 auto;
+  height: var(--orbit-view-height);
+  border-radius: 8px;
+  pointer-events: none;
+  transition: transform 380ms cubic-bezier(.22, .8, .2, 1), opacity 140ms ease;
+}
+.object-orbit-demo .object-orbit-highlight-hover {
+  background: #ffffff90;
+  opacity: var(--orbit-preview-opacity);
+  transform: translateY(calc(var(--orbit-preview-index) * (var(--orbit-view-height) + var(--orbit-view-gap))));
+}
+.object-orbit-demo .object-orbit-highlight-selected {
+  background: #fff;
+  box-shadow: 0 3px 8px #30386d09;
+  transform: translateY(calc(var(--orbit-selected-index) * (var(--orbit-view-height) + var(--orbit-view-gap))));
+}
+.object-orbit-demo .object-orbit-views > button { position: relative; display: flex; width: 100%; height: var(--orbit-view-height); flex: none; align-items: center; gap: 8px; padding: 9px 12px; border: 1px solid transparent; border-radius: 8px; background: transparent; color: var(--ink-soft); font-size: 11px; text-align: left; white-space: nowrap; cursor: pointer; transition: color 160ms; }
+.object-orbit-demo .object-orbit-views > button svg { flex: none; }
+.object-orbit-demo .object-orbit-views > button:hover { color: var(--foreground); }
+.object-orbit-demo .object-orbit-views > button[aria-pressed='true'] { color: #5559ce; }
+.object-orbit-demo .object-orbit-views > button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.object-orbit-demo .object-orbit-note { position: relative; z-index: 1; display: flex; min-height: 29px; flex: none; align-items: baseline; gap: 11px; padding-top: 6px; border-top: 1px solid #dfe2ea; }
+.object-orbit-demo .object-orbit-note > span { color: #9699a6; font-family: var(--font-geist-mono), monospace; font-size: 9px; }
+.object-orbit-demo .object-orbit-note > p { margin: 0; color: var(--ink-soft); font-size: 10px; line-height: 1.5; }
+@media (prefers-reduced-motion: reduce) { .object-orbit-demo .object-orbit-views > button, .object-orbit-demo .object-orbit-highlight, .fold-focus-demo .fold-focus-wallpapers > button { transition: none; } }
+@media (min-width: 721px) and (max-width: 1240px) {
+  .object-orbit-demo .object-orbit-views { --orbit-view-height: 34px; --orbit-view-gap: 3px; }
+  .object-orbit-demo .object-orbit-views > button { padding-block: 7px; }
+  .fold-focus-demo { padding-block: 20px 32px; }
+  .fold-focus-demo .fold-focus-wallpapers > button { width: 28px; height: 32px; }
+  .fold-focus-demo .fold-focus-controls { transform: translateY(-16px); }
+}
+@media (max-width: 720px) { .fold-focus-card, .object-orbit-card { grid-column: 1 / -1; } .fold-focus-demo, .object-orbit-demo { padding: 24px 22px 40px; } }
+@media (max-width: 520px) { .fold-focus-demo .spatial-scene { inset-inline: 28px; } .fold-focus-demo .fold-focus-wallpapers > button { width: 28px; height: 36px; } }
+@media (max-width: 380px) { .fold-focus-demo, .object-orbit-demo { padding-right: 16px; padding-left: 16px; } .object-orbit-demo .spatial-study-heading > span:last-child, .fold-focus-demo .spatial-study-heading > span:last-child { display: none; } }
