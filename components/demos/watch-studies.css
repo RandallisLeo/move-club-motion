@@ -1,0 +1,1007 @@
+/* Shared only by the four watch studies; the gallery shell stays untouched. */
+.watch-study {
+  position: absolute;
+  inset: 12px 10px 32px;
+  display: grid;
+  place-items: center;
+  padding-bottom: 20px;
+  container-type: size;
+  --watch-accent: #ff4b2d;
+}
+.watch-study .watch-face {
+  position: relative;
+  width: min(89cqw, 83cqh, 280px);
+  aspect-ratio: 260 / 310;
+  container-type: inline-size;
+  isolation: isolate;
+  overflow: clip;
+  border: 0;
+  border-radius: 28% / 24%;
+  color: #fafdf7;
+  background: #030504;
+  box-shadow: none;
+  font-family: var(--font-geist-sans), sans-serif;
+}
+.watch-study .watch-face::before {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  background: radial-gradient(
+    ellipse at 98% 10%,
+    var(--watch-glow, #b84900) 0,
+    transparent 63%
+  );
+  opacity: 0.88;
+}
+.watch-study .watch-badge {
+  position: absolute;
+  top: 9%;
+  left: 10%;
+  z-index: 3;
+  display: grid;
+  place-items: center;
+  width: 18%;
+  aspect-ratio: 1;
+  color: var(--watch-accent);
+  border: 0;
+  border-radius: 50%;
+  background: color-mix(in srgb, var(--watch-accent) 12%, #041009);
+}
+.watch-study .watch-badge > svg {
+  width: 57%;
+  height: 57%;
+  stroke-width: 2.7;
+}
+.watch-study .watch-clock {
+  position: absolute;
+  right: 12%;
+  top: 12%;
+  font-size: 6.4cqw;
+  z-index: 3;
+}
+.watch-study .watch-clock .watch-digits {
+  gap: 0.08em;
+  height: 1em;
+}
+.watch-study .watch-digits {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.1em;
+  height: 1em;
+  white-space: nowrap;
+  vertical-align: middle;
+}
+.watch-study .watch-digit-window {
+  position: relative;
+  display: inline-block;
+  height: 1em;
+  overflow: hidden;
+}
+.watch-study .watch-digit-window > svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+.watch-study .watch-label {
+  display: block;
+  font-size: 8cqw;
+  line-height: 1.2;
+  font-weight: 480;
+  letter-spacing: -0.025em;
+}
+.watch-study .watch-hint {
+  position: absolute;
+  bottom: -2px;
+  font-size: 8px;
+  color: var(--ink-soft);
+  font-family: var(--font-geist-mono), monospace;
+  letter-spacing: -0.025em;
+  text-align: center;
+}
+.watch-study button {
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+.watch-study button {
+  outline: none;
+}
+.watch-study:not([data-pointer-focus]) button:focus-visible {
+  outline: 2px solid white;
+  outline-offset: -5px;
+}
+.watch-study button:disabled {
+  cursor: default;
+}
+.watch-study .watch-round {
+  display: grid;
+  place-items: center;
+  width: 42%;
+  aspect-ratio: 1;
+  border: 0;
+  border-radius: 50%;
+  background: var(--watch-accent);
+  color: #fff;
+  transition: transform 180ms;
+}
+.watch-study .watch-round:hover {
+  transform: scale(1.05);
+}
+.watch-study .watch-round:active {
+  transform: scale(0.94);
+}
+.watch-study .watch-round > svg {
+  width: 40%;
+  height: 40%;
+  stroke-width: 1.8;
+}
+.watch-study .watch-round.is-white {
+  background: #fbfdfb;
+  color: #151816;
+}
+.watch-study .watch-round.is-white:focus-visible {
+  outline-color: #151816;
+}
+
+.workout-dial-demo .watch-face {
+  --watch-glow: #c54e00;
+}
+.workout-dial-demo .watch-badge {
+  left: 8%;
+  pointer-events: none;
+}
+.workout-dial-demo .workout-content {
+  --workout-layout-ease: cubic-bezier(0.4, 0, 0.2, 1);
+  position: absolute;
+  inset: 0;
+}
+.workout-dial-demo .workout-ruler {
+  --workout-marker-y: calc(27.777778% + 25.6cqw);
+  position: absolute;
+  left: 9%;
+  top: 3%;
+  width: 25%;
+  height: 90%;
+  cursor: grab;
+  touch-action: none;
+  user-select: none;
+  -webkit-user-select: none;
+  outline: none;
+  transition:
+    transform 600ms var(--workout-layout-ease),
+    opacity 400ms ease;
+}
+.workout-dial-demo .is-session .workout-ruler {
+  transform: translateX(-160%);
+  opacity: 0;
+  pointer-events: none;
+}
+.workout-dial-demo .workout-ruler.is-dragging {
+  cursor: grabbing;
+}
+.workout-dial-demo .workout-tape {
+  position: absolute;
+  inset: 0;
+  transform: translateY(calc(var(--reel-offset) * 2.25cqw));
+  pointer-events: none;
+}
+.workout-dial-demo .workout-tick {
+  position: absolute;
+  left: 0;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  width: 100%;
+  color: #fffdf5;
+  font-size: 4.3cqw;
+  line-height: 1;
+  transform: translateY(-50%);
+  transition: opacity 500ms cubic-bezier(0.25, 0, 0.35, 1);
+}
+.workout-dial-demo .workout-tick i {
+  display: block;
+  flex: none;
+  width: calc(60% + var(--tick-swell) * 22%);
+  height: 1.5px;
+  background: currentColor;
+  transform: scaleY(calc(1 + var(--tick-swell) * 0.6));
+  transition:
+    width 500ms cubic-bezier(0.25, 0, 0.35, 1),
+    transform 500ms cubic-bezier(0.25, 0, 0.35, 1);
+}
+.workout-dial-demo .workout-tick.is-major i {
+  width: calc(70% + var(--tick-swell) * 12%);
+}
+.workout-dial-demo .workout-tick span {
+  transform: scale(calc(1 + var(--tick-swell) * 0.18));
+  transform-origin: left center;
+  transition: transform 500ms cubic-bezier(0.25, 0, 0.35, 1);
+}
+.workout-dial-demo .workout-ruler.is-energized .workout-tick,
+.workout-dial-demo .workout-ruler.is-energized .workout-tick i,
+.workout-dial-demo .workout-ruler.is-energized .workout-tick span {
+  transition: none;
+}
+.workout-dial-demo .workout-selection-marker {
+  position: absolute;
+  top: var(--workout-marker-y);
+  left: 0;
+  width: 100%;
+  height: 0;
+  pointer-events: none;
+}
+.workout-dial-demo .workout-pointer {
+  position: absolute;
+  left: -18%;
+  top: 0;
+  width: 2.7cqw;
+  height: 3.6cqw;
+  color: #fff;
+  transform: translateY(-50%);
+}
+.workout-dial-demo .workout-needle {
+  position: absolute;
+  top: 0;
+  left: -3%;
+  width: 88%;
+  height: 2px;
+  transform: translateY(-50%);
+  background: #fff;
+  box-shadow: 0 0 7px #ffffff65;
+  pointer-events: none;
+}
+.workout-dial-demo .workout-selection-value {
+  position: absolute;
+  top: 0;
+  left: 90%;
+  transform: translateY(-50%);
+  transform-origin: left center;
+  transition: transform 500ms cubic-bezier(0.25, 0, 0.35, 1);
+  font-size: 4.3cqw;
+  line-height: 1;
+  color: white;
+  opacity: 0.35;
+  animation: workout-selection-rest 500ms cubic-bezier(0.25, 0, 0.35, 1) 650ms
+    both;
+  pointer-events: none;
+}
+.workout-dial-demo .workout-ruler.is-energized .workout-selection-value {
+  transform: translateY(-50%) scale(1.18);
+  opacity: 1;
+  animation: none;
+  transition: none;
+}
+@keyframes workout-selection-rest {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0.35;
+  }
+}
+.workout-dial-demo:not([data-pointer-focus]) .workout-ruler:focus-visible {
+  outline: 1px solid #ffad78;
+  outline-offset: 6px;
+  border-radius: 8px;
+}
+.workout-dial-demo .workout-main {
+  position: absolute;
+  left: 40%;
+  width: 84%;
+  top: 28%;
+  transition:
+    left 600ms var(--workout-layout-ease),
+    top 600ms var(--workout-layout-ease);
+}
+.workout-dial-demo .is-session .workout-main {
+  left: 8%;
+  /* Optical center balances the controls below the readout.
+     Subtract the label line (9.6cqw), gap (4cqw), and half-readout (12cqw). */
+  top: calc(45% - 25.6cqw);
+}
+.workout-dial-demo .workout-main > .watch-label,
+.workout-dial-demo .workout-status {
+  position: relative;
+  left: 0;
+  display: block;
+  width: max-content;
+  white-space: nowrap;
+  transform: translateX(0);
+  transition:
+    left 600ms var(--workout-layout-ease),
+    transform 600ms var(--workout-layout-ease);
+}
+.workout-dial-demo .is-session .workout-main > .watch-label,
+.workout-dial-demo .is-session .workout-status {
+  left: 50%;
+  transform: translateX(-50%);
+}
+.workout-dial-demo .watch-label {
+  color: #ff6a43;
+}
+.workout-dial-demo .is-session .workout-main > .watch-label {
+  visibility: hidden;
+}
+.workout-dial-demo .workout-readout {
+  position: relative;
+  height: 24cqw;
+  margin-top: 4cqw;
+}
+.workout-dial-demo .workout-value {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  gap: 1cqw;
+  height: 24cqw;
+  align-items: center;
+  font-size: 24cqw;
+  line-height: 1;
+}
+.workout-dial-demo .workout-duration {
+  visibility: visible;
+}
+.workout-dial-demo .workout-timer {
+  justify-content: center;
+  font-size: 23cqw;
+  visibility: hidden;
+}
+.workout-dial-demo .is-session .workout-duration {
+  visibility: hidden;
+}
+.workout-dial-demo .is-session .workout-timer {
+  visibility: visible;
+}
+.workout-dial-demo .workout-timer.is-counting-in {
+  font-size: 34cqw;
+}
+.workout-dial-demo .workout-main:has(.is-counting-in) .workout-status {
+  margin-top: 8cqw;
+}
+.workout-dial-demo .workout-unit {
+  font-size: 18cqw;
+  font-weight: 350;
+}
+.workout-dial-demo .workout-status {
+  display: block;
+  margin-top: 3cqw;
+  color: #b7a69c;
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 2.7cqw;
+  letter-spacing: 0.03em;
+}
+.workout-dial-demo .workout-actions {
+  position: absolute;
+  left: 37%;
+  right: 10%;
+  bottom: 10%;
+  display: flex;
+  justify-content: space-between;
+  transition:
+    left 600ms var(--workout-layout-ease),
+    right 600ms var(--workout-layout-ease);
+}
+.workout-dial-demo .is-session .workout-actions {
+  left: 23.5%;
+  right: 23.5%;
+}
+
+.water-stack-demo {
+  --watch-accent: #00adff;
+}
+.water-stack-demo .watch-face {
+  --watch-glow: #004564;
+}
+.water-stack-demo .water-badge {
+  overflow: hidden;
+}
+.water-stack-demo .water-badge-icon {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+}
+.water-stack-demo .water-badge-icon > svg {
+  width: 57%;
+  height: 57%;
+  stroke-width: 2.7;
+}
+.water-stack-demo .water-glow {
+  position: absolute;
+  right: -20%;
+  top: -25%;
+  width: 90%;
+  height: 60%;
+  opacity: 0.25;
+  filter: blur(32px);
+}
+.water-stack-demo .water-deck {
+  position: absolute;
+  inset: 20% 3% 9%;
+  touch-action: pan-x;
+}
+.water-stack-demo .water-back-card {
+  position: absolute;
+  inset: 0 0 0;
+  display: flex;
+  align-items: flex-end;
+  flex-direction: column;
+  padding: 4cqw 7cqw;
+  border: 1px solid #ffffff15;
+  border-radius: 17% 17% 25% 25%;
+}
+.water-stack-demo .water-back-card strong {
+  font-size: 7cqw;
+  line-height: 1.2;
+  font-weight: 550;
+}
+.water-stack-demo .water-summary {
+  display: grid;
+  width: 100%;
+  overflow: hidden;
+}
+.water-stack-demo .water-summary-layer {
+  grid-area: 1 / 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+.water-stack-demo .water-summary-layer > span {
+  color: #c6e7f4a6;
+  font-size: 5cqw;
+}
+.water-stack-demo .water-front-card {
+  position: absolute;
+  inset: 26% 0 -1%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 7cqw 6cqw 8cqw;
+  border-radius: 14% 14% 27% 27%;
+  cursor: grab;
+  box-shadow: 0 -2px 0 #ffffff10;
+  user-select: none;
+  touch-action: pan-x;
+}
+.water-stack-demo .water-under-card {
+  pointer-events: none;
+  transform-origin: center top;
+}
+.water-stack-demo .water-active-card {
+  touch-action: none;
+}
+.water-stack-demo .water-front-card:active {
+  cursor: grabbing;
+}
+.water-stack-demo .water-percent {
+  align-self: flex-end;
+  font-size: 7cqw;
+  color: #e2f8ffe6;
+}
+.water-stack-demo .water-value {
+  display: flex;
+  align-items: baseline;
+  gap: 1.4cqw;
+  font-size: 21cqw;
+  line-height: 1;
+  margin-top: 4cqw;
+}
+.water-stack-demo .water-value > span:last-child {
+  font-size: 7cqw;
+}
+.water-stack-demo .water-grip {
+  position: absolute;
+  bottom: 4%;
+  width: 14%;
+  height: 2px;
+  left: 43%;
+  border-radius: 3px;
+  background: #fff5;
+}
+.water-stack-demo .water-pagination {
+  position: absolute;
+  z-index: 5;
+  left: 17%;
+  right: 17%;
+  bottom: 0.2%;
+  height: 9%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.water-stack-demo .water-pagination button {
+  display: grid;
+  place-items: center;
+  width: 26%;
+  height: 100%;
+  padding: 0;
+  border: 0;
+  background: transparent;
+}
+.water-stack-demo .water-pagination svg {
+  width: 5cqw;
+  height: 5cqw;
+}
+.water-stack-demo .water-pagination output {
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 3cqw;
+  color: #c3cbd1;
+}
+
+.route-approach-demo {
+  --watch-accent: #e2f008;
+}
+.route-approach-demo .watch-face {
+  --watch-glow: #828500;
+}
+.route-approach-demo .route-main {
+  position: absolute;
+  left: 9%;
+  top: 30%;
+}
+.route-approach-demo .route-value {
+  display: flex;
+  align-items: center;
+  height: 24cqw;
+  font-size: 24cqw;
+  line-height: 1;
+  gap: 1cqw;
+}
+.route-approach-demo .route-value > span:last-child {
+  font-size: 18cqw;
+  font-weight: 350;
+}
+.route-approach-demo .route-street {
+  display: block;
+  margin-top: 1cqw;
+  font-size: 6.2cqw;
+  line-height: 1.2;
+  color: #b4b7a2;
+  letter-spacing: -0.035em;
+}
+.route-approach-demo .route-turn {
+  position: absolute;
+  bottom: -14%;
+  left: -12%;
+  width: 62%;
+  aspect-ratio: 1;
+  display: grid;
+  place-items: center;
+  padding: 0 0 9% 9%;
+  border: 0;
+  border-radius: 50%;
+  background: var(--watch-accent);
+  color: #101800;
+  transition: opacity 100ms linear;
+}
+.route-approach-demo .route-turn:focus-visible {
+  outline-color: #172000;
+  outline-offset: -16px;
+}
+.route-approach-demo .route-direction {
+  display: block;
+  width: 43%;
+  height: 43%;
+  transition: transform 0.7s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.route-approach-demo .route-direction svg {
+  width: 100%;
+  height: 100%;
+  stroke-width: 1.8;
+}
+.route-approach-demo .route-direction.is-left {
+  transform: rotateY(180deg);
+}
+.route-approach-demo .route-direction.is-straight {
+  transform: rotate(0deg);
+}
+.route-approach-demo .route-track {
+  position: absolute;
+  right: 16%;
+  top: 56%;
+  width: 2%;
+  height: 30%;
+}
+.route-approach-demo .route-track-line {
+  position: absolute;
+  inset: 0;
+  border-left: 4px dotted #777e5880;
+}
+.route-approach-demo .route-track-progress {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  border-radius: 4px;
+  background: var(--watch-accent);
+  transition: height 100ms linear;
+}
+.route-approach-demo .route-eta {
+  position: absolute;
+  top: 0;
+  left: 6cqw;
+  writing-mode: vertical-rl;
+  white-space: nowrap;
+  font-size: 5cqw;
+}
+.route-approach-demo .route-eta > span {
+  color: #a2a881;
+}
+.route-approach-demo .route-position {
+  position: absolute;
+  left: 2px;
+  width: 9cqw;
+  transform: translate(-50%, -50%);
+  transition: top 100ms linear;
+  filter: drop-shadow(0 2px 4px #0008);
+}
+.route-approach-demo .route-position svg {
+  width: 100%;
+  display: block;
+}
+.route-approach-demo .route-play,
+.steps-orbit-demo .steps-play {
+  position: absolute;
+  display: grid;
+  place-items: center;
+  width: 13%;
+  aspect-ratio: 1;
+  border: 1px solid #ffffff25;
+  background: #ffffff08;
+  border-radius: 50%;
+  color: #dce9bd;
+}
+.route-approach-demo .route-play {
+  bottom: 8%;
+  left: 53%;
+}
+.route-approach-demo .route-play svg,
+.steps-orbit-demo .steps-play svg {
+  width: 45%;
+  height: 45%;
+}
+.route-approach-demo .route-instruction {
+  position: absolute;
+  bottom: 4%;
+  right: 16%;
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 2.7cqw;
+  color: #b7bf90;
+}
+
+.steps-orbit-demo {
+  --watch-accent: #00e899;
+}
+.steps-orbit-demo .watch-face {
+  --watch-glow: #78991a;
+  background:
+    radial-gradient(ellipse at 80% 0%, #005439, transparent 70%), #010604;
+}
+.steps-orbit-demo .watch-face::before {
+  background: radial-gradient(ellipse at 100% 48%, #78991a, transparent 65%);
+  opacity: 0.9;
+}
+.steps-orbit-demo .steps-ring {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+.steps-orbit-demo .steps-ring path {
+  fill: none;
+  stroke-width: 2.4;
+  stroke-linecap: round;
+}
+.steps-orbit-demo .steps-ring-dashes {
+  stroke-dasharray: 0.38 0.42;
+}
+.steps-orbit-demo .steps-ring-track {
+  stroke: #90b59b30;
+}
+.steps-orbit-demo .steps-ring-fill {
+  stroke: #25ce91;
+  stroke-linecap: round;
+  transition: stroke-dasharray 0.7s ease;
+}
+.steps-orbit-demo .steps-ring .steps-ring-start {
+  stroke: #9de8c7;
+  stroke-width: 3;
+}
+.steps-orbit-demo .steps-main {
+  position: absolute;
+  top: 31%;
+  left: 10%;
+  right: 9%;
+}
+.steps-orbit-demo .steps-main > .watch-digits {
+  margin-top: 5cqw;
+  font-size: 18.5cqw;
+}
+.steps-orbit-demo .steps-goal {
+  display: block;
+  margin-top: 4cqw;
+  font-size: 8cqw;
+  color: #89998d;
+}
+.steps-orbit-demo .steps-stats {
+  position: absolute;
+  bottom: 13%;
+  right: 10%;
+  display: flex;
+  flex-direction: column;
+  gap: 3cqw;
+}
+.steps-orbit-demo .steps-stats > span {
+  display: flex;
+  gap: 2cqw;
+  align-items: center;
+  font-size: 7cqw;
+  color: #a7b9a1;
+}
+.steps-orbit-demo .steps-stat-icon {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 7cqw;
+  height: 7cqw;
+  padding: 1cqw;
+  border-radius: 50%;
+  color: #3ab68d;
+  background: #0a3428;
+}
+.steps-orbit-demo .steps-stat-icon > svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+.steps-orbit-demo .steps-stats small {
+  color: #8f9f86;
+  font-size: 5cqw;
+}
+.steps-orbit-demo .steps-play {
+  bottom: 15%;
+  left: 11%;
+  color: #29e4a1;
+}
+.steps-orbit-demo .steps-status {
+  position: absolute;
+  bottom: 6%;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  color: #8cba9c;
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 2.6cqw;
+  letter-spacing: 0.08em;
+}
+@media (prefers-reduced-motion: reduce) {
+  .watch-study *,
+  .watch-study *::before {
+    transition: none;
+  }
+  .workout-dial-demo .workout-ruler,
+  .workout-dial-demo .workout-main,
+  .workout-dial-demo .workout-main > .watch-label,
+  .workout-dial-demo .workout-value,
+  .workout-dial-demo .workout-status,
+  .workout-dial-demo .workout-actions {
+    transition: none;
+  }
+  .workout-dial-demo .workout-selection-value {
+    animation: none;
+  }
+}
+
+/* A local review page for this family, using the existing gallery card shell. */
+.watch-review-page {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 42px 24px 80px;
+}
+.watch-review-page .watch-review-intro {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  gap: 32px;
+  margin-bottom: 28px;
+}
+.watch-review-page .watch-review-intro h1 {
+  margin: 8px 0 0;
+  font-size: clamp(28px, 4vw, 42px);
+  font-weight: 500;
+  letter-spacing: -0.05em;
+}
+.watch-review-page .watch-review-kicker {
+  font:
+    10px var(--font-geist-mono),
+    monospace;
+  color: var(--ink-soft);
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+}
+.watch-review-page .watch-review-intro p {
+  max-width: 350px;
+  margin: 0;
+  font-size: 12px;
+  line-height: 1.7;
+  color: var(--ink-soft);
+}
+@media (max-width: 600px) {
+  .watch-review-page .watch-review-intro {
+    align-items: start;
+    flex-direction: column;
+    gap: 16px;
+  }
+}
+
+/* One selected face; incoming and outgoing faces share the same orbit pivot. */
+.watch-faces-card {
+  grid-column: span 2;
+}
+.watch-faces-demo {
+  position: absolute;
+  inset: 18px 18px 24px;
+  display: grid;
+  grid-template-columns: minmax(130px, 0.85fr) minmax(0, 2fr);
+  min-width: 0;
+  min-height: 0;
+  overflow: hidden;
+}
+.watch-faces-demo .watch-face-picker {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 8px;
+  padding: 16px;
+  z-index: 1;
+}
+.watch-faces-demo .watch-picker-caption {
+  margin: 0 0 16px 12px;
+  color: var(--ink-soft);
+  font:
+    10px var(--font-geist-mono),
+    monospace;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+.watch-faces-demo .watch-face-picker button {
+  outline: none;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 12px;
+  border: 0;
+  border-radius: var(--radius);
+  background: transparent;
+  color: var(--ink-soft);
+  text-align: left;
+  cursor: pointer;
+  transition:
+    color 160ms,
+    background-color 160ms;
+}
+.watch-faces-demo .watch-face-picker button:hover {
+  color: var(--foreground);
+  background: var(--paper);
+}
+.watch-faces-demo .watch-face-picker button.is-selected {
+  color: var(--foreground);
+  background: #fff;
+}
+.watch-faces-demo:not([data-pointer-focus])
+  .watch-face-picker
+  button:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+.watch-faces-demo .watch-face-picker button > svg {
+  flex: none;
+}
+.watch-faces-demo .watch-face-picker strong {
+  display: block;
+  font-size: 14px;
+  font-weight: 500;
+}
+.watch-faces-demo .watch-face-picker small {
+  display: block;
+  margin-top: 5px;
+  font-size: 11px;
+  white-space: nowrap;
+  color: var(--ink-soft);
+}
+.watch-faces-demo .watch-face-viewport {
+  position: relative;
+  min-width: 0;
+  min-height: 0;
+  overflow: hidden;
+}
+.watch-faces-demo .watch-face-orbit {
+  position: absolute;
+  inset: 0;
+  transform-origin: 50% 160%;
+}
+.watch-faces-demo .watch-face-mount {
+  position: absolute;
+  inset: 24px;
+}
+.watch-faces-demo .watch-study {
+  position: relative;
+  inset: auto;
+  width: 100%;
+  height: 100%;
+  min-width: 0;
+  min-height: 0;
+  padding: 0;
+}
+.watch-faces-demo .watch-face {
+  width: min(94cqw, 78cqh, 280px);
+}
+.watch-faces-demo .watch-hint {
+  display: none;
+}
+.watch-faces-demo.is-expanded {
+  position: relative;
+  inset: auto;
+  width: 100%;
+  height: clamp(480px, 55vw, 640px);
+  grid-template-columns: minmax(190px, 0.85fr) minmax(0, 2fr);
+  padding: 20px;
+  border-radius: var(--radius);
+  background: var(--stage-paper);
+}
+.watch-faces-demo.is-expanded .watch-face {
+  width: min(90cqw, 72cqh, 300px);
+}
+@media (max-width: 900px) {
+  .watch-faces-demo:not(.is-expanded) .watch-face-picker small {
+    display: none;
+  }
+  .watch-faces-demo .watch-face-picker {
+    padding: 8px;
+  }
+}
+@media (max-width: 720px) {
+  .watch-faces-card {
+    grid-column: span 1;
+  }
+  .watch-faces-demo,
+  .watch-faces-demo.is-expanded {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: auto minmax(0, 1fr);
+  }
+  .watch-faces-demo.is-expanded {
+    height: clamp(440px, 118vw, 560px);
+    padding: 12px 8px;
+  }
+  .watch-faces-demo .watch-face-picker {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    padding: 4px;
+    gap: 4px;
+  }
+  .watch-faces-demo .watch-picker-caption,
+  .watch-faces-demo .watch-face-picker small {
+    display: none;
+  }
+  .watch-faces-demo .watch-face-picker button {
+    min-width: 0;
+    flex-direction: column;
+    justify-content: center;
+    gap: 7px;
+    padding: 10px 2px;
+  }
+  .watch-faces-demo .watch-face-picker strong {
+    font-size: 11px;
+  }
+  .watch-faces-demo .watch-face-mount {
+    inset: 12px 6px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .watch-faces-demo .watch-face-picker button {
+    transition: none;
+  }
+}

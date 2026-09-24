@@ -282,7 +282,7 @@ function FeedAdaptSession() {
             <button type="button" className="fa-resize fa-resize-height" aria-label="Resize screen height. Use up and down arrow keys." onPointerDown={(event) => startResize(event, 'height')} onPointerMove={moveResize} onPointerUp={stopResize} onPointerCancel={stopResize} onLostPointerCapture={stopResize} onKeyDown={(event) => resizeKey(event, 'height')}><span /></button>
             <button type="button" className="fa-resize fa-resize-corner" aria-label="Resize screen width and height. Use arrow keys, or Shift for larger steps." onPointerDown={(event) => startResize(event, 'both')} onPointerMove={moveResize} onPointerUp={stopResize} onPointerCancel={stopResize} onLostPointerCapture={stopResize} onKeyDown={(event) => resizeKey(event, 'both')}><MoveDiagonal2 size={15} /></button>
           </motion.div>
-          <div className="fa-canvas-hint"><ArrowLeftRight size={13} /><span>Drag an edge. Watch it find its place.</span></div>
+          <div className="fa-canvas-hint"><ArrowLeftRight size={13} /><span>Drag an edge to resize.</span></div>
         </div>
         <aside className="fa-panel" aria-label="Viewport dimensions and responsive settings">
           <div className="fa-panel-heading"><div><h4>Viewport</h4></div><button type="button" className="fa-reset" onClick={reset} aria-label="Reset responsive playground"><RotateCcw size={15} /></button></div>

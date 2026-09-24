@@ -10,11 +10,11 @@ import './spatial-studies.css';
 const cameraPose = (camera: OrbitShot): SpatialPose => ({ progress: 0, rx: 0, ry: 0, rz: 0, scale: 1, camera });
 
 const views: { name: string; note: string; icon: typeof Box; pose: SpatialPose }[] = [
-  { name: 'Form', note: 'One continuous loop, seen as a whole.', icon: Box, pose: cameraPose(ORBIT_SHOTS.form) },
-  { name: 'Weave', note: 'Look closer at the curves passing over and under.', icon: Scan, pose: cameraPose(ORBIT_SHOTS.weave) },
-  { name: 'Surface', note: 'A close study of the finish, light and curvature.', icon: Sparkles, pose: cameraPose(ORBIT_SHOTS.surface) },
-  { name: 'Profile', note: 'The silhouette reveals how much depth the loop holds.', icon: PanelRight, pose: cameraPose(ORBIT_SHOTS.profile) },
-  { name: 'Structure', note: 'From above, the openings reveal the whole construction.', icon: Layers3, pose: cameraPose(ORBIT_SHOTS.structure) },
+  { name: 'Form', note: 'Full view', icon: Box, pose: cameraPose(ORBIT_SHOTS.form) },
+  { name: 'Weave', note: 'Interwoven curves', icon: Scan, pose: cameraPose(ORBIT_SHOTS.weave) },
+  { name: 'Surface', note: 'Surface detail', icon: Sparkles, pose: cameraPose(ORBIT_SHOTS.surface) },
+  { name: 'Profile', note: 'Side profile', icon: PanelRight, pose: cameraPose(ORBIT_SHOTS.profile) },
+  { name: 'Structure', note: 'Top view', icon: Layers3, pose: cameraPose(ORBIT_SHOTS.structure) },
 ];
 
 function OrbitStudy() {

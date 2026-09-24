@@ -84,7 +84,6 @@ export function FolderPreview({ replayKey }: { replayKey: number }) {
           );
         })}
       </div>
-      <span className="mini-demo-hint">Each folder keeps its own composition</span>
     </motion.div>
   );
 }

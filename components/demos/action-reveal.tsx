@@ -67,7 +67,7 @@ export function ActionReveal({ replayKey }: { replayKey: number }) {
           </motion.div>
         ) : null}
       </AnimatePresence>
-      <span className="mini-demo-hint">Select the photo to reveal its actions</span>
+      <span className="mini-demo-hint">Select the photo</span>
     </motion.div>
   );
 }

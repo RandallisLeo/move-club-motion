@@ -46,7 +46,6 @@ export function FluidFolderHover({ replayKey }: { replayKey: number }) {
           </button>
         ))}
       </div>
-      <span className="mini-demo-hint">One shared bubble follows every option</span>
     </motion.div>
   );
 }

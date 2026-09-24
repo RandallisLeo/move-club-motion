@@ -48,7 +48,7 @@ const restingTurn = 4.2 * 180 / Math.PI - 360;
 const restingDotX = 16 + 7.7 * Math.cos(-4.2) + 6.4 * Math.sin(-4.2);
 const restingDotY = 16 + 7.7 * Math.sin(-4.2) - 6.4 * Math.cos(-4.2);
 
-export function MoveClubWordmark() {
+export function MoveClubWordmark({ href = '#top' }: { href?: string }) {
   const reducedMotion = useReducedMotion();
   const progress = useMotionValue(0);
   const animation = useRef<ReturnType<typeof animate> | null>(null);
@@ -93,7 +93,7 @@ export function MoveClubWordmark() {
   }
 
   return (
-    <a className="wordmark" href="#top" aria-label="Move Club home" onPointerEnter={onPointerEnter} onFocus={greet} onClick={greet}>
+    <a className="wordmark" href={href} aria-label="Move Club home" onPointerEnter={onPointerEnter} onFocus={greet} onClick={greet}>
       <span className="wordmark-mark" aria-hidden="true">
         <motion.svg viewBox="0 0 32 32" style={{ rotate, scale, transformOrigin: '50% 84%' }}>
           <motion.g style={{ rotate: unfold, transformOrigin: '16px 16px' }}>

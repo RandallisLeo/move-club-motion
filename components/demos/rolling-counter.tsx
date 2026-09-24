@@ -60,7 +60,6 @@ export function RollingCounter({ replayKey }: { replayKey: number }) {
           </div>
         </div>
       </div>
-      <span className="mini-demo-hint">Use − and + to roll in either direction</span>
     </motion.div>
   );
 }

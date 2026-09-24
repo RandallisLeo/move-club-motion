@@ -55,6 +55,17 @@ Keep shared links free of decorative diagonal arrows and external-link symbols. 
 
 Controls should feel related through shape, color, type, focus treatment, and subtle feedback. They do not need identical hover or press animation when the interaction calls for something different.
 
+### Card sizing and alignment
+
+Standard gallery studies share one responsive stage height, regardless of whether a card spans one or two columns.
+
+- Use one column by default; use two columns when the study needs more horizontal room. A two-column card gains width while keeping the same stage height as a one-column card at the current breakpoint.
+- Treat `.demo-stage` in `app/globals.css` as the source of truth for stage height. Let the local demo root fill that space without imposing a taller intrinsic height or copying the height values into separate study rules. `Fold / Focus` and `Object / Orbit` demonstrate this pattern.
+- Fit the content and controls inside the available stage. Adapt internal spacing, control layout, camera framing, and edge fades as needed while preserving the study's interaction, motion, and accessibility. Full-object views must remain complete; deliberate detail close-ups may crop the subject.
+- Collapse wide cards to the available grid columns on smaller screens and continue using the shared stage height at that breakpoint. Do not resize other studies or alter the shared grid to accommodate one component.
+- Verify equal stage heights and aligned stage edges for cards in the same row at desktop, tablet, and mobile widths. Check intermediate animation states, control reachability, and moving highlights after resizing.
+- Preserve existing specialized playground layouts and any custom dimensions the user explicitly requests; this is the default rule for new standard gallery studies.
+
 ## Freedom inside each motion stage
 
 The content inside `.demo-stage` may be completely unique. A study may use its own choreography, easing, timing, interaction model, local palette, materials, 2D or 3D treatment, Canvas, WebGL, SVG, or other rendering techniques.
@@ -90,7 +101,7 @@ Every study must have one unique root class, for example `.liquid-stack-demo`, a
 5. Preserve the `replayKey` contract so the shared replay control can restart the study.
 6. Keep its Code link pointed at the matching source file.
 7. Add a new filter only when the new study genuinely needs a new category.
-8. Confirm the card behaves at desktop, tablet, and mobile widths without clipping or leaking layout styles.
+8. Follow the shared card sizing rules and confirm the card behaves at desktop, tablet, and mobile widths without unintended clipping or leaking layout styles.
 9. Preserve keyboard access, visible focus, semantic controls, and the user's reduced-motion preference.
 10. Run `npm run build` after implementation and fix actual errors before delivery.
 
@@ -100,6 +111,7 @@ Before considering a new study complete, confirm:
 
 - the page still reads unmistakably as Move Club before interacting with the new card;
 - shared colors, typography roles, spacing rhythm, icon family, borders, radii, and elevation remain consistent;
+- one- and two-column standard cards share the same stage height, with complete full-object views and usable controls at every breakpoint;
 - the study itself has a distinct motion idea rather than copying another card's choreography;
 - imagery feels intentional even when selected freely or randomly;
 - local styles do not alter any existing study;

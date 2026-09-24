@@ -1,7 +1,7 @@
 'use client';
 
 import { motion, useMotionValue, useReducedMotion, useSpring, useTransform, type MotionValue } from 'motion/react';
-import { useEffect, useRef, useState, type FocusEvent, type PointerEvent as ReactPointerEvent } from 'react';
+import { useEffect, useId, useRef, useState, type FocusEvent, type PointerEvent as ReactPointerEvent } from 'react';
 import './about-headline.css';
 
 const foldText = 'A soft fold.';
@@ -88,10 +88,47 @@ function FoldSentence() {
   );
 }
 
+// Refraction follows the rounded rim, leaving the magnified center undisturbed.
+function glassRimMap(width: number, height: number, radius: number) {
+  const canvas = document.createElement('canvas');
+  const resolution = 2;
+  canvas.width = Math.ceil(width * resolution);
+  canvas.height = Math.ceil(height * resolution);
+  const context = canvas.getContext('2d');
+  if (!context) return '';
+  const pixels = context.createImageData(canvas.width, canvas.height);
+  // A narrow rounded rim refracts; the inner face stays flat.
+  const band = Math.min(width, height) * .16;
+  for (let py = 0; py < canvas.height; py++) {
+    for (let px = 0; px < canvas.width; px++) {
+      const x = (px + .5) / resolution - width / 2;
+      const y = (py + .5) / resolution - height / 2;
+      const qx = Math.abs(x) - (width / 2 - radius);
+      const qy = Math.abs(y) - (height / 2 - radius);
+      const ox = Math.max(qx, 0), oy = Math.max(qy, 0);
+      const length = Math.hypot(ox, oy);
+      const distance = length + Math.min(Math.max(qx, qy), 0) - radius;
+      const depth = Math.max(0, Math.min(1, -distance / band));
+      const bend = distance < 0 && distance > -band ? Math.sin(depth * Math.PI) ** 2 : 0;
+      const nx = length ? ox / length : qx > qy ? 1 : 0;
+      const ny = length ? oy / length : qx > qy ? 0 : 1;
+      const i = (py * canvas.width + px) * 4;
+      pixels.data[i] = Math.round(127.5 - Math.sign(x) * nx * bend * 127.5);
+      pixels.data[i + 1] = Math.round(127.5 - Math.sign(y) * ny * bend * 127.5);
+      pixels.data[i + 2] = 128;
+      pixels.data[i + 3] = 255;
+    }
+  }
+  context.putImageData(pixels, 0, 0);
+  return canvas.toDataURL();
+}
+
 function GlassSentence() {
   const { active, handlers } = useTextInteraction();
   const reduced = !!useReducedMotion();
   const ref = useRef<HTMLButtonElement>(null);
+  const filterId = `glass-rim-${useId().replace(/:/g, '')}`;
+  const [optics, setOptics] = useState({ map: '', width: 0, height: 0, scale: 0 });
   const dimensions = useMotionValue({ width: 0, height: 0 });
   const targetX = useMotionValue(.5);
   const targetY = useMotionValue(.5);
@@ -116,6 +153,13 @@ function GlassSentence() {
     const measure = () => {
       const rect = element.getBoundingClientRect();
       dimensions.set({ width: rect.width, height: rect.height });
+      const lensWidth = Math.min(rect.width, rect.height * 1.85);
+      const lensHeight = rect.height * 1.24;
+      const radius = Math.min(parseFloat(getComputedStyle(element).fontSize) * .44, lensWidth / 2, lensHeight / 2);
+      setOptics({
+        map: glassRimMap(lensWidth, lensHeight, radius),
+        width: lensWidth, height: lensHeight, scale: lensHeight * .18,
+      });
     };
     const observer = new ResizeObserver(measure);
     observer.observe(element);
@@ -147,11 +191,21 @@ function GlassSentence() {
           else targetX.set(Math.max(0, Math.min(1, targetX.get() + (event.key === 'ArrowLeft' ? -.07 : .07))));
         }
       }}>
+      <svg className="about-glass-defs" aria-hidden="true" width="0" height="0">
+        <defs>
+          <filter id={filterId} filterUnits="userSpaceOnUse" x="0" y="0" width={optics.width} height={optics.height} colorInterpolationFilters="sRGB">
+            <feImage href={optics.map || undefined} x="0" y="0" width={optics.width} height={optics.height} preserveAspectRatio="none" result="rim" />
+            <feDisplacementMap in="SourceGraphic" in2="rim" scale={optics.scale} xChannelSelector="R" yChannelSelector="G" />
+          </filter>
+        </defs>
+      </svg>
       <span className="about-glass-source" aria-hidden="true">{glassText}</span>
       <motion.span className="about-glass-lens" aria-hidden="true"
         initial={false} animate={{ opacity: active ? 1 : 0 }} transition={{ duration: reduced ? 0 : .16 }}
         style={{ width, height, x: left, y: top }}>
-        <motion.span className="about-glass-print" style={{ x: printX, y: printY, width: printWidth, scale: zoom }}>{glassText}</motion.span>
+        <span className="about-glass-refraction" style={{ filter: optics.map ? `url(#${filterId})` : undefined }}>
+          <motion.span className="about-glass-print" style={{ x: printX, y: printY, width: printWidth, scale: zoom }}>{glassText}</motion.span>
+        </span>
         <span className="about-glass-polish" />
       </motion.span>
     </button>

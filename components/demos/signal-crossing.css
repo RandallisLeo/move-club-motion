@@ -1,0 +1,81 @@
+/* This study fills the shared stage. Every rule and animation is local. */
+@font-face {
+  font-family: 'Crossing Anton';
+  src: url('/fonts/signal-crossing/Anton-Regular.ttf') format('truetype');
+  font-style: normal;
+  font-weight: 400;
+  font-display: block;
+}
+
+.signal-crossing-demo {
+  --crossing-ink: #bf2540;
+  position: absolute;
+  inset: 0;
+  display: grid;
+  grid-template-rows: 12px minmax(0, 1fr);
+  gap: 9px;
+  overflow: hidden;
+  padding: 14px 23px 44px;
+  color: #20242b;
+}
+.signal-crossing-demo .crossing-heading { display: flex; justify-content: space-between; gap: 8px; color: #77756f; font-family: var(--font-geist-mono), monospace; font-size: 8px; letter-spacing: .07em; }
+.signal-crossing-demo .crossing-scene {
+  --crossing-tail-width: clamp(52px, 22cqw, 58px);
+  --crossing-lamp-height: clamp(84px, 48cqh, 132px);
+  position: relative; container-type: size; min-height: 0; width: 94%; max-width: 238px; justify-self: center;
+}
+.signal-crossing-demo .crossing-type { position: absolute; inset: 0 0 34px; display: grid; grid-template-columns: repeat(var(--crossing-leading-letters), minmax(0, 1fr)) var(--crossing-tail-width); gap: 5px; transform-origin: 50% 90%; }
+.signal-crossing-demo .crossing-letter { display: block; min-width: 0; min-height: 0; width: 100%; height: 100%; overflow: visible; }
+.signal-crossing-demo .crossing-letter-tail { align-self: end; height: calc(100% - var(--crossing-lamp-height) - 9px); }
+.signal-crossing-demo .crossing-type text { fill: var(--crossing-ink); font-family: 'Crossing Anton', sans-serif; font-size: 2048px; font-weight: 400; font-synthesis: none; }
+.signal-crossing-demo .crossing-signal { position: absolute; right: 0; top: 0; display: grid; grid-template-rows: repeat(3, minmax(0, 1fr)); justify-items: center; gap: 4px; width: var(--crossing-tail-width); height: var(--crossing-lamp-height); min-width: 0; margin: 0; padding: 6px; border: 1px solid #111716; border-radius: 9px; background: #252b29; box-shadow: 2px 2px 0 #d6d7cf, inset 0 1px 0 #ffffff26; }
+.signal-crossing-demo .crossing-light { position: relative; display: grid; place-items: center; aspect-ratio: 1; width: auto; max-width: 100%; height: 100%; padding: 0; border: 0; border-radius: 50%; background: #131a17; color: #e1e5de; cursor: pointer; box-shadow: inset 0 2px 4px #0006, 0 1px 0 #ffffff15; }
+.signal-crossing-demo .crossing-lens { position: absolute; inset: 4px; border-radius: 50%; background-color: #303b33; background-image: radial-gradient(#0006 .7px, transparent .8px); background-size: 3px 3px; transition: background-color 90ms, box-shadow 90ms; }
+.signal-crossing-demo .crossing-light[aria-pressed='true'] { color: #fff; }
+.signal-crossing-demo .crossing-light-stop[aria-pressed='true'] .crossing-lens { background-color: #e74950; box-shadow: 0 0 14px #ed40554d, inset 0 1px 2px #fff7; }
+.signal-crossing-demo .crossing-light-alert[aria-pressed='true'] { color: #33270b; }
+.signal-crossing-demo .crossing-light-alert[aria-pressed='true'] .crossing-lens { background-color: #f5c747; box-shadow: 0 0 14px #f0c74b50, inset 0 1px 2px #fff7; }
+.signal-crossing-demo .crossing-light-walk[aria-pressed='true'] .crossing-lens { background-color: #3da371; box-shadow: 0 0 14px #3da37150, inset 0 1px 2px #fff7; }
+.signal-crossing-demo .crossing-light:focus-visible { outline: 2px solid #fff; outline-offset: 3px; }
+.signal-crossing-demo .crossing-light:hover { filter: brightness(1.15); }
+.signal-crossing-demo .crossing-road { position: absolute; bottom: 0; left: -6px; right: -6px; height: 32px; overflow: hidden; perspective: 140px; }
+.signal-crossing-demo .crossing-road-plane { position: absolute; inset: -16px -25% 0; transform: rotateX(48deg) rotateZ(-9deg); background: #e0e1d8; overflow: hidden; }
+.signal-crossing-demo .crossing-stripes { position: absolute; inset: -20px -110px; background: repeating-linear-gradient(90deg, #fafaf6 0 31px, transparent 31px 62px); }
+.signal-crossing-demo .crossing-play { position: absolute; right: 16px; bottom: 11px; display: grid; place-items: center; width: 32px; height: 32px; padding: 0; border: 1px solid #d8d9d1; border-radius: 50%; color: #555e54; background: #ffffff70; cursor: pointer; }
+.signal-crossing-demo .crossing-play:hover { background: #fff; }
+.signal-crossing-demo .crossing-play:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+.signal-crossing-demo .crossing-play:disabled { opacity: .45; cursor: default; }
+.signal-crossing-demo[data-signal='stop'] .crossing-type { animation: crossing-stop-jolt 560ms both; }
+.signal-crossing-demo[data-signal='alert'] .crossing-type { animation: crossing-alert-type 900ms ease-in-out infinite; }
+.signal-crossing-demo[data-signal='alert'] .crossing-light-alert .crossing-lens { animation: crossing-alert-light 900ms ease-in-out infinite; }
+.signal-crossing-demo[data-signal='walk'] .crossing-letter { animation: crossing-walk-wave 1100ms ease-in-out infinite; }
+.signal-crossing-demo[data-signal='walk'] .crossing-letter:nth-child(1) { animation-delay: 450ms; }
+.signal-crossing-demo[data-signal='walk'] .crossing-letter:nth-child(2) { animation-delay: 300ms; }
+.signal-crossing-demo[data-signal='walk'] .crossing-letter:nth-child(3) { animation-delay: 150ms; }
+.signal-crossing-demo[data-running='false'] .crossing-type,
+.signal-crossing-demo[data-running='false'] .crossing-letter,
+.signal-crossing-demo[data-running='false'] .crossing-lens { animation-play-state: paused; }
+.signal-crossing-demo[data-reduced='true'] .crossing-type,
+.signal-crossing-demo[data-reduced='true'] .crossing-letter,
+.signal-crossing-demo[data-reduced='true'] .crossing-lens,
+.signal-crossing-demo[data-reduced='true'] .crossing-stripes { animation: none; }
+@keyframes crossing-stop-jolt {
+  0%, 100% { transform: translateX(0) rotate(0); }
+  12% { transform: translateX(-6px) rotate(-1deg); }
+  25% { transform: translateX(5px) rotate(.8deg); }
+  40% { transform: translateX(-4px) rotate(-.5deg); }
+  56% { transform: translateX(3px) rotate(.3deg); }
+  74% { transform: translateX(-1px); }
+}
+@keyframes crossing-alert-type { 0%, 100% { opacity: 1; } 45%, 60% { opacity: .48; } }
+@keyframes crossing-alert-light { 0%, 100% { opacity: 1; } 45%, 60% { opacity: .3; } }
+@keyframes crossing-walk-wave {
+  0%, 50%, 100% { transform: translateY(0); }
+  25% { transform: translateY(-3px); }
+}
+@media (min-width: 721px) and (max-width: 1200px) {
+  .signal-crossing-demo { grid-template-rows: 9px minmax(0, 1fr); gap: 4px; padding-top: 10px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .signal-crossing-demo .crossing-type, .signal-crossing-demo .crossing-letter, .signal-crossing-demo .crossing-lens, .signal-crossing-demo .crossing-stripes { animation: none; transition: none; }
+}

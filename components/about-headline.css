@@ -17,6 +17,8 @@
 .about-motion-headline .about-fold-left .about-fold-print { left: 0; }
 .about-motion-headline .about-fold-right .about-fold-print { right: 0; }
 .about-motion-headline .about-glass { isolation: isolate; }
+.about-motion-headline .about-glass-defs { position: absolute; pointer-events: none; }
+.about-motion-headline .about-glass-refraction { position: absolute; inset: 0; }
 .about-motion-headline .about-glass-source { display: block; }
 .about-motion-headline .about-glass-lens { position: absolute; top: 0; left: 0; z-index: 2; overflow: hidden; border-radius: .44em; background: color-mix(in srgb, var(--paper) 96%, #d8e5ff); box-shadow: .015em .06em .18em rgb(64 90 136 / 17%), 0 .015em .025em rgb(255 255 255 / 90%); pointer-events: none; }
 .about-motion-headline .about-glass-print { position: absolute; top: 0; left: 0; display: block; max-width: none; transform-origin: left top; text-align: center; }

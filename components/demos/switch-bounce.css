@@ -1,0 +1,70 @@
+/* The artwork fills the shared stage; its lettering and motion stay local. */
+.switch-bounce-demo {
+  --switch-bounce-paper: #fff;
+  --switch-bounce-ink: #000;
+  --switch-bounce-on: #35c970;
+  position: absolute;
+  inset: 0;
+  padding: 28px 28px 56px;
+  overflow: hidden;
+  background: var(--switch-bounce-paper);
+  color: var(--switch-bounce-ink);
+}
+
+.switch-bounce-demo .switch-bounce-artwork {
+  container-type: size;
+  display: grid;
+  width: 100%;
+  height: 100%;
+  place-items: center;
+}
+
+.switch-bounce-demo .switch-bounce-control {
+  display: block;
+  width: min(79cqw, 84cqh, 280px);
+  aspect-ratio: 620 / 580;
+  padding: 0;
+  border: 0;
+  border-radius: 5px;
+  background: transparent;
+  color: inherit;
+  cursor: grab;
+  touch-action: pan-x pinch-zoom;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.switch-bounce-demo .switch-bounce-control:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 10px;
+}
+
+.switch-bounce-demo[data-dragging='true'] .switch-bounce-control {
+  cursor: grabbing;
+}
+
+.switch-bounce-demo .switch-bounce-lettering {
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  pointer-events: none;
+}
+
+.switch-bounce-demo .switch-bounce-thumb {
+  fill: var(--switch-bounce-paper);
+}
+
+.switch-bounce-demo .switch-bounce-hint {
+  position: absolute;
+  right: 20px;
+  bottom: 18px;
+  color: var(--ink-soft);
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 9px;
+  line-height: 1.5;
+}
+
+@media (max-width: 360px) {
+  .switch-bounce-demo { padding-inline: 20px; }
+}

@@ -59,7 +59,6 @@ export function SpringReflow({ replayKey }: { replayKey: number }) {
           </AnimatePresence>
         </motion.div>
       </LayoutGroup>
-      <span className="mini-demo-hint">Same-row movement lands with a quiet rebound</span>
     </motion.div>
   );
 }

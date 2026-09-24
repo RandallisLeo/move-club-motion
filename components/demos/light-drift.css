@@ -1,0 +1,38 @@
+.light-drift-card { grid-column: span 2; scroll-margin-top: 90px; }
+.light-drift-demo { --light-drift-background: #111522; --light-control-radius: 10px; --light-control-surface: #ffffffb8; position: absolute; inset: 0; display: grid; grid-template-columns: minmax(0, 1fr) minmax(220px, .85fr); align-items: center; gap: 24px; padding: 24px; color: var(--foreground); }
+.light-drift-demo .light-drift-surface { margin: 0; position: relative; top: -10px; min-height: 0; min-width: 0; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; container-type: size; }
+.light-drift-demo .light-drift-orb { margin: 0; position: relative; flex: none; width: min(94cqw, 84cqh, 300px); aspect-ratio: 1; border-radius: 50%; overflow: hidden; background: var(--light-drift-background); }
+.light-drift-demo .light-drift-surface canvas { display: block; position: absolute; width: 100%; height: 100%; inset: 0; }
+.light-drift-demo .light-drift-status { position: absolute; bottom: 16%; left: 16%; right: 16%; color: #a4aec0; pointer-events: none; font-family: var(--font-geist-mono), monospace; font-size: 8px; letter-spacing: .06em; text-align: center; text-transform: uppercase; line-height: 1.5; }
+.light-drift-demo .light-drift-status output { display: grid; gap: 3px; }
+.light-drift-demo .light-drift-status output > span { display: block; }
+.light-drift-demo .light-drift-status output > span + span { font-size: .85em; letter-spacing: .025em; }
+.light-drift-demo .light-drift-controls { width: 100%; min-width: 0; margin-inline: auto; padding: 12px 14px; border: 1px solid #ffffffb0; border-radius: calc(var(--light-control-radius) + 6px); background: var(--light-control-surface); box-shadow: 0 3px 10px #36487703; }
+.light-drift-demo .light-drift-sliders { display: grid; grid-template-columns: minmax(0, 1fr); gap: 14px; margin-top: 20px; }
+.light-drift-demo .light-drift-sliders label { min-width: 0; }
+.light-drift-demo .light-drift-sliders label > span { display: flex; align-items: baseline; justify-content: space-between; gap: 4px; color: var(--ink-soft); font-size: 10px; }
+.light-drift-demo .light-drift-sliders output { font-family: var(--font-geist-mono), monospace; font-size: 9px; font-variant-numeric: tabular-nums; }
+.light-drift-demo .light-drift-sliders input { display: block; appearance: none; width: 100%; height: 20px; margin: 0; background: transparent; cursor: pointer; accent-color: var(--accent); }
+.light-drift-demo .light-drift-sliders input::-webkit-slider-runnable-track { height: 2px; border-radius: 2px; background: #c9d4ea; }
+.light-drift-demo .light-drift-sliders input::-webkit-slider-thumb { appearance: none; width: 11px; height: 11px; margin-top: -4.5px; border: 2px solid var(--paper); border-radius: 50%; background: var(--accent); box-shadow: 0 1px 4px #47517433; }
+.light-drift-demo .light-drift-sliders input::-moz-range-track { height: 2px; border-radius: 2px; background: #c9d4ea; }
+.light-drift-demo .light-drift-sliders input::-moz-range-thumb { width: 8px; height: 8px; border: 2px solid var(--paper); border-radius: 50%; background: var(--accent); }
+.light-drift-demo button:focus-visible, .light-drift-demo input:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+.light-drift-demo .light-drift-fallback { position: absolute; inset: 0; display: grid; place-content: center; text-align: center; }
+.light-drift-demo .light-drift-fallback span { width: 200px; height: 48px; border-radius: 100%; background: linear-gradient(170deg, transparent 15%, #a58ce480 45%, #effaff 49%, #687be999 54%, transparent 85%); }
+.light-drift-demo .light-drift-fallback p { color: #a4aec0; font-size: 10px; }
+.light-drift-demo .light-drift-controls { position: relative; }
+.light-drift-demo .light-drift-states { margin: 0; padding: 0; min-width: 0; border: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px; }
+.light-drift-demo .light-drift-states button { min-height: 27px; padding: 4px; border: 1px solid transparent; border-radius: var(--light-control-radius); background: transparent; color: var(--ink-soft); font-size: 11px; cursor: pointer; }
+.light-drift-demo .light-drift-states button:hover { background: var(--paper); }
+.light-drift-demo .light-drift-states button[aria-pressed='true'] { border-color: var(--line); background: var(--paper); color: var(--foreground); box-shadow: 0 1px 3px #20242b05; }
+@media (max-width: 720px) { .light-drift-card { grid-column: 1 / -1; } .light-drift-demo { grid-template-columns: minmax(0, 1fr) minmax(175px, .95fr); gap: 14px; padding-inline: 16px; } .light-drift-demo .light-drift-controls { padding-inline: 8px; } }
+@media (max-width: 480px) { .light-drift-demo { grid-template-columns: minmax(0, 1fr) 174px; gap: 10px; padding-inline: 12px; } .light-drift-demo .light-drift-states button { font-size: 10px; } .light-drift-demo .light-drift-status { font-size: 6px; left: 12%; right: 12%; bottom: 12%; } }
+@media (pointer: coarse) { .light-drift-demo .light-drift-states button { min-height: 36px; } .light-drift-demo .light-drift-sliders input { height: 28px; } }
+.light-drift-demo .light-drift-sound { display: flex; justify-content: center; gap: 6px; flex: none; margin: 10px 0 0; padding: 0; border: 0; min-width: 0; }
+.light-drift-demo .light-drift-sound button { display: flex; align-items: center; justify-content: center; gap: 4px; min-height: 30px; padding: 5px 8px; border: 1px solid var(--line); border-radius: var(--light-control-radius); color: var(--ink-soft); background: var(--light-control-surface); font-size: 10px; cursor: pointer; }
+.light-drift-demo .light-drift-sound button[aria-pressed='true'] { color: var(--accent); background: var(--accent-soft); border-color: var(--accent); }
+.light-drift-demo .light-drift-sound button:hover { background: var(--paper); }
+.light-drift-demo .light-drift-sound button:disabled { opacity: .4; cursor: default; }
+@media (max-width: 480px) { .light-drift-demo .light-drift-sound { gap: 4px; } .light-drift-demo .light-drift-sound button { padding-inline: 4px; font-size: 9px; gap: 3px; } }
+@media (pointer: coarse) { .light-drift-demo .light-drift-sound button { min-height: 36px; } }

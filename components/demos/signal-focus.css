@@ -1,0 +1,447 @@
+.signal-focus-card { grid-column: span 2; }
+
+.signal-focus-demo {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  grid-template-columns: minmax(0, 1.55fr) minmax(220px, .75fr);
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.signal-focus-demo.is-focusing { cursor: pointer; }
+
+.signal-focus-demo .signal-focus-visual {
+  position: relative;
+  min-width: 0;
+  overflow: hidden;
+}
+
+.signal-focus-demo .signal-focus-visual::before {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: min(86%, 390px);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgb(255 255 255 / 94%) 0 18%, rgb(255 255 255 / 50%) 42%, rgb(238 238 255 / 14%) 64%, transparent 74%);
+  content: '';
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
+.signal-focus-demo .signal-focus-labels {
+  position: absolute;
+  top: 20px;
+  right: 22px;
+  left: 22px;
+  z-index: 8;
+  display: flex;
+  justify-content: space-between;
+  color: #777d87;
+  font-family: var(--font-geist-mono), ui-monospace, monospace;
+  font-size: 8px;
+  letter-spacing: .09em;
+}
+
+.signal-focus-demo .signal-focus-labels span:last-child { color: #5559cc; }
+
+.signal-focus-demo .signal-focus-field {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: min(66%, 300px);
+  aspect-ratio: 1;
+  transform: translate(-50%, -50%);
+}
+
+.signal-focus-demo .signal-focus-cloud {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  border-radius: 50%;
+  transition: opacity 540ms cubic-bezier(.2, .84, .24, 1);
+  will-change: transform;
+}
+
+.signal-focus-demo .signal-focus-cloud-outer {
+  width: 100%;
+  height: 100%;
+  margin: -50% 0 0 -50%;
+}
+
+.signal-focus-demo .signal-focus-cloud-inner {
+  width: 57%;
+  height: 57%;
+  margin: -28.5% 0 0 -28.5%;
+}
+
+.signal-focus-demo.is-focusing .signal-focus-cloud {
+  opacity: .2;
+}
+
+.signal-focus-demo.is-returning .signal-focus-cloud {
+  opacity: 1;
+}
+
+.signal-focus-demo .signal-focus-node {
+  position: absolute;
+  top: var(--node-y);
+  left: var(--node-x);
+  display: grid;
+  width: var(--node-size);
+  height: var(--node-size);
+  place-items: center;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  cursor: pointer;
+  transform: translate(-50%, -50%);
+}
+
+.signal-focus-demo .signal-focus-node-core,
+.signal-focus-demo .signal-focus-avatar {
+  position: relative;
+  display: grid;
+  width: 100%;
+  height: 100%;
+  place-items: center;
+  border: 3px solid rgb(255 255 255 / 78%);
+  border-radius: 50%;
+  background: var(--node-color);
+  color: var(--node-ink);
+  box-shadow: 0 7px 18px rgb(45 50 64 / 11%);
+  font-family: var(--font-geist-mono), ui-monospace, monospace;
+  font-size: 9px;
+  font-weight: 650;
+  transition: box-shadow 260ms ease;
+}
+
+.signal-focus-demo .signal-focus-node-core i,
+.signal-focus-demo .signal-focus-avatar i {
+  position: absolute;
+  right: 25%;
+  bottom: 23%;
+  left: 25%;
+  height: 2px;
+  border-radius: 999px;
+  background: currentColor;
+  content: '';
+  opacity: .38;
+}
+
+.signal-focus-demo .signal-focus-node:hover .signal-focus-node-core {
+  box-shadow: 0 10px 24px rgb(67 71 113 / 18%);
+}
+
+.signal-focus-demo .signal-focus-node:focus-visible,
+.signal-focus-demo .signal-focus-flight:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 4px;
+}
+
+.signal-focus-demo .signal-focus-node.is-source {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.signal-focus-demo .signal-focus-return-surface {
+  position: absolute;
+  inset: 0;
+  z-index: 6;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+.signal-focus-demo .signal-focus-return-surface:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: -5px;
+}
+
+.signal-focus-demo .signal-focus-flight {
+  position: absolute;
+  z-index: 7;
+  display: grid;
+  place-items: center;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  cursor: pointer;
+  transform-origin: 50% 50%;
+  will-change: transform, opacity;
+}
+
+.signal-focus-demo .signal-focus-flight .signal-focus-avatar {
+  border-width: 6px;
+  box-shadow: 0 14px 34px rgb(61 65 91 / 17%);
+  font-size: 22px;
+}
+
+.signal-focus-demo .signal-focus-flight .signal-focus-avatar i { height: 3px; }
+
+.signal-focus-demo .signal-focus-copy {
+  position: absolute;
+  z-index: 7;
+  display: flex;
+  width: 118px;
+  flex-direction: column;
+  align-items: flex-start;
+  transform-origin: -17px 50%;
+  will-change: transform, opacity;
+  pointer-events: none;
+}
+
+.signal-focus-demo .signal-focus-copy strong {
+  color: #20242b;
+  font-size: 19px;
+  font-weight: 620;
+  letter-spacing: -.035em;
+  line-height: 1.1;
+}
+
+.signal-focus-demo .signal-focus-copy > span {
+  margin-top: 5px;
+  color: #707681;
+  font-size: 10px;
+}
+
+.signal-focus-demo .signal-focus-copy small {
+  margin-top: 10px;
+  padding: 5px 7px;
+  border: 1px solid rgb(107 111 249 / 13%);
+  border-radius: 999px;
+  background: rgb(255 255 255 / 72%);
+  color: #5559cc;
+  font-family: var(--font-geist-mono), ui-monospace, monospace;
+  font-size: 8px;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+}
+
+.signal-focus-demo .signal-focus-hint {
+  position: absolute;
+  bottom: 21px;
+  left: 50%;
+  z-index: 8;
+  color: #858b95;
+  font-size: 9px;
+  text-align: center;
+  transform: translateX(-50%);
+  white-space: nowrap;
+}
+
+.signal-focus-demo .signal-focus-controls {
+  position: relative;
+  z-index: 9;
+  grid-column: 2;
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  justify-content: center;
+  gap: 14px;
+  margin: 14px;
+  padding: 14px;
+  border: 1px solid rgb(255 255 255 / 76%);
+  border-radius: 11px;
+  background: rgb(255 255 255 / 72%);
+  box-shadow: 0 12px 30px rgb(68 73 94 / 9%);
+  cursor: default;
+  backdrop-filter: blur(16px);
+}
+
+.signal-focus-demo .signal-focus-presets {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 3px;
+  padding: 3px;
+  border-radius: 8px;
+  background: rgb(229 231 236 / 62%);
+}
+
+.signal-focus-demo .signal-focus-presets button {
+  height: 29px;
+  padding: 0 7px;
+  border: 0;
+  border-radius: 6px;
+  background: transparent;
+  color: #7a808a;
+  font-family: var(--font-geist-mono), ui-monospace, monospace;
+  font-size: 7px;
+  cursor: pointer;
+  transition: background 180ms ease, color 180ms ease, box-shadow 180ms ease;
+}
+
+.signal-focus-demo .signal-focus-presets button:hover { color: #20242b; }
+
+.signal-focus-demo .signal-focus-presets button.is-active {
+  background: #20242b;
+  color: #fff;
+  box-shadow: 0 3px 8px rgb(32 36 43 / 16%);
+}
+
+.signal-focus-demo .signal-focus-presets button:focus-visible,
+.signal-focus-demo .signal-focus-speed-bars input:focus-visible,
+.signal-focus-demo .signal-focus-speed-heading button:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.signal-focus-demo .signal-focus-speed-bars {
+  display: grid;
+  gap: 9px;
+}
+
+.signal-focus-demo .signal-focus-speed-control {
+  display: grid;
+  gap: 8px;
+  padding: 9px 10px;
+  border: 1px solid rgb(227 230 235 / 82%);
+  border-radius: 9px;
+  background: rgb(255 255 255 / 48%);
+}
+
+.signal-focus-demo .signal-focus-speed-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.signal-focus-demo .signal-focus-speed-heading > span {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  color: #666d77;
+  font-family: var(--font-geist-mono), ui-monospace, monospace;
+  font-size: 8px;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.signal-focus-demo .signal-focus-speed-heading output {
+  color: #5559cc;
+  font-size: 7px;
+}
+
+.signal-focus-demo .signal-focus-speed-heading button {
+  display: grid;
+  width: 32px;
+  height: 28px;
+  flex: none;
+  place-items: center;
+  padding: 0;
+  border: 1px solid #dfe2e8;
+  border-radius: 7px;
+  background: #fff;
+  color: #666d77;
+  cursor: pointer;
+  transition: color 180ms ease, transform 180ms ease, border-color 180ms ease;
+}
+
+.signal-focus-demo .signal-focus-speed-heading button:hover {
+  border-color: #c9cbfb;
+  color: var(--accent);
+  transform: scale(1.06);
+}
+
+.signal-focus-demo .signal-focus-speed-control > input {
+  width: 100%;
+  height: 12px;
+  margin: 0;
+  padding: 0;
+  border-radius: 999px;
+  background: transparent;
+  cursor: pointer;
+  appearance: none;
+}
+
+.signal-focus-demo .signal-focus-speed-control > input::-webkit-slider-runnable-track {
+  height: 3px;
+  border-radius: 999px;
+  background: #d9dce3;
+}
+
+.signal-focus-demo .signal-focus-speed-control > input::-webkit-slider-thumb {
+  width: 12px;
+  height: 12px;
+  margin-top: -4.5px;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 2px 6px rgb(71 75 146 / 22%);
+  appearance: none;
+}
+
+.signal-focus-demo .signal-focus-speed-control > input::-moz-range-track {
+  height: 3px;
+  border-radius: 999px;
+  background: #d9dce3;
+}
+
+.signal-focus-demo .signal-focus-speed-control > input::-moz-range-thumb {
+  width: 9px;
+  height: 9px;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 2px 6px rgb(71 75 146 / 22%);
+}
+
+.signal-focus-demo .signal-focus-announcement {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+@media (max-width: 720px) {
+  .signal-focus-card { grid-column: span 1; }
+}
+
+@media (max-width: 520px) {
+
+  .signal-focus-demo { grid-template-columns: 1fr; }
+
+  .signal-focus-demo .signal-focus-visual {
+    grid-column: 1;
+    height: 100%;
+  }
+
+  .signal-focus-demo .signal-focus-field {
+    top: 34%;
+    width: min(64%, 226px);
+  }
+
+  .signal-focus-demo .signal-focus-controls {
+    position: absolute;
+    right: 14px;
+    bottom: 14px;
+    left: 14px;
+    display: grid;
+    grid-column: 1;
+    grid-template-columns: auto minmax(0, 1fr);
+    gap: 10px;
+    margin: 0;
+    padding: 10px;
+  }
+
+  .signal-focus-demo .signal-focus-speed-bars {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 6px;
+  }
+
+  .signal-focus-demo .signal-focus-speed-control { padding: 7px; }
+  .signal-focus-demo .signal-focus-speed-heading button { width: 24px; height: 24px; }
+  .signal-focus-demo .signal-focus-hint { bottom: 112px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .signal-focus-demo .signal-focus-cloud { transform: none !important; }
+}

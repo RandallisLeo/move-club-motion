@@ -1,0 +1,48 @@
+# Light / Agent
+
+A local light-band study, using the supplied recording as a visual reference rather than reproducing Apple's implementation. Consecutive frames at 0.1 s intervals in the recording's active section show similar bright forms recurring roughly every 0.9–1 s. Audio responsiveness is a hypothesis; this study does not capture a microphone.
+
+- Index 022, slug `light-drift`, component `components/demos/light-drift.tsx`.
+- Existing blue stage and controls, dark local preview, shared stage height.
+- Iris, Lagoon, Ember palettes; Flow speed 0.2–2×; Fold 10–100%; Width 25–95% of horizontal span. Width changes only the horizontal span.
+- Pause keeps parameter editing available; reset/replay restore defaults. Reduced motion renders a still frame.
+
+## Motion
+
+`light-drift-surface.ts` defines a continuously advancing traveling wave with three bounded, slowly varying offsets. The active reference sequence repeats a similar full form in roughly 0.9–1 s; the default full carrier cycle is now 1 s, rather than interpreting that recurrence as a half-cycle. Each band has its own analytic smooth acceleration and deceleration, with positive velocity and no cycle-boundary kick. The primary phase lead is about 0.30 turns rather than nearly half a turn, with bounded drift. Crossings consequently travel into the upper and lower lobes instead of remaining near the midline. The quiet contour occupies a separate phase at 0.66 turns. Spatial amplitude tapers strongly toward the tips, and a small asymmetric harmonic softens the otherwise mirrored wave shape.
+
+The third contour remains below both main bands' intensity. It carries its own translucent face and a low-energy face attached to its ridge so the weaker strand retains visible film-like material; it does not fill the gap between the primary bands. The central region locks the primary peak intensities, while the shoulders can vary more quietly. This replaces independently eased rotation paths that produced a jump-rope motion and a shared waiting pose.
+
+## Light and adhesion
+
+`light-drift-engine.ts` evaluates all three wave fields together in one fragment shader. Nearby primary contours pull toward each other. A stateful 193-column adhesion field captures contact below a 0.072 gap and releases it beyond 0.215, extending the connected run along the wave without widening the isolated ridges. A damped spring retains a short neck after the underlying paths move apart; bond strength decays gradually on release. Spatial smoothing spreads tension along neighboring columns to prevent hard shoulders. Contact is transported along the moving crossing using the relative velocity and tangent difference. A second state field carries the shared light’s lag, shear, stretch, and spread. These alter the asymmetric meniscus reach and waist from motion history instead of reusing a fixed symmetric neck. Both fields are uploaded as small float textures with explicit interpolation. Pause freezes this history; replay clears it. The pulling force fades smoothly with separation before release, avoiding a hard shoulder or catch in the wave. Nearby contours merge into a bright, bounded contact band. A separate lower-radiance translucent face spans the primary ridges, remaining visible when they separate or move to the same side of the horizontal axis.
+
+The primary cores retain fixed Gaussian profiles. After smoothing the path samples, `lightAttachedSection` derives each membrane section directly from those same two rendered ribbon surfaces (their center lines plus the existing optical surface extent). The section retains finite width at a crossing. A bounded interior coordinate warp vanishes at both attachments; lag and shear cannot translate the boundaries. Each connected contact interval now has explicit left and right bounds. The side contours use a circular inward arc anchored at the upper and lower attachments; its depth is approximately 27% of the interval length per side, with a small motion-dependent asymmetry. The middle retains a nonzero span. This replaces brightness thresholds that only suggested an indentation. This replaces the independently offset Gaussian joining lobe and contact-dependent enlarged ridge union.
+
+Tests check surface-boundary equality across motion and Fold values, endpoint-invariant interior deformation, finite crossing volume, and pause/replay state. The pre-change comparison copy is stored locally at `/tmp/light-drift-before-attachment-fix/`.
+
+All three ridges retain their own low-radiance translucent face, brightest on the ridge and falling off toward the horizontal center axis. The face direction follows the ridge's side of the axis. The face between the two primary ridges uses those exact path samples as its boundaries and fades inward from each ridge. Its radiance is capped at 0.24 before the shared longitudinal taper and is max-composited, preserving the bright cores and the stronger contact band’s concave sides. Core, face and joining volume share a bounded light budget, and the third contour remains subordinate. These are stylized optical and adhesion cues, not a physical fluid simulation.
+
+A color-only pass follows each existing ridge with narrow ice-blue/cyan and champagne/pale-orange fringes. Their polarity follows the band’s roll; the more saturated shoulders sit beside white cores, with a faint tint carried into the broader film and halo. White-core protection follows the ridges rather than bleaching the entire joining volume. The selected palette remains an undertone. This pass preserves incoming linear luminance and does not modify trajectories, adhesion, film direction, thickness, opacity masks, or bloom settings.
+
+The full field renders to a half-float target, with subpixel softening, bloom (0.62 strength, 0.88 radius, 0.22 threshold), ACES tone mapping, and sRGB output. The scene background stays dark. The frame loop suspends offscreen, in hidden documents, when paused, or with reduced motion. Cleanup disposes all rendering resources and observers.
+
+## Validation
+
+Tests cover forward progression through cycle boundaries, bounded changing phase separation, repeatable individual paths, quiet endpoints, the persistent weaker third contour, retained geometric contact followed by release, pause/replay handling, and different contact shapes at comparable gaps with different motion histories. Production build, TypeScript, and targeted lint check integration. Browser review checks the rendered light bands and controls. Publishing requires a separate release approval.
+
+## Agent state playground
+
+The local demo has a circular light stage on the left and persistent state and parameter controls on the right. Listening is a quiet, gathered flow; Thinking uses faster interweaving; Answering alternates expansion and slower phrase intervals. Interrupt brakes the current motion and returns to Listening after 0.85 seconds of active playback. This is a state simulation, with no microphone or AI service connected.
+
+State transitions smooth wave speed and path amplitude without restarting the phase or changing the bright cores’ spatial thickness. Adhesion and all film boundaries use the same amplitude-adjusted path samples. Offscreen or hidden playback freezes the transition clock; selecting another state cancels a pending interruption return. Reduced motion provides static poses and the same labeled state transition. Speed, Fold, and Width remain visible with generous vertical spacing. Palette, pause, and local reset controls are omitted; the gallery replay button still resets the study. The smaller circular stage is vertically centered, with its state caption inside the lower part of the orb.
+
+Fold values above 65% smoothly increase the path excursion further: at 100%, the primary sinusoidal amplitude is 0.30 instead of 0.20. The established 65% pose, fixed core profile, and quiet endpoints are preserved.
+
+State buttons now apply explicit presets to all three sliders (speed / Fold / Width): Listening 1.30× / 73% / 70%, Thinking 1.50× / 59% / 95%, Answering 1.50× / 90% / 90%, Interrupt 1.30× / 73% / 70%. The interrupt return also restores the Listening preset. Any manual slider edit clears the selected state, labels the orb Custom, and cancels the pending interrupt return. Custom mode preserves the current material amplitude and cadence multiplier while handing the three exposed parameters to the user; applying a preset resumes that state’s choreography.
+
+## Simulated sound feedback
+
+Sound in simulates the user taking the floor: it routes Thinking or Answering through Interrupt and back to Listening, and routes other modes directly to Listening. Sound out simulates the agent speaking and is enabled only in Answering; leaving that state cancels output. Each accepted click triggers one simulated accent. Manual state selection or slider tuning cancels the current sound event. The whole light expands about its center in 160 ms, holds for 220 ms, then contracts smoothly over 1.60 seconds (input) or 1.85 seconds (output). It then stays at its normal size until clicked again; there is no repeating breath or pulse. Input peaks at 45% magnification, output at 60%. The active button reads Receiving… or Speaking… and the orb shows Simulated input/output; these clear automatically on completion. They do not request microphone access or play audio.
+
+All layers share the same centered magnification, preserving their attachments. There is no position shake or exposure pulse, and the underlying wave phase continues without restarting. State transitions also apply the corresponding slider preset. Reduced motion suppresses the transform; hidden/offscreen playback freezes its clock.

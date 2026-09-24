@@ -11,6 +11,9 @@ const siteUrl = process.env.NEXT_PUBLIC_SITE_URL
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: 'Move Club — Motion & Interaction Studies',
+  icons: {
+    icon: { url: '/favicon.svg', type: 'image/svg+xml', sizes: 'any' },
+  },
   description: 'An evolving collection of interactive studies exploring responsive feeds, selection, reveal, depth, layout, and motion.',
   openGraph: {
     title: 'Move Club',
