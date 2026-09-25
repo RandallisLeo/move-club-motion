@@ -99,7 +99,7 @@ Every study must have one unique root class, for example `.liquid-stack-demo`, a
 3. Add its metadata to `data/experiments.ts`. Use a concise `Object / Behavior` title when it fits, a three-digit index, a clear category, and short descriptive copy.
 4. Register the new component explicitly in `components/motion-gallery.tsx`; do not rely on an unrelated fallback component.
 5. Preserve the `replayKey` contract so the shared replay control can restart the study.
-6. Keep its Code link pointed at the matching source file.
+6. Component cards show a Code button that opens the existing contact dialog. Scenario cards never show a Code entry, including in Mix. Keep every published study’s matching source file available on GitHub main.
 7. Add a new filter only when the new study genuinely needs a new category.
 8. Follow the shared card sizing rules and confirm the card behaves at desktop, tablet, and mobile widths without unintended clipping or leaking layout styles.
 9. Preserve keyboard access, visible focus, semantic controls, and the user's reduced-motion preference.
@@ -131,7 +131,7 @@ Vercel is the publishing path for the public website and should preserve `https:
 Every approved release must complete all of these steps:
 
 1. **Sync the new motion source to GitHub.** Commit and push the study component and all required registry, metadata, style, asset, and dependency changes. Keep the component filename, experiment slug, registry reference, displayed study name, and source path aligned.
-2. **Create and verify the study-to-source link.** The published card's `Code` link must point to the matching file on the GitHub `main` branch. Verify the remote file exists at that exact URL after pushing; a local path or unpushed file does not count.
+2. **Verify source availability and Code behavior.** Verify each study’s matching source file exists on GitHub `main` after pushing. Component cards open the existing contact dialog from Code; scenario cards have no Code entry in either Mix or Scenarios. Do not replace the dialog with a direct source link.
 3. **Publish the same reviewed version to Vercel.** Run the production build, deploy it to the existing Move Club Vercel project, preserve `https://move-club-motion.vercel.app`, and verify the public site is serving the release.
 
 - Keep `.openai/` local and ignored; never publish hosting configuration or credentials to GitHub.

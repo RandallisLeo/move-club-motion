@@ -187,7 +187,7 @@ export function MotionGallery() {
 
                   <div className="project-description">
                     <p>{item.description}</p>
-                    {item.slug !== 'canvas-comment' && <StudyCodeContact study={item} />}
+                    {item.format !== 'scenario' && <StudyCodeContact study={item} />}
                   </div>
                   <div className="project-footer">
                     <span>Motion / React</span>
