@@ -1,7 +1,6 @@
 'use client';
 
 import {
-  ArrowUp,
   Check,
   FolderOpen,
   ImagePlus,
@@ -48,7 +47,7 @@ type ExtraResult = {
 const SAMPLE_SOURCE = '/canvas-comment/lamp-source.jpg';
 const SAMPLE_REFERENCE = '/canvas-comment/room-reference.jpg';
 const SAMPLE_RESULT = '/canvas-comment/lamp-result.jpg';
-const SAMPLE_PROMPT = '把米白色棚拍背景替换成参考图里的雾林阅读角，保留蓝色台灯和石台的造型、位置与比例。';
+const SAMPLE_PROMPT = 'Replace the cream studio background with the misty woodland reading nook in the reference. Keep the blue lamp and stone pedestal in the same shape, position, and proportions.';
 const SURFACE_WIDTH = 3000;
 const SURFACE_HEIGHT = 1000;
 const BRANCH_THEMES: BranchTheme[] = ['green', 'purple', 'red'];
@@ -305,7 +304,7 @@ export function CanvasComment({ replayKey }: { replayKey: number }) {
         };
         const id = nextCommentId.current;
         setPending({ id, target: key, point });
-        setDraft(id === 1 ? SAMPLE_PROMPT : key === 'result' ? '把台灯向右移动一点，让它更靠近窗边。' : '保留台灯，再试一个更安静的室内背景。');
+        setDraft(id === 1 ? SAMPLE_PROMPT : key === 'result' ? 'Move the lamp slightly to the right, closer to the window.' : 'Keep the lamp and try a calmer interior background.');
         setComposerOpen(true);
       }
     }
@@ -326,7 +325,7 @@ export function CanvasComment({ replayKey }: { replayKey: number }) {
       event.preventDefault();
       const id = nextCommentId.current;
       setPending({ id, target: key, point: { x: 68, y: 30 } });
-      setDraft(id === 1 ? SAMPLE_PROMPT : key === 'result' ? '把台灯向右移动一点，让它更靠近窗边。' : '保留台灯，再试一个更安静的室内背景。');
+      setDraft(id === 1 ? SAMPLE_PROMPT : key === 'result' ? 'Move the lamp slightly to the right, closer to the window.' : 'Keep the lamp and try a calmer interior background.');
       setComposerOpen(true);
       return;
     }
@@ -483,7 +482,7 @@ export function CanvasComment({ replayKey }: { replayKey: number }) {
         </div>
         <div className="canvas-comment-composer-actions">
           <span>Enter to send · Shift Enter for a new line</span>
-          <button type="button" onClick={submitComment} disabled={!draft.trim()}>{savingFollowup ? 'Saving' : 'Send'} <ArrowUp size={13} strokeWidth={2} /></button>
+          <button type="button" onClick={submitComment} disabled={!draft.trim()}>{savingFollowup ? 'Saving' : 'Send'}</button>
         </div>
       </motion.div>
     );

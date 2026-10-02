@@ -97,7 +97,7 @@
 .canvas-comment-demo .canvas-comment-linked-reference button { display: grid; width: 28px; height: 28px; margin-left: auto; place-items: center; padding: 0; border: 0; border-radius: 6px; background: #f4f5f7; color: var(--cc-soft); }
 .canvas-comment-demo .canvas-comment-composer-actions { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-top: 8px; }
 .canvas-comment-demo .canvas-comment-composer-actions > span { max-width: 150px; color: var(--cc-soft); font-size: 7px; line-height: 1.35; }
-.canvas-comment-demo .canvas-comment-composer-actions button { display: flex; height: 30px; flex: none; align-items: center; gap: 6px; padding: 0 9px 0 11px; border: 0; border-radius: 7px; background: #242831; color: #fff; font-size: 9px; font-weight: 600; }
+.canvas-comment-demo .canvas-comment-composer-actions button { display: flex; height: 30px; flex: none; align-items: center; padding: 0 11px; border: 0; border-radius: 7px; background: #242831; color: #fff; font-size: 9px; font-weight: 600; }
 .canvas-comment-demo .canvas-comment-composer-actions button:disabled { opacity: .4; cursor: default; }
 
 .canvas-comment-demo .canvas-comment-relationship { position: absolute; z-index: 8; }
