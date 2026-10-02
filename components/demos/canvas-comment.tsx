@@ -47,6 +47,7 @@ type ExtraResult = {
 const SAMPLE_SOURCE = '/canvas-comment/lamp-source.jpg';
 const SAMPLE_REFERENCE = '/canvas-comment/room-reference.jpg';
 const SAMPLE_RESULT = '/canvas-comment/lamp-result.jpg';
+const COMMENTER_INITIAL = 'R';
 const SAMPLE_PROMPT = 'Replace the cream studio background with the misty woodland reading nook in the reference. Keep the blue lamp and stone pedestal in the same shape, position, and proportions.';
 const SURFACE_WIDTH = 3000;
 const SURFACE_HEIGHT = 1000;
@@ -471,7 +472,7 @@ export function CanvasComment({ replayKey }: { replayKey: number }) {
     return (
       <motion.div className="canvas-comment-composer" initial={{ opacity: 0, y: 8, scale: 0.97 }} animate={{ opacity: 1, y: 0, scale: 1 }} exit={{ opacity: 0, y: 6, scale: 0.98 }} onPointerDown={(event) => event.stopPropagation()}>
         <div className="canvas-comment-composer-head">
-          <span><b>R</b> Comment {pending.id}</span>
+          <span><b>{COMMENTER_INITIAL}</b> Comment {pending.id}</span>
           <button type="button" onClick={() => setComposerOpen(false)} aria-label="Close comment"><X size={13} /></button>
         </div>
         <textarea autoFocus value={draft} onChange={(event) => setDraft(event.target.value)} onKeyDown={composerKeyDown} rows={3} aria-label="Describe the edit" />
@@ -497,7 +498,7 @@ export function CanvasComment({ replayKey }: { replayKey: number }) {
     return (
       <>
         {pending?.target === target && (
-          <button type="button" className={`canvas-comment-pin${savingFollowup ? ' is-saving' : ''}`} style={pinPosition(pending.point)} onPointerDown={(event) => event.stopPropagation()} onClick={() => setComposerOpen((open) => !open)} aria-label={`Open comment ${pending.id}`}>{savingFollowup ? '…' : pending.id}</button>
+          <button type="button" className={`canvas-comment-pin${savingFollowup ? ' is-saving' : ''}`} style={pinPosition(pending.point)} onPointerDown={(event) => event.stopPropagation()} onClick={() => setComposerOpen((open) => !open)} aria-label={`Open comment ${pending.id} by ${COMMENTER_INITIAL}`} aria-busy={savingFollowup}>{COMMENTER_INITIAL}</button>
         )}
       </>
     );
@@ -576,7 +577,7 @@ export function CanvasComment({ replayKey }: { replayKey: number }) {
                 <AnimatePresence>
                   {historyOpen === 'result' && (
                     <motion.div className="canvas-comment-history" initial={{ opacity: 0, y: 7 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: 5 }}>
-                      <div><span><b>R</b> Generation note</span><button type="button" onClick={() => setHistoryOpen(null)} aria-label="Close generation note"><X size={12} /></button></div>
+                      <div><span><b>{COMMENTER_INITIAL}</b> Generation note</span><button type="button" onClick={() => setHistoryOpen(null)} aria-label="Close generation note"><X size={12} /></button></div>
                       <p>{firstPrompt}</p>
                       <figure><img src={reference} alt="Reference used for this generation" /><figcaption><Link2 size={10} /> Based on {referenceName}</figcaption></figure>
                       <small>{busy ? 'Generating output…' : 'Applied to generated output'}</small>
@@ -593,7 +594,7 @@ export function CanvasComment({ replayKey }: { replayKey: number }) {
                 <AnimatePresence>
                   {historyOpen === item.id && (
                     <motion.div className="canvas-comment-history" initial={{ opacity: 0, y: 7 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: 5 }}>
-                      <div><span><b>R</b> Generation note</span><button type="button" onClick={() => setHistoryOpen(null)} aria-label="Close generation note"><X size={12} /></button></div>
+                      <div><span><b>{COMMENTER_INITIAL}</b> Generation note</span><button type="button" onClick={() => setHistoryOpen(null)} aria-label="Close generation note"><X size={12} /></button></div>
                       <p>{item.prompt}</p>
                       <figure><img src={reference} alt="Reference used for this generation" /><figcaption><Link2 size={10} /> Based on {referenceName}</figcaption></figure>
                       <small>{item.status === 'loading' ? 'Generating output…' : 'Applied to generated output'}</small>
