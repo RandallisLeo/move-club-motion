@@ -1,0 +1,8 @@
+.emoji-suspend-review .emoji-suspend-review-layout { display: grid; grid-template-columns: .85fr 1.15fr; align-items: center; gap: clamp(32px, 6vw, 96px); max-width: 1300px; margin: auto; padding: 36px clamp(24px, 5vw, 72px); }
+.emoji-suspend-review .emoji-suspend-review-kicker { color: var(--ink-soft); font: 10px var(--font-geist-mono), monospace; letter-spacing: .07em; }
+.emoji-suspend-review .emoji-suspend-review-copy h1 { margin: 24px 0; color: var(--foreground); font-size: clamp(34px, 4.3vw, 62px); font-weight: 500; line-height: 1.09; letter-spacing: -.05em; }
+.emoji-suspend-review .emoji-suspend-review-copy p { max-width: 350px; color: var(--ink-soft); font-size: 13px; line-height: 1.9; }
+.emoji-suspend-review .emoji-suspend-review-legend { display: flex; flex-direction: column; gap: 12px; margin: 30px 0; color: var(--ink-soft); font: 10px var(--font-geist-mono), monospace; }
+.emoji-suspend-review .emoji-suspend-review-copy > a { display: inline-block; padding-bottom: 5px; border-bottom: 1px solid var(--line); font-size: 12px; }
+.emoji-suspend-review .emoji-suspend-review-stage { position: relative; height: min(720px, calc(100svh - 144px)); min-height: 340px; border-radius: var(--radius); overflow: hidden; }
+@media (max-width: 700px) { .emoji-suspend-review .emoji-suspend-review-layout { grid-template-columns: 1fr; gap: 24px; padding-top: 24px; } .emoji-suspend-review .emoji-suspend-review-stage { height: min(620px, calc(100svh - 112px)); grid-row: 1; } .emoji-suspend-review .emoji-suspend-review-copy h1 { font-size: 38px; } }

@@ -1,0 +1,5 @@
+Brand SVGs sourced from Lobe Icons (MIT).
+https://github.com/lobehub/lobe-icons/tree/master/packages/static-svg/icons
+
+Cursor, Claude, GitHub Copilot, Windsurf, Gemini, and Replit marks belong to their respective owners.
+Reference brand guidelines: https://cursor.com/brand and https://windsurf.com/brand

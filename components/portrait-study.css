@@ -1,0 +1,10 @@
+/* One column across two existing rows; neighboring studies keep their dimensions. */
+.portrait-study-card { grid-column:span 1; grid-row:span 2; display:grid; grid-template-rows:auto minmax(0,1fr) auto auto; scroll-margin-top:12px; }
+/* Keep the portrait interface centered in its stage, like the other studies. */
+.portrait-study-stage { min-height:0; align-self:stretch; display:grid; place-items:center; overflow:clip; }
+.portrait-study-viewport { position:relative; width:100%; height:min(884px,calc(100dvh - 88px)); max-height:100%; }
+/* Narrow galleries use a single dedicated row, also bounded by the visible window. */
+@media(max-width:980px) {
+ .portrait-study-card { grid-column:1/-1; grid-row:span 1; }
+ .portrait-study-stage { height:min(884px,calc(100dvh - 88px)); min-height:0; }
+}

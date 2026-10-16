@@ -1,0 +1,19 @@
+.emoji-suspend-demo { position: absolute; inset: 0; display: flex; flex-direction: column; overflow: hidden; background: #0b0b12; color: #f0eff8; }
+.emoji-suspend-demo .emoji-suspend-heading { position: absolute; z-index: 1; top: 20px; left: 22px; right: 22px; display: flex; justify-content: space-between; gap: 10px; color: #a4a2b4; font-family: var(--font-geist-mono), monospace; font-size: 8px; letter-spacing: .08em; pointer-events: none; }
+.emoji-suspend-demo .emoji-suspend-scene { position: absolute; inset: 32px 0 77px; cursor: grab; touch-action: none; outline-offset: -6px; }
+.emoji-suspend-demo .emoji-suspend-scene:active { cursor: grabbing; }
+.emoji-suspend-demo .emoji-suspend-scene canvas { display: block; width: 100%; height: 100%; }
+.emoji-suspend-demo .emoji-suspend-scene:focus-visible { outline: 1px solid #bdbaff; border-radius: 8px; }
+.emoji-suspend-demo .emoji-suspend-controls { position: absolute; bottom: 36px; left: 22px; right: 22px; display: flex; justify-content: space-between; align-items: center; gap: 10px; }
+.emoji-suspend-demo .emoji-suspend-materials { display: flex; padding: 3px; border: 1px solid #ffffff18; border-radius: 9px; background: #ffffff06; }
+.emoji-suspend-demo .emoji-suspend-materials button { min-height: 29px; padding: 0 11px; border: 0; border-radius: 6px; background: transparent; color: #a4a2b4; font-size: 11px; cursor: pointer; transition: color 180ms, background 180ms; }
+.emoji-suspend-demo .emoji-suspend-materials button[aria-pressed='true'] { background: #ebe9ff; color: #343143; box-shadow: 0 1px 6px #0003; }
+.emoji-suspend-demo .emoji-suspend-actions { display: flex; gap: 5px; }
+.emoji-suspend-demo .emoji-suspend-actions button { display: grid; width: 30px; height: 30px; place-items: center; border: 1px solid #ffffff18; border-radius: 8px; background: #ffffff06; color: #c4c1d4; cursor: pointer; }
+.emoji-suspend-demo .emoji-suspend-actions button:hover { background: #ffffff16; }
+.emoji-suspend-demo button:focus-visible { outline: 2px solid #bdbaff; outline-offset: 3px; }
+.emoji-suspend-demo .emoji-suspend-note { position: absolute; bottom: 16px; left: 22px; right: 22px; display: flex; justify-content: space-between; gap: 8px; color: #898697; font-size: 9px; }
+.emoji-suspend-demo .emoji-suspend-note > span:last-child { display: flex; align-items: center; gap: 4px; font-size: 8px; }
+.emoji-suspend-demo .emoji-suspend-fallback { margin: 40px; font-size: 12px; line-height: 1.7; color: #cbc7e4; }
+@media (max-width: 380px) { .emoji-suspend-demo .emoji-suspend-controls, .emoji-suspend-demo .emoji-suspend-note { left: 14px; right: 14px; } .emoji-suspend-demo .emoji-suspend-materials button { padding: 0 8px; } .emoji-suspend-demo .emoji-suspend-note > span:last-child { font-size: 7px; } }
+@media (prefers-reduced-motion: reduce) { .emoji-suspend-demo button { transition: none; } }

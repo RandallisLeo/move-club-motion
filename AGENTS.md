@@ -15,13 +15,23 @@ Do not make different animations behave alike merely to create consistency. Cons
 Treat every user-facing writing sample—especially social posts, introductions, launch copy, and project descriptions—as a short story rather than a summary of facts.
 
 - Open with a concrete moment, observation, tension, or impulse that makes the reader want to continue. Avoid starting with a generic statement about the importance of design or motion.
-- Build a clear progression: what caught Randall's attention, why watching or thinking was no longer enough, what he decided to make or learn, and how the reader can join or respond.
+- Build a clear progression: what caught Randall's attention, why watching or thinking was no longer enough, what he decided to make or learn, and what he noticed along the way.
 - Use specific first-person language and preserve Randall's natural, curious voice. Do not replace it with polished marketing language or broad slogans.
 - Let the project name and explanation arrive after the hook has created a reason to care.
-- End with a simple invitation when appropriate, such as exploring the work or sharing a related study.
-- Before presenting a sample, check that its opening creates curiosity and that each sentence advances the story.
+- **No engagement prompts in X posts or other social copy.** Do not end with questions, solicit comments, votes, opinions, or feedback, or add calls to like, share, or follow. End naturally on the work or a personal observation.
+- Before presenting a sample, check that its opening creates curiosity, each sentence advances the story, and the ending contains no unsolicited engagement prompt.
 
 ## Shared visual DNA
+
+### Mandatory style rule — all design follows Move Club
+
+- Every new design and revision must follow the established Move Club website style, including the content inside each motion stage. This is a mandatory default, not an optional reference.
+- Reuse Move Club's existing palette, Geist Sans / Geist Mono roles, restrained typography, whitespace, thin borders, radii, soft elevation, Lucide icons, and control language. Start from the existing website and its components rather than an invented visual theme.
+- **Cards must be borderless.** Remove decorative perimeter strokes from existing cards and do not add them to any future card design unless the user explicitly requests a border. This applies inside motion stages as well as the shared gallery. Do not imitate a border with a ring, outline, pseudo-element, or a thin inset/perimeter shadow. Use surface color, spacing, and soft elevation to separate cards. Necessary keyboard focus indicators and internal content dividers are separate from decorative card borders and must remain accessible.
+- Do not introduce a generic AI-generated aesthetic, an unrelated brand or app identity, arbitrary pastel cards, decorative illustrations, gradients, device mockups, or additional product chrome unless the user explicitly requests that direction.
+- A reference motion authorizes studying and recreating its interaction and rhythm. It does not authorize copying its app shell, device framing, visual theme, or adding an unsolicited application scenario.
+- Keep motion concepts creatively independent through choreography, timing, physics, and interaction. Visual freedom described elsewhere in this file does not override this rule; a different visual style requires the user's explicit request.
+- Before presenting a design, compare it with the actual Move Club website and verify that it reads as part of the same visual system.
 
 Preserve and reuse the established tokens in `app/globals.css` for all UI outside an individual demo stage:
 
@@ -66,9 +76,17 @@ Standard gallery studies share one responsive stage height, regardless of whethe
 - Verify equal stage heights and aligned stage edges for cards in the same row at desktop, tablet, and mobile widths. Check intermediate animation states, control reachability, and moving highlights after resizing.
 - Preserve existing specialized playground layouts and any custom dimensions the user explicitly requests; this is the default rule for new standard gallery studies.
 
+### Portrait app studies
+
+- For phone interfaces that need vertical space, opt in with `layout: 'portrait'` in `data/experiments.ts`. The shared portrait layout uses one column across two existing rows on desktop; neighboring studies retain their stage dimensions.
+- At tablet and mobile breakpoints, portrait studies occupy their own row so existing wide scenarios do not leave empty half-rows.
+- Present portrait apps as the interactive interface itself, without simulated status bars, signal/battery icons, camera cutouts, home indicators, or device frames unless explicitly requested. Keep a real phone screen aspect ratio (Trip / Recall uses 393 × 852) and fit it proportionally into the available viewport. Do not size width and height independently. Use as much visible height as possible, reserve the site header and only a small edge margin, and avoid double-counting title/padding space. Adapt internal typography, controls, and section heights without distorting the phone. Use the same composition for standalone previews and gallery cards.
+- Fit the complete interface within the browser’s visible height after reserving the sticky site header and minimal edge spacing. Preserve useful width and legible controls while adjusting map/photo/content heights. Center the interface statically inside its stage. Do not add scroll-following, sticky positioning, or portrait-specific automatic scrolling; it should behave like the other studies. Verify short windows and direct hash navigation, not only tall screenshots.
+- Phone interfaces must not depend on hover. Keep actions visible and use taps, swipes, pressed states, and persistent selection feedback. Retain keyboard access and visible focus for the web preview.
+
 ## Freedom inside each motion stage
 
-The content inside `.demo-stage` may be completely unique. A study may use its own choreography, easing, timing, interaction model, local palette, materials, 2D or 3D treatment, Canvas, WebGL, SVG, or other rendering techniques.
+The motion inside `.demo-stage` may be completely unique. A study may use its own choreography, easing, timing, interaction model, 2D or 3D treatment, Canvas, WebGL, SVG, or other rendering techniques. Its visual styling must still follow the mandatory Move Club style rule above; introduce another palette, visual theme, or product shell only when the user explicitly requests it.
 
 Do not normalize animation duration, easing, trajectory, sequencing, or visual effect across studies. The motion idea is the subject of each card and must remain distinct.
 

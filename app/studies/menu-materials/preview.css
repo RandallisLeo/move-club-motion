@@ -1,0 +1,99 @@
+.menu-materials-review .mm-review-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(280px, 480px);
+  align-items: center;
+  gap: clamp(30px, 6vw, 90px);
+  max-width: 1220px;
+  margin: 0 auto;
+  padding: clamp(32px, 7vh, 80px) clamp(20px, 4vw, 64px);
+}
+.menu-materials-review .mm-review-copy > span,
+.menu-materials-review .mm-review-references > span {
+  color: var(--ink-soft);
+  font:
+    9px var(--font-geist-mono),
+    monospace;
+  letter-spacing: 0.05em;
+}
+.menu-materials-review .mm-review-copy h1 {
+  margin: 20px 0;
+  font-size: clamp(30px, 4vw, 54px);
+  font-weight: 450;
+  letter-spacing: -0.05em;
+  line-height: 1.1;
+}
+.menu-materials-review .mm-review-copy p {
+  max-width: 420px;
+  margin: 0 0 16px;
+  color: var(--ink-soft);
+  font-size: 13px;
+  line-height: 1.85;
+}
+.menu-materials-review .mm-review-references {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  gap: 12px;
+  margin-top: 30px;
+  padding-top: 20px;
+  border-top: 1px solid var(--line);
+}
+.menu-materials-review .mm-review-references > a {
+  color: var(--ink-soft);
+  font-size: 11px;
+}
+.menu-materials-review .mm-review-references > a:hover {
+  color: var(--accent);
+}
+.menu-materials-review .mm-review-references > a:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+.menu-materials-review .mm-review-meta {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 16px 0;
+}
+.menu-materials-review .mm-review-meta > span {
+  color: var(--ink-soft);
+  font:
+    10px var(--font-geist-mono),
+    monospace;
+}
+.menu-materials-review .mm-review-meta > h2 {
+  flex: 1;
+  margin: 0;
+  font-size: 18px;
+  font-weight: 500;
+  letter-spacing: -0.025em;
+}
+.menu-materials-review .mm-review-card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--line);
+}
+.menu-materials-review .mm-review-card-footer > span {
+  color: var(--ink-soft);
+  font:
+    9px var(--font-geist-mono),
+    monospace;
+}
+@media (max-width: 720px) {
+  .menu-materials-review .header-nav > span {
+    display: none;
+  }
+  .menu-materials-review .mm-review-layout {
+    grid-template-columns: minmax(0, 1fr);
+    padding-top: 20px;
+    gap: 12px;
+  }
+  .menu-materials-review .mm-review-card {
+    grid-row: 1;
+  }
+  .menu-materials-review .mm-review-copy {
+    padding-top: 10px;
+  }
+}

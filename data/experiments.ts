@@ -3,6 +3,7 @@ export type Experiment = {
   index: string;
   title: string;
   format?: 'component' | 'scenario';
+  layout?: 'portrait';
   category: 'Interaction' | 'Feedback' | 'Transition' | 'Space';
   tags: string;
   description: string;
@@ -10,6 +11,107 @@ export type Experiment = {
 };
 
 export const experiments: Experiment[] = [
+  {
+    slug: 'discs-relay', index: '045', title: 'Discs / Relay', category: 'Transition',
+    tags: 'Ripple · Unfold · Slow turn', tone: 'paper',
+    description: 'Switch between a rotating ring, a depth wave, and a flat orbit.',
+  },
+  {
+    slug: 'cards-drift', index: '044', title: 'Cards / Drift', category: 'Transition',
+    tags: 'Weight · Turn · Return', tone: 'paper',
+    description: 'Swipe through overlapping cards with a gentle turn, expand one to read, then fold it back into place.',
+  },
+  {
+    slug: 'menu-materials', index: '043', title: 'Menu / Material', category: 'Interaction',
+    tags: 'Silk · Flap · Light', tone: 'paper',
+    description: 'Switch between silk, hinged panels, and light to compare how each material opens and settles.',
+  },
+  {
+    slug: 'emoji-suspend', index: '042', title: 'Emoji / Suspend', category: 'Space',
+    tags: 'Jelly · Gel · Glass · Ice', tone: 'paper',
+    description: 'Turn a block of dimensional emoji and compare four transparent materials.',
+  },
+  {
+    slug: 'project-orbit', index: '036', title: 'Project / Orbit', category: 'Space',
+    tags: 'Orbit · Tilt · Tools', tone: 'paper',
+    description: 'An idea rarely travels alone. I gave this one a few coding companions to circle around; tap a tool and take a closer look.',
+  },
+  {
+    slug: 'context-bloom', index: '037', title: 'Context / Bloom', category: 'Feedback',
+    tags: 'Drag · Scatter · Attach', tone: 'blue',
+    description: 'Attach references with a ripple of particles.',
+  },
+  {
+    slug: 'apps-connect', index: '038', title: 'Apps / Connect', category: 'Interaction',
+    tags: 'Dock · Expand · Select', tone: 'paper',
+    description: 'Add and manage connected apps from a compact dock.',
+  },
+  {
+    slug: 'tabs-turn', index: '039', title: 'Tabs / Turn', category: 'Transition',
+    tags: 'Chapter · Slide · Turn', tone: 'paper',
+    description: 'Switch tabs with a sliding page transition.',
+  },
+  {
+    slug: 'process-check', index: '040', title: 'Process / Check', category: 'Feedback',
+    tags: 'Sequence · Trace · Complete', tone: 'blue',
+    description: 'Follow timed steps as progress moves from one check to the next.',
+  },
+  {
+    slug: 'cards-sphere', index: '041', title: 'Cards / Sphere', category: 'Space',
+    tags: 'Dolly · Depth · Orbit', tone: 'paper',
+    description: 'Switch between close-up cards and a full sphere. Drag to rotate.',
+  },
+  {
+    slug: 'token-reset', index: '035', title: 'Token / Reset', category: 'Interaction',
+    tags: 'Ultra · Pressure · Glass', tone: 'dark',
+    description: 'The send button wants more than Ultra. It runs its tank dry, breaks free, and takes a glass chute down to type its own fresh start.',
+  },
+  {
+    slug: 'moss-grow', index: '028', title: 'Moss / Grow', category: 'Interaction',
+    tags: 'Proximity · Growth · Texture', tone: 'paper',
+    description: 'A little attention brings the wood to life. Hover or tap to grow a patch of moss.',
+  },
+  {
+    slug: 'data-tide', index: '029', title: 'Data / Tide', category: 'Feedback',
+    tags: 'Number · Chart · Continuity', tone: 'blue',
+    description: 'Change the period and follow the numbers and chart as they settle into the same rhythm.',
+  },
+  {
+    slug: 'image-emerge', index: '030', title: 'Image / Emerge', category: 'Transition',
+    tags: 'Stagger · Blur · Clarity', tone: 'paper',
+    description: 'A forest, a lake, a winding road. Each arrives softly, then comes into focus.',
+  },
+  {
+    slug: 'fan-word', index: '031', title: 'Word / Arc', category: 'Interaction',
+    tags: 'Arc · Stretch · Living image', tone: 'paper',
+    description: 'Move through the arc. The circle in the middle opens into a word with a living backdrop.',
+  },
+  {
+    slug: 'glass-unfold', index: '032', title: 'Glass / Unfold', category: 'Space',
+    tags: 'Frost · Expand · Recenter', tone: 'paper',
+    description: 'A little glass panel makes room on either side, settles at the center, then softly folds back.',
+  },
+  {
+    slug: 'type-insert', index: '033', title: 'Type / Insert', category: 'Transition',
+    tags: 'Type · Bubble · Reflow', tone: 'blue',
+    description: 'Make room for a small thought. Three lines arrive softly; image buttons slide into different gaps, and the words make room.',
+  },
+  {
+    slug: 'scene-advance', index: '034', title: 'Scene / Advance', category: 'Space',
+    tags: 'Dolly · Depth · Scroll', tone: 'paper',
+    description: 'A distant clearing draws closer. Scroll or drag into the forest at your own pace.',
+  },
+  {
+    slug: 'trip-recall',
+    layout: 'portrait',
+    index: '027',
+    title: 'Trip / Recall',
+    format: 'scenario',
+    category: 'Interaction',
+    tags: 'Map · Memories · Highlights',
+    description: 'Explore a trip through its map, stacked place albums, and a wall of travel photos.',
+    tone: 'paper',
+  },
   {
     slug: 'message-mood',
     index: '026',

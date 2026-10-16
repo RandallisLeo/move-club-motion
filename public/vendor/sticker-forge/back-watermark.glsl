@@ -1,0 +1,15 @@
+    // Move Club: quiet security-paper watermark, attached to the reverse UVs.
+    // Repeating diamond/rosette devices and fine wavy laid-paper lines.
+    vec2 trPaperUv = vec2(1.0 - vUv.x, vUv.y);
+    vec2 trGrid = trPaperUv * vec2(3.0, 4.0);
+    trGrid.x += mod(floor(trGrid.y), 2.0) * 0.5;
+    vec2 trCell = fract(trGrid) - 0.5;
+    float trAA = max(fwidth(trPaperUv.x) * 3.0, fwidth(trPaperUv.y) * 4.0) * 0.8;
+    float trDiamond = 1.0 - smoothstep(0.006, 0.006 + trAA, abs(abs(trCell.x) + abs(trCell.y) - 0.32));
+    float trAngle = atan(trCell.y, trCell.x);
+    float trPetalRadius = 0.13 + 0.026 * cos(trAngle * 6.0);
+    float trRosette = 1.0 - smoothstep(0.005, 0.005 + trAA, abs(length(trCell) - trPetalRadius));
+    float trCore = 1.0 - smoothstep(0.004, 0.004 + trAA, abs(length(trCell) - 0.035));
+    float trWave = abs(fract(trPaperUv.y * 42.0 + sin(trPaperUv.x * 24.0) * 0.13) - 0.5);
+    float trLaidLine = 1.0 - smoothstep(0.012, 0.07, trWave);
+    backColor *= 1.0 - trDiamond * 0.10 - trRosette * 0.12 - trCore * 0.08 - trLaidLine * 0.025;

@@ -1,0 +1,6 @@
+{
+  "asset": "/glass-unfold/meadow.webp",
+  "generator": "Built-in image_gen",
+  "prompt": "Use case: photorealistic-natural. Asset type: photographic nature background for a compact frosted-glass interaction study. Primary request: a pristine green meadow at the edge of a leafy forest, fresh clean greens, soft even daylight. Composition: landscape 3:2, gentle grassy slope across the lower two thirds, a few soft distant leafy trees in the upper third; frame without any visible sky. Center should be calm and medium green, with enough natural texture to reveal real optical blur under frosted glass. Real photography with fine grass texture, moderate depth of field, natural restrained color, no dramatic contrast. Avoid grey mist, brown earth, dead grass, flowers, mountains, buildings, people, text, UI, borders, lens flare, artificial gradients and reflective objects. Generate only the nature photograph, not an interface.",
+  "usage": "Decorative meadow background for real CSS backdrop blur. No rendered UI or glass is baked into the image."
+}

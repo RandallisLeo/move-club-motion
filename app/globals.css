@@ -235,7 +235,8 @@ button { font: inherit; }
 .type-shift:focus-visible { outline: 2px solid var(--foreground); outline-offset: 10px; }
 
 .project-description { align-items: flex-start; gap: 30px; padding: 16px 0 20px; border-bottom: 1px solid var(--line); }
-.project-description p { max-width: 430px; margin: 0; color: var(--ink-soft); font-size: 12px; line-height: 1.55; }
+/* Shared gallery typography: balance short copy and reserve two lines for aligned footers. */
+.project-description p { flex: 1; min-width: 0; max-width: 430px; min-block-size: 2lh; margin: 0; color: var(--ink-soft); font-size: 12px; line-height: 1.55; text-wrap: balance; }
 .project-code-button { display: flex; flex: none; align-items: center; padding: 0; border: 0; background: transparent; color: var(--foreground); font-size: 11px; font-weight: 600; cursor: pointer; }
 .project-code-button:hover { text-decoration: underline; text-underline-offset: 4px; }
 .project-code-button:focus-visible { outline: 2px solid var(--accent); outline-offset: 5px; border-radius: 2px; }

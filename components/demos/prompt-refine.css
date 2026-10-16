@@ -23,7 +23,7 @@
 .prompt-refine-demo .pr-reply { margin-top: 20px; }
 .prompt-refine-demo .pr-wait { display: flex; align-items: center; height: 24px; padding-left: 16px; }
 .prompt-refine-demo .pr-wait > span { width: 8px; height: 8px; border-radius: 50%; background: #777; animation: pr-wait 1.05s ease-in-out 3; }
-.prompt-refine-demo .pr-card { overflow: hidden; border: 1px solid var(--pr-line); border-radius: 24px; background: var(--pr-paper); }
+.prompt-refine-demo .pr-card { overflow: hidden; border: 0; border-radius: 24px; background: var(--pr-paper); }
 .prompt-refine-demo .pr-card-inner { padding: 14px 14px 16px; }
 .prompt-refine-demo .pr-card-head { display: flex; height: 26px; align-items: center; justify-content: space-between; gap: 10px; color: #646464; font-size: 15px; line-height: 1.4; font-weight: 500; }
 .prompt-refine-demo .pr-card-actions { display: flex; align-items: center; gap: 14px; margin-right: -4px; color: #151515; }

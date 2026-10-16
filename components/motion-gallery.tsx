@@ -29,7 +29,27 @@ import { LightDrift } from '@/components/demos/light-drift';
 import { WatchFaces } from '@/components/demos/watch-faces';
 import { CanvasComment } from '@/components/demos/canvas-comment';
 import { SignalFocus } from '@/components/demos/signal-focus';
+import { TripRecall } from '@/components/demos/trip-recall';
 import { MessageMood } from '@/components/demos/message-mood';
+import { MossGrow } from '@/components/demos/moss-grow';
+import { DataTide } from '@/components/demos/data-tide';
+import { ImageEmerge } from '@/components/demos/image-emerge';
+import { FanWord } from '@/components/demos/fan-word';
+import { GlassUnfold } from '@/components/demos/glass-unfold';
+import { TypeInsert } from '@/components/demos/type-insert';
+import { SceneAdvance } from '@/components/demos/scene-advance';
+import { TokenReset } from '@/components/demos/token-reset';
+import { ProjectOrbit } from '@/components/demos/project-orbit';
+import { ContextBloom } from '@/components/demos/context-bloom';
+import { AppsConnect } from '@/components/demos/apps-connect';
+import { TabsTurn } from '@/components/demos/tabs-turn';
+import { ProcessCheck } from '@/components/demos/process-check';
+import { CardsSphere } from '@/components/demos/cards-sphere';
+import { MenuMaterials } from '@/components/demos/menu-materials';
+import { EmojiSuspend } from '@/components/demos/emoji-suspend';
+import { CardsDrift } from '@/components/demos/cards-drift';
+import { DiscsRelay } from '@/components/demos/discs-relay';
+import './portrait-study.css';
 import { StudyCodeContact } from '@/components/study-code-contact';
 
 const filters = ['All', 'Interaction', 'Feedback', 'Transition', 'Space'] as const;
@@ -37,6 +57,25 @@ type Filter = (typeof filters)[number];
 type GalleryMode = 'Mix' | 'Components' | 'Scenarios';
 
 function Demo({ item, replayKey }: { item: Experiment; replayKey: number }) {
+  if (item.slug === 'discs-relay') return <DiscsRelay replayKey={replayKey} />;
+  if (item.slug === 'cards-drift') return <CardsDrift replayKey={replayKey} />;
+  if (item.slug === 'menu-materials') return <MenuMaterials replayKey={replayKey} />;
+  if (item.slug === 'emoji-suspend') return <EmojiSuspend replayKey={replayKey} />;
+  if (item.slug === 'project-orbit') return <ProjectOrbit replayKey={replayKey} />;
+  if (item.slug === 'context-bloom') return <ContextBloom replayKey={replayKey} />;
+  if (item.slug === 'apps-connect') return <AppsConnect replayKey={replayKey} />;
+  if (item.slug === 'tabs-turn') return <TabsTurn replayKey={replayKey} />;
+  if (item.slug === 'process-check') return <ProcessCheck replayKey={replayKey} />;
+  if (item.slug === 'cards-sphere') return <CardsSphere replayKey={replayKey} />;
+  if (item.slug === 'token-reset') return <TokenReset replayKey={replayKey} />;
+  if (item.slug === 'moss-grow') return <MossGrow replayKey={replayKey} />;
+  if (item.slug === 'data-tide') return <DataTide replayKey={replayKey} />;
+  if (item.slug === 'image-emerge') return <ImageEmerge replayKey={replayKey} />;
+  if (item.slug === 'fan-word') return <FanWord replayKey={replayKey} />;
+  if (item.slug === 'glass-unfold') return <GlassUnfold replayKey={replayKey} />;
+  if (item.slug === 'type-insert') return <TypeInsert replayKey={replayKey} />;
+  if (item.slug === 'scene-advance') return <SceneAdvance replayKey={replayKey} />;
+  if (item.slug === 'trip-recall') return <TripRecall replayKey={replayKey} />;
   if (item.slug === 'message-mood') return <MessageMood replayKey={replayKey} />;
   if (item.slug === 'signal-focus') return <SignalFocus replayKey={replayKey} />;
   if (item.slug === 'canvas-comment') return <CanvasComment replayKey={replayKey} />;
@@ -66,17 +105,18 @@ function Demo({ item, replayKey }: { item: Experiment; replayKey: number }) {
   return null;
 }
 
-export function MotionGallery() {
+export function MotionGallery({ studySlugs }: { studySlugs?: readonly string[] } = {}) {
   const [mode, setMode] = useState<GalleryMode>('Mix');
   const [contentMode, setContentMode] = useState<GalleryMode>('Mix');
   const [filter, setFilter] = useState<Filter>('All');
   const [replayKeys, setReplayKeys] = useState<Record<string, number>>({});
   const contentModeTimer = useRef<number | null>(null);
-  const componentExperiments = experiments.filter((item) => item.format !== 'scenario');
-  const scenarioExperiments = experiments.filter((item) => item.format === 'scenario');
+  const collection = studySlugs ? experiments.filter((item) => studySlugs.includes(item.slug)) : experiments;
+  const componentExperiments = collection.filter((item) => item.format !== 'scenario');
+  const scenarioExperiments = collection.filter((item) => item.format === 'scenario');
   const visible = contentMode === 'Scenarios'
     ? scenarioExperiments
-    : (contentMode === 'Components' ? componentExperiments : experiments)
+    : (contentMode === 'Components' ? componentExperiments : collection)
         .filter((item) => filter === 'All' || item.category === filter);
 
   function selectMode(nextMode: GalleryMode) {
@@ -115,7 +155,7 @@ export function MotionGallery() {
             <span className="gallery-mode-active" aria-hidden="true" />
             <button type="button" role="tab" aria-selected={mode === 'Mix'} className={`gallery-mode-tab${mode === 'Mix' ? ' is-active' : ''}`} onClick={() => selectMode('Mix')}>
               <span className="gallery-mode-label">Mix</span>
-              <strong>{String(experiments.length).padStart(2, '0')}</strong>
+              <strong>{String(collection.length).padStart(2, '0')}</strong>
             </button>
             <button type="button" role="tab" aria-selected={mode === 'Components'} className={`gallery-mode-tab${mode === 'Components' ? ' is-active' : ''}`} onClick={() => selectMode('Components')}>
               <span className="gallery-mode-label">Components</span>
@@ -161,7 +201,7 @@ export function MotionGallery() {
                   layout
                   key={item.slug}
                   id={item.slug}
-                  className={`project-card${item.slug === 'message-mood' ? ' message-mood-card' : ''}${item.slug === 'signal-focus' ? ' signal-focus-card' : ''}${item.slug === 'canvas-comment' ? ' canvas-comment-card' : ''}${item.slug === 'watch-faces' ? ' watch-faces-card' : ''}${item.slug === 'light-drift' ? ' light-drift-card' : ''}${item.slug === 'sand-flow' ? ' color-flow-gallery-card' : ''}${item.slug === 'media-generate' ? ' media-generate-card' : ''}${item.slug === 'cake-reflect' ? ' cake-reflect-card' : ''}${item.slug === 'feed-adapt' ? ' feed-adapt-card' : ''}${item.slug === 'prompt-refine' ? ' prompt-refine-card' : ''}${item.slug === 'fold-focus' ? ' fold-focus-card' : ''}${item.slug === 'object-orbit' ? ' object-orbit-card' : ''}${item.slug === 'card-material' ? ' card-material-card' : ''}`}
+                  className={`project-card${item.slug === 'discs-relay' ? ' discs-relay-gallery-card' : ''}${item.slug === 'project-orbit' ? ' project-orbit-card' : ''}${item.slug === 'tabs-turn' ? ' tabs-turn-card' : ''}${item.slug === 'cards-sphere' ? ' cards-sphere-card-shell' : ''}${item.slug === 'token-reset' ? ' token-reset-card' : ''}${item.slug === 'fan-word' ? ' fan-word-card' : ''}${item.slug === 'type-insert' ? ' type-insert-card' : ''}${item.layout === 'portrait' ? ' portrait-study-card' : ''}${item.slug === 'message-mood' ? ' message-mood-card' : ''}${item.slug === 'signal-focus' ? ' signal-focus-card' : ''}${item.slug === 'canvas-comment' ? ' canvas-comment-card' : ''}${item.slug === 'watch-faces' ? ' watch-faces-card' : ''}${item.slug === 'light-drift' ? ' light-drift-card' : ''}${item.slug === 'sand-flow' ? ' color-flow-gallery-card' : ''}${item.slug === 'media-generate' ? ' media-generate-card' : ''}${item.slug === 'cake-reflect' ? ' cake-reflect-card' : ''}${item.slug === 'feed-adapt' ? ' feed-adapt-card' : ''}${item.slug === 'prompt-refine' ? ' prompt-refine-card' : ''}${item.slug === 'fold-focus' ? ' fold-focus-card' : ''}${item.slug === 'object-orbit' ? ' object-orbit-card' : ''}${item.slug === 'card-material' ? ' card-material-card' : ''}`}
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -12 }}
@@ -181,8 +221,10 @@ export function MotionGallery() {
                     </button>
                   </div>
 
-                  <div className={`demo-stage demo-stage-${item.tone}${item.slug === 'canvas-comment' ? ' canvas-comment-stage' : ''}${item.slug === 'feed-adapt' ? ' feed-adapt-stage' : ''}${item.slug === 'prompt-refine' ? ' prompt-refine-stage' : ''}`}>
-                    <Demo key={replayKey} item={item} replayKey={replayKey} />
+                  <div className={`demo-stage demo-stage-${item.tone}${item.layout === 'portrait' ? ' portrait-study-stage' : ''}${item.slug === 'canvas-comment' ? ' canvas-comment-stage' : ''}${item.slug === 'feed-adapt' ? ' feed-adapt-stage' : ''}${item.slug === 'prompt-refine' ? ' prompt-refine-stage' : ''}`}>
+                    {item.layout === 'portrait' ? (
+                      <div className="portrait-study-viewport"><Demo key={replayKey} item={item} replayKey={replayKey} /></div>
+                    ) : <Demo key={replayKey} item={item} replayKey={replayKey} />}
                   </div>
 
                   <div className="project-description">

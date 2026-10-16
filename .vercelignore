@@ -11,6 +11,7 @@ out/
 coverage/
 outputs/
 work/
+artifacts/
 .env*
 !.env.example
 next-env.d.ts

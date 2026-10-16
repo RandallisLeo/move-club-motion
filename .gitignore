@@ -38,6 +38,7 @@ next-env.d.ts
 /.wrangler/
 /outputs/
 /work/
+/artifacts/
 
 # TypeScript incremental build cache
 *.tsbuildinfo

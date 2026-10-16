@@ -1,0 +1,7 @@
+.cards-drift-review { width:calc(100% - 40px); max-width:600px; margin:36px auto; }
+.cards-drift-review .cd-palette-picker { display:flex; flex-wrap:wrap; gap:7px; margin:16px 0 2px; }
+.cards-drift-review .cd-palette-picker button { display:flex; align-items:center; gap:7px; min-height:34px; padding:0 10px; border:1px solid var(--line); border-radius:8px; background:var(--paper); color:var(--ink-soft); font-size:10px; cursor:pointer; }
+.cards-drift-review .cd-palette-picker button[aria-pressed=true] { border-color:var(--accent); background:var(--accent-soft); color:var(--foreground); }
+.cards-drift-review .cd-palette-picker button:focus-visible { outline:2px solid var(--accent); outline-offset:3px; }
+.cards-drift-review .cd-palette-swatches { display:flex; gap:2px; }
+.cards-drift-review .cd-palette-swatches>span { width:9px; height:12px; border-radius:2px; }

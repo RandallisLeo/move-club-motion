@@ -1,0 +1,415 @@
+/* One component; all three materials stay inside this study root. */
+.menu-materials-demo {
+  position: absolute;
+  inset: 0;
+  color: #282c34;
+  font-family: var(--font-geist-sans), sans-serif;
+  transition: background 0.35s ease;
+}
+.menu-materials-demo .mm-preview {
+  position: absolute;
+  inset: 4px 0 70px;
+  display: grid;
+  place-items: center;
+}
+.menu-materials-demo .mm-anchor {
+  position: relative;
+  width: min(248px, calc(100% - 36px));
+  height: 228px;
+}
+.menu-materials-demo .mm-trigger {
+  position: relative;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  height: 40px;
+  padding: 0 16px;
+  border: 1px solid #e0e2e7;
+  border-radius: 24px;
+  background: #fff;
+  color: #292c33;
+  box-shadow: 0 3px 6px #28223606;
+  cursor: pointer;
+  text-align: left;
+  font-size: 12px;
+}
+.menu-materials-demo .mm-label {
+  color: #82848c;
+}
+.menu-materials-demo .mm-value {
+  flex: 1;
+  min-width: 0;
+}
+.menu-materials-demo .mm-chevron {
+  display: grid;
+  place-items: center;
+}
+.menu-materials-demo .mm-trigger:hover {
+  border-color: #b4b8c3;
+}
+.menu-materials-demo .mm-trigger:active {
+  background: #f2f3f6;
+}
+.menu-materials-demo .mm-trigger:focus-visible,
+.menu-materials-demo .mm-option:focus-visible,
+.menu-materials-demo .mm-toolbar button:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+.menu-materials-demo .mm-panel {
+  position: absolute;
+  top: 48px;
+  left: 0;
+  width: 100%;
+  height: 180px;
+}
+.menu-materials-demo .mm-options {
+  position: relative;
+  z-index: 2;
+  padding: 5px 6px;
+}
+.menu-materials-demo .mm-option {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  min-width: 0;
+  height: 34px;
+  padding: 0 11px;
+  border: 0;
+  border-radius: 5px;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+  text-align: left;
+  font-size: 12px;
+}
+.menu-materials-demo .mm-option > svg {
+  flex: none;
+  margin-left: 4px;
+}
+.menu-materials-demo .mm-option[aria-selected='true'] {
+  font-weight: 550;
+}
+.menu-materials-demo .mm-option:hover,
+.menu-materials-demo .mm-option:focus-visible {
+  background: #20242b08;
+}
+.menu-materials-demo .mm-toolbar {
+  position: absolute;
+  bottom: 17px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 3px;
+  padding: 3px;
+  border: 1px solid var(--line);
+  border-radius: 9px;
+  background: #fff9;
+}
+.menu-materials-demo .mm-toolbar button {
+  min-width: 62px;
+  height: 26px;
+  padding: 0 10px;
+  border: 0;
+  border-radius: 5px;
+  background: transparent;
+  color: var(--ink-soft);
+  font-size: 10px;
+  cursor: pointer;
+}
+.menu-materials-demo .mm-toolbar button[aria-pressed='true'] {
+  background: var(--foreground);
+  color: var(--paper);
+  box-shadow: 0 1px 4px #20242b20;
+}
+.menu-materials-demo .mm-toolbar button:hover:not([aria-pressed='true']) {
+  background: #20242b07;
+}
+.menu-materials-demo .mm-caption {
+  position: absolute;
+  bottom: 3px;
+  left: 12px;
+  right: 12px;
+  text-align: center;
+  color: var(--ink-soft);
+  font:
+    8px var(--font-geist-mono),
+    monospace;
+  letter-spacing: 0.025em;
+  pointer-events: none;
+}
+.menu-materials-demo .mm-silk-surface {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+.menu-materials-demo .mm-silk-surface canvas {
+  position: absolute;
+  left: -18px;
+  top: -18px;
+  width: calc(100% + 36px);
+  height: 224px;
+  filter: drop-shadow(0 5px 6px #20202014);
+}
+.menu-materials-demo .mm-silk-fallback {
+  position: absolute;
+  inset: 0;
+  border: 1px solid #dfe0e6;
+  border-radius: 9px;
+  background: #fafafa;
+  opacity: 0;
+}
+.menu-materials-demo .mm-silk-surface[data-open='true'] .mm-silk-fallback {
+  opacity: 1;
+}
+.menu-materials-demo .mm-silk-hitareas {
+  opacity: 0;
+}
+.menu-materials-demo .mm-silk-hitareas[data-open='true'] {
+  opacity: 1;
+}
+.menu-materials-demo .mm-silk-hitareas .mm-option {
+  color: transparent;
+}
+.menu-materials-demo .mm-silk-hitareas .mm-option > svg {
+  visibility: hidden;
+}
+.menu-materials-demo .mm-silk-hitareas .mm-option:hover {
+  background: #ffffff15;
+}
+.menu-materials-demo
+  .mm-silk-panel:has(.mm-silk-surface[data-ready='false'])
+  .mm-silk-hitareas
+  .mm-option {
+  color: inherit;
+}
+.menu-materials-demo
+  .mm-silk-panel:has(.mm-silk-surface[data-ready='false'])
+  .mm-silk-hitareas
+  .mm-option
+  > svg {
+  visibility: visible;
+}
+.menu-materials-demo[data-material='flap'] .mm-trigger {
+  border-radius: 4px;
+}
+.menu-materials-demo .mm-flap-panel {
+  perspective: 760px;
+  perspective-origin: center top;
+}
+.menu-materials-demo .mm-flap-surface {
+  position: absolute;
+  inset: 0;
+  transform-style: preserve-3d;
+}
+.menu-materials-demo .mm-flap-joint {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 34px;
+  transform-style: preserve-3d;
+  transform-origin: center top;
+}
+.menu-materials-demo .mm-flap-joint > .mm-flap-joint {
+  top: 36px;
+}
+.menu-materials-demo .mm-flap-front,
+.menu-materials-demo .mm-flap-back {
+  position: absolute;
+  inset: 0;
+  border-radius: 4px;
+  backface-visibility: hidden;
+}
+.menu-materials-demo .mm-flap-front {
+  transform: translateZ(0.8px);
+  background: #fff;
+  color: #292c33;
+  box-shadow:
+    inset 0 0 0 1px #e0e2e7,
+    0 3px 5px #282c3414;
+}
+.menu-materials-demo .mm-flap-front .mm-option {
+  padding: 0 16px;
+  font:
+    11px var(--font-geist-mono),
+    monospace;
+}
+.menu-materials-demo .mm-flap-front .mm-option:hover,
+.menu-materials-demo .mm-flap-front .mm-option:focus-visible {
+  background: #20242b08;
+}
+.menu-materials-demo .mm-flap-back {
+  display: grid;
+  place-items: center;
+  transform: rotateX(180deg) translateZ(0.8px);
+  background: #f2f3f6;
+  color: #82848c;
+  box-shadow: inset 0 0 0 1px #d8dce3;
+}
+.menu-materials-demo .mm-flap-back > span {
+  font:
+    7px var(--font-geist-mono),
+    monospace;
+  letter-spacing: 0.15em;
+}
+.menu-materials-demo .mm-flap-shade,
+.menu-materials-demo .mm-flap-shine {
+  position: absolute;
+  inset: 0;
+  border-radius: 4px;
+  pointer-events: none;
+}
+.menu-materials-demo .mm-flap-shade {
+  background: linear-gradient(#0002, #000);
+}
+.menu-materials-demo .mm-flap-shine {
+  background: linear-gradient(#fff, #fff0 65%);
+}
+.menu-materials-demo .mm-flap-axis {
+  position: absolute;
+  top: 0;
+  left: 5px;
+  right: 5px;
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    #999b9f 3px,
+    transparent 3px,
+    transparent calc(100% - 3px),
+    #999b9f calc(100% - 3px)
+  );
+  pointer-events: none;
+}
+.menu-materials-demo .mm-flap-edge {
+  position: absolute;
+  bottom: 0;
+  left: 2px;
+  right: 2px;
+  height: 1px;
+  background: #d5d8df;
+  transform: rotateX(90deg);
+  transform-origin: bottom;
+  pointer-events: none;
+}
+.menu-materials-demo[data-material='light'] {
+  background: #17191e;
+  color: #f0e8d8;
+}
+.menu-materials-demo[data-material='light'] .mm-trigger {
+  color: #eee8dc;
+  border-color: #45443f;
+  background: #26282b;
+}
+.menu-materials-demo[data-material='light'] .mm-label {
+  color: #aba89e;
+}
+.menu-materials-demo[data-material='light'] .mm-trigger:hover {
+  border-color: #a79c83;
+}
+.menu-materials-demo[data-material='light'] .mm-caption {
+  color: #a29c8f;
+}
+.menu-materials-demo[data-material='light'] .mm-toolbar {
+  border-color: #ffffff1c;
+  background: #ffffff08;
+}
+.menu-materials-demo[data-material='light'] .mm-toolbar button {
+  color: #b4b0a6;
+}
+.menu-materials-demo[data-material='light']
+  .mm-toolbar
+  button[aria-pressed='true'] {
+  color: #fff2d5;
+  background: #ffffff15;
+}
+.menu-materials-demo[data-material='light']
+  .mm-toolbar
+  button:hover:not([aria-pressed='true']) {
+  background: #ffffff08;
+}
+.menu-materials-demo .mm-light-halo {
+  position: absolute;
+  top: 40px;
+  left: -30px;
+  right: -30px;
+  height: 196px;
+  background: radial-gradient(
+    ellipse at 50% 15%,
+    #ffd99132,
+    #e9b96809 50%,
+    transparent 73%
+  );
+  filter: blur(16px);
+  pointer-events: none;
+}
+.menu-materials-demo .mm-light-face {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  border: 1px solid #bcb09430;
+  border-radius: 10px;
+  background: #242627;
+  box-shadow: 0 12px 24px #0003;
+}
+.menu-materials-demo .mm-light-source {
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  left: 18%;
+  right: 18%;
+  height: 2px;
+  border-radius: 999px;
+  background: linear-gradient(
+    90deg,
+    #ffeacb00,
+    #fff0d3 16%,
+    #fff2dc 50%,
+    #fff0d3 84%,
+    #ffeacb00
+  );
+  box-shadow:
+    0 0 6px 1px #ffe7a850,
+    0 0 18px 5px #ffe7a82c;
+}
+.menu-materials-demo .mm-light-beam {
+  position: absolute;
+  z-index: 0;
+  inset: -12px -24px -28px;
+  pointer-events: none;
+  mix-blend-mode: screen;
+  transform-origin: 50% 0;
+  filter: blur(10px);
+  background:
+    radial-gradient(
+      ellipse 100% 100% at 50% -4%,
+      #ffe1a94a 0%,
+      #f6d49b32 23%,
+      #edc68b18 48%,
+      #e6c28107 72%,
+      #e6c28100 94%
+    ),
+    radial-gradient(
+      ellipse 68% 60% at 50% 10%,
+      #ffe7bb1c 0%,
+      #f8dba810 46%,
+      #f8dba800 88%
+    );
+}
+.menu-materials-demo .mm-light-panel .mm-option:hover,
+.menu-materials-demo .mm-light-panel .mm-option:focus-visible {
+  background: #ffedbf14;
+}
+.menu-materials-demo .mm-light-panel .mm-option:focus-visible {
+  outline-color: #edd6a2;
+}
+@media (prefers-reduced-motion: reduce) {
+  .menu-materials-demo *,
+  .menu-materials-demo *::before,
+  .menu-materials-demo *::after {
+    transition: none;
+  }
+}
